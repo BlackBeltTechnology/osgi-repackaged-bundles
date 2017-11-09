@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <version>3.2_1</version>
+
+    <properties>
+        <tdigest.version>3.2</tdigest.version>
+    </properties>
+
+    <groupId>hu.blackbelt.bundles.t-digest</groupId>
+    <artifactId>com.tdunning.t-digest</artifactId>
+    <packaging>bundle</packaging>
+    <name>com.tdunning.t-digest</name>
+    <description>t-digest</description>
+
+    <build>
+	<plugins>
+
+	    <plugin>
+		<groupId>org.apache.felix</groupId>
+		<artifactId>maven-bundle-plugin</artifactId>
+		<version>3.3.0</version>
+		<extensions>true</extensions>
+		<configuration>
+		    <instructions>
+                        <Export-Package>
+                            *;version=${tdigest.version}
+                        </Export-Package>
+
+
+			<!-- bundle supplied resource prefixes -->
+			<Include-Resource>{maven-resources}</Include-Resource>
+
+			<!-- Do not inline jars, include as jar files -->
+			<!-- There are config files with same name will be overwritten -->
+			<Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency>
+		    </instructions>
+		</configuration>
+	    </plugin>
+	</plugins>
+    </build>
+    <dependencies>
+        <!-- Embedded dependencies -->
+        <dependency>
+            <groupId>com.tdunning</groupId>
+            <artifactId>t-digest</artifactId>
+            <version>${tdigest.version}</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    /*
+    * Copyright 2010 Robert Csakany <robson@semmi.se>.
+    *
+    * Licensed under the Apache License, Version 2.0 (the "License");
+    * you may not use this file except in compliance with the License.
+    * You may obtain a copy of the License at
+    *
+    * http://www.apache.org/licenses/LICENSE-2.0
+    *
+    * Unless required by applicable law or agreed to in writing, software
+    * distributed under the License is distributed on an "AS IS" BASIS,
+    * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    * See the License for the specific language governing permissions and
+    * limitations under the License.
+    * under the License.
+    */
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+   <groupId>hu.blackbelt.bundles.lucene</groupId>
+    <artifactId>hu.blackbelt.bundles.lucene.parent</artifactId>
+    <name>Apache Lucene</name>
+    <version>7.0.1_1</version>
+ 
+    <packaging>pom</packaging>
+    <description>
+        Reactor POM for Apache Lucene framework
+    </description>
+    <properties>
+        <lucene.version>7.0.1</lucene.version>
+    </properties>
+    <modules>
+        <module>lucene-core</module>
+        <module>lucene-codecs</module>
+        <module>lucene-misc</module>
+        <module>lucene-queries</module>
+        <module>lucene-queryparser</module>
+        <module>lucene-spatial</module>
+        <module>lucene-spatial-extras</module>
+        <module>lucene-spatial3d</module>
+
+        <module>lucene-suggest</module>
+        <module>lucene-expressions</module>
+        <module>lucene-facet</module>
+        <module>lucene-join</module>
+        <module>lucene-grouping</module>
+        <module>lucene-highlighter</module>
+        <module>lucene-memory</module>
+        <module>lucene-classification</module>
+<!--		<module>lucene-replicator</module> -->
+        <module>lucene-analyzers-common</module>
+        <module>lucene-analyzers-icu</module>
+        <module>lucene-analyzers-phonetic</module>
+        <module>lucene-analyzers-stempel</module>
+<!--		<module>lucene-analyzers-uima</module>
+        <module>lucene-analyzers-morfologik</module> -->
+        <module>lucene-analyzers-smartcn</module>
+        <module>lucene-analyzers-kuromoji</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.6.1</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <inherited>true</inherited>
+                    <configuration>
+                        <obrRepository>NONE</obrRepository>
+                        <outputDirectory>${basedir}/target/classes</outputDirectory>
+                        <instructions>
+                            <Bundle-Category>lucene</Bundle-Category>
+                            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                            <Import-Packages>!lombok,*</Import-Packages>
+                        </instructions>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

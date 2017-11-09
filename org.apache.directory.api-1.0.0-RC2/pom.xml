@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <version>1.0.0-RC2-2</version>
+
+    <groupId>hu.blackbelt.bundles.apacheds</groupId>
+    <artifactId>org.apache.ds.api</artifactId>
+    <packaging>bundle</packaging>
+    <name>org.apache.directory.api</name>
+    <description>Apache Directory Service API</description>
+    <properties>
+        <apache-ds-api-version>1.0.0-RC2</apache-ds-api-version>
+        <apache-mina-version>2.0.16</apache-mina-version>
+        <openldap-accelerator-version>1.0-RC41</openldap-accelerator-version>
+    </properties>
+    <build>
+	<plugins>
+
+	    <plugin>
+		<groupId>org.apache.felix</groupId>
+		<artifactId>maven-bundle-plugin</artifactId>
+		<version>2.5.3</version>
+		<extensions>true</extensions>
+		<configuration>
+		    <instructions>
+                        <Export-Package>
+                            org.apache.directory.api.*;version=1.0.0.RC2,
+                            org.apache.directory.ldap.*;version=1.0.0.RC2,
+                            org.openldap.accelerator.*;version=1.0
+                            <!--org.apache.mina.*;version=${apache-mina-version}-->
+                        </Export-Package>
+                        <Import-Package>
+                            *
+                        </Import-Package>
+
+			<!-- bundle supplied resource prefixes -->
+			<Include-Resource>{maven-resources}</Include-Resource>
+
+			<!-- Do not inline jars, include as jar files -->
+			<!-- There are config files with same name will be overwritten -->
+			<Embed-Dependency>*;scope=compile;inline=true</Embed-Dependency>
+
+
+		    </instructions>
+		</configuration>
+	    </plugin>
+	</plugins>
+    </build>
+    <dependencies>
+
+        <dependency>
+            <groupId>org.openldap</groupId>
+            <artifactId>accelerator-api</artifactId>
+            <version>${openldap-accelerator-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openldap</groupId>
+            <artifactId>accelerator-impl</artifactId>
+            <version>${openldap-accelerator-version}</version>
+        </dependency>
+
+        <!-- Embedded dependencies -->
+        <dependency>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-core</artifactId>
+            <version>${apache-mina-version}</version>
+        </dependency>
+        
+        <!-- <bundle>mvn:hu.blackbelt.judo.external/external-apache-ds/2.0.0_1</bundle> -->
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-i18n</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-asn1-api</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-util</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-asn1-ber</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-ldap-model</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-ldap-codec-core</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-ldap-extras-codec-api</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-ldap-extras-codec</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+
+        
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-ldap-extras-util</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-ldap-extras-aci</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-ldap-schema-data</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+        
+        
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-ldap-client-api</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-ldap-codec-standalone</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-ldap-net-mina</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-ldap-extras-sp</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.directory.api</groupId>
+            <artifactId>api-ldap-extras-trigger</artifactId>
+            <version>${apache-ds-api-version}</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <version>0.10_1</version>
+
+    <properties>
+        <moquette.version>0.10</moquette.version>
+    </properties>
+
+    <groupId>hu.blackbelt.bundles.moquette</groupId>
+    <artifactId>io.moquette</artifactId>
+    <packaging>bundle</packaging>
+    <name>io.moquette</name>
+    <description>Moquette</description>
+
+    <build>
+	<plugins>
+
+	    <plugin>
+		<groupId>org.apache.felix</groupId>
+		<artifactId>maven-bundle-plugin</artifactId>
+		<version>3.3.0</version>
+		<extensions>true</extensions>
+		<configuration>
+		    <instructions>
+                        <Export-Package>
+                            io.moquette.*,
+                            *
+                        </Export-Package>
+
+
+			<!-- bundle supplied resource prefixes -->
+			<Include-Resource>{maven-resources}</Include-Resource>
+
+			<!-- Do not inline jars, include as jar files -->
+			<!-- There are config files with same name will be overwritten -->
+			<Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency>
+		    </instructions>
+		</configuration>
+	    </plugin>
+	</plugins>
+    </build>
+    <dependencies>
+        <!-- Embedded dependencies -->
+        <dependency>
+            <groupId>io.moquette</groupId>
+            <artifactId>moquette-broker</artifactId>
+            <version>${moquette.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.moquette</groupId>
+            <artifactId>moquette-h2-storage</artifactId>
+            <version>${moquette.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.moquette</groupId>
+            <artifactId>moquette-mapdb-storage</artifactId>
+            <version>${moquette.version}</version>
+        </dependency>
+
+            <dependency>
+            <groupId>io.moquette</groupId>
+            <artifactId>moquette-performance</artifactId>
+            <version>${moquette.version}</version>
+        </dependency>
+
+    </dependencies>
+</project>
