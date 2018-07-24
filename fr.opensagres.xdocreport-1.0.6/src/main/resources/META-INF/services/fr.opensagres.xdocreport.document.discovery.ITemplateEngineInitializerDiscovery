@@ -1,0 +1,3 @@
+fr.opensagres.xdocreport.document.template.TemplateCacheInitializerDiscovery
+fr.opensagres.xdocreport.document.docx.discovery.DocxTemplateEngineInitializerConfigurationDiscovery
+fr.opensagres.xdocreport.document.odt.discovery.ODTTemplateEngineInitializerConfigurationDiscovery

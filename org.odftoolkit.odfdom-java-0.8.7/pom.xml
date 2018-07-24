@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>hu.blackbelt.bundles.odfdom</groupId>
+	<artifactId>org.odftoolkit.odfdom-java</artifactId>
+	<packaging>bundle</packaging>
+	<version>0.8.7-1</version>
+	<properties>
+		<odfdom.version>0.8.7</odfdom.version>
+	</properties>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<_exportcontents>
+							org.odftoolkit.odfdom.*;version=${odfdom.version}
+						</_exportcontents>
+						<!-- bundle supplied resource prefixes -->
+						<Include-Resource>{maven-resources}</Include-Resource>
+
+						<!-- Do not inline jars, include as jar files -->
+						<!-- There are config files with same name will be overwritten -->
+						<Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency>
+
+
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+
+		<!-- Embedded dependencies -->
+		<dependency>
+			<groupId>org.odftoolkit</groupId>
+			<artifactId>odfdom-java</artifactId>
+			<version>0.8.7</version>
+		</dependency>
+	</dependencies>
+
+</project>
+
+
+
+
+
+
+

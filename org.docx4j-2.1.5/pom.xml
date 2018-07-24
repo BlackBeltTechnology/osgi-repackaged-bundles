@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+    <groupId>hu.blackbelt.bundles.docx4j</groupId>
+    <artifactId>org.docx4j</artifactId>
+    <packaging>bundle</packaging>
+    <version>2.1.5-1</version>
+    <properties>
+        <docx4j.version>2.1.5</docx4j.version>
+    </properties>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<_exportcontents>
+							org.docx4j.*;version=${docx4j.version}
+                        </_exportcontents>
+                        <Import-Package>
+                            com.sun.org.apache.xerces.internal.util;resolution:=optional,
+                            com.sun.xml.bind.marshaller;resolution:=optional,
+                            com.sun.xml.internal.bind.marshaller;resolution:=optional,
+                            net.arnx.wmf2svg.gdi.*;resolution:=optional,
+                            net.engio.mbassy.bus.*;resolution:=optional,
+                            org.antlr.runtime.*;resolution:=optional,
+                            org.antlr.stringtemplate.*;resolution:=optional,
+                            org.apache.avalon.framework.configuration.*;resolution:=optional,
+                            org.apache.fop.apps.*;resolution:=optional,
+                            org.apache.poi.hwpf.*;resolution:=optional,
+                            org.apache.poi.poifs.crypt.*;resolution:=optional,
+                            org.apache.poi.poifs.dev.*;resolution:=optional,
+                            org.apache.poi.poifs.filesystem.*;resolution:=optional,
+                            org.apache.xalan.extensions.*;resolution:=optional,
+                            org.apache.xmlgraphics.fonts.*;resolution:=optional,
+                            org.apache.xmlgraphics.image.loader.*;resolution:=optional,
+                            org.apache.xmlgraphics.java2d.*;resolution:=optional,
+                            *
+                        </Import-Package>
+
+						<!-- bundle supplied resource prefixes -->
+						<Include-Resource>{maven-resources}</Include-Resource>
+
+						<!-- Do not inline jars, include as jar files -->
+						<!-- There are config files with same name will be overwritten -->
+						<Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency>
+
+
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+
+		<!-- Embedded dependencies -->
+        <dependency>
+            <groupId>org.docx4j</groupId>
+            <artifactId>docx4j</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.plutext</groupId>
+            <artifactId>jaxb-xmldsig-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.plutext</groupId>
+            <artifactId>jaxb-svg11</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.plutext</groupId>
+            <artifactId>jaxb-xslfo</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+	</dependencies>
+</project>
+
+
+
+
+
+
+

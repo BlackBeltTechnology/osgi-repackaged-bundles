@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>hu.blackbelt.bundles.xdocreport</groupId>
+    <artifactId>fr.opensagres.xdocreport</artifactId>
+    <packaging>bundle</packaging>
+    <version>1.0.6-1</version>
+
+    <properties>
+        <xdocreport.version>1.0.6</xdocreport.version>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+    </properties>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <_exportcontents>
+                            fr.opensagres.xdocreport.*;version=${xdocreport.version},
+                            org.apache.poi.xwpf.converter.*;version=${xdocreport.version},
+                            org.odftoolkit.odfdom.converter.*;version=${xdocreport.version},
+                        </_exportcontents>
+                        <Export-Package>
+                        </Export-Package>
+                        <SPI-Provider>*</SPI-Provider>
+                        <SPI-Consumer>*</SPI-Consumer>
+                        <Import-Package>
+                            javax.servlet.*;resolution:=optional,
+                            org.apache.commons.fileupload.*;resolution:=optional,
+                            *
+                        </Import-Package>
+
+
+                        <!-- bundle supplied resource prefixes -->
+                        <Include-Resource>{maven-resources}, target/classes</Include-Resource>
+
+                        <!-- Do not inline jars, include as jar files -->
+                        <!-- There are config files with same name will be overwritten -->
+                        <Embed-Dependency>*;scope=compile;inline=true</Embed-Dependency>
+
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+
+        <!-- Embedded dependencies -->
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.core</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.template</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.document</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.converter</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>org.odftoolkit.odfdom.converter.core</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>org.odftoolkit.odfdom.converter.xhtml</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>org.odftoolkit.odfdom.converter.pdf</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.itext.extension</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>org.apache.poi.xwpf.converter.xhtml</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>org.apache.poi.xwpf.converter.pdf</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>org.apache.poi.xwpf.converter.core</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.document.docx</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.document.odt</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+         
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.template.velocity</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.template.freemarker</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+         
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.converter.odt.odfdom</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.converter.docx.xwpf</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.converter.docx.docx4j</artifactId>
+            <version>${xdocreport.version}</version>
+        </dependency>
+    </dependencies>
+</project>
+
+
+
+
+
+
+

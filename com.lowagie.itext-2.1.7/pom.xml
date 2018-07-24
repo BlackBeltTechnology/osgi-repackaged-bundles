@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>hu.blackbelt.bundles.itext</groupId>
+    <artifactId>com.lowagie.itext</artifactId>
+    <packaging>bundle</packaging>
+    <version>2.1.7-1</version>
+
+    <properties>
+        <itext.version>2.1.7</itext.version>
+    </properties>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <_exportcontents>
+                            com.lowagie.text.*;version=${itext.version},
+                            com.lowagie.tools.*;version=${itext.version}
+                        </_exportcontents>
+                        <Import-Package>
+                            com.apple.mrj.*;resolution:=optional,
+                            com.lowagie.toolbox.*;resolution:=optional,
+                            org.bouncycastle.ocsp.*;resolution:=optional,
+                            *
+                        </Import-Package>
+
+                        <!-- bundle supplied resource prefixes -->
+                        <Include-Resource>{maven-resources}</Include-Resource>
+
+                        <!-- Do not inline jars, include as jar files -->
+                        <!-- There are config files with same name will be overwritten -->
+                        <Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency>
+
+
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+
+        <!-- Embedded dependencies -->
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>${itext.version}</version>
+        </dependency>
+    </dependencies>
+</project>
+
+
+
+
+
+
+
