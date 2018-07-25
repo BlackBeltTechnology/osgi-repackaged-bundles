@@ -9,31 +9,65 @@
     <description>Eclipse Epsilon</description>
 
     <build>
-	<plugins>
+    <plugins>
 
-	    <plugin>
-		<groupId>org.apache.felix</groupId>
-		<artifactId>maven-bundle-plugin</artifactId>
-		<version>3.3.0</version>
-		<extensions>true</extensions>
-		<configuration>
-		    <instructions>
+        <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <version>3.3.0</version>
+        <extensions>true</extensions>
+        <configuration>
+            <instructions>
                         <Export-Package>
                             org.eclipse.epsilon.*;version=1.4.0
                         </Export-Package>
                         <Import-Package>
+                            !org.junit.runner,
+                            !org.junit.runner.notification,
+                            !org.junit.runners,
+                            !org.junit.runners.model,
+                            !org.eclipse.ui.console,
+                            !org.eclipse.xsd.ecore,
+                            !org.eclipse.epsilon.evl.dt.launching,
+                            !org.eclipse.epsilon.etl.dt.launching,
+                            !org.eclipse.epsilon.epl.dt.launching,
+                            !org.eclipse.epsilon.eol.dt.userinput,
+                            !org.eclipse.epsilon.eol.dt.debug,
+                            !org.eclipse.epsilon.eol.dt,
+                            !org.eclipse.epsilon.eml.dt.launching,
+                            !org.eclipse.epsilon.emf.dt,
+                            !org.eclipse.epsilon.egl.dt.debug,
+                            !org.eclipse.epsilon.ecl.dt.launching,
+                            !org.eclipse.epsilon.common.dt.console,
+                            !org.eclipse.epsilon.common.dt.extensions,
+                            !org.eclipse.epsilon.common.dt.launching,
+                            !org.eclipse.epsilon.common.dt.launching.extensions,
+                            !org.eclipse.emf.ecore.change,
+                            !org.eclipse.emf.ecore.change.util,
+                            !org.apache.tools.ant,
+                            !org.apache.tools.ant.input,
+                            !org.apache.tools.ant.types,
+                            !org.eclipse.core.resources,
+                            !org.eclipse.core.runtime,
+                            !org.eclipse.debug.core,
+                            !org.eclipse.debug.core.model,
+                            com.google.gdata.client;resolution:=optional,
+                            com.google.gdata.client.spreadsheet;resolution:=optional,
+                            com.google.gdata.data;resolution:=optional,
+                            com.google.gdata.data.spreadsheet;resolution:=optional,
+                            com.google.gdata.util;resolution:=optional,
                             *
                         </Import-Package>
-			<!-- bundle supplied resource prefixes -->
-			<Include-Resource>{maven-resources}</Include-Resource>
+            <!-- bundle supplied resource prefixes -->
+            <Include-Resource>{maven-resources}</Include-Resource>
 
-			<!-- Do not inline jars, include as jar files -->
-			<!-- There are config files with same name will be overwritten -->
-			<Embed-Dependency>*;scope=compile;inline=true</Embed-Dependency>
-		    </instructions>
-		</configuration>
-	    </plugin>
-	</plugins>
+            <!-- Do not inline jars, include as jar files -->
+            <!-- There are config files with same name will be overwritten -->
+            <Embed-Dependency>*;scope=compile;inline=true</Embed-Dependency>
+            </instructions>
+        </configuration>
+        </plugin>
+    </plugins>
     </build>
     <dependencies>
         <dependency>

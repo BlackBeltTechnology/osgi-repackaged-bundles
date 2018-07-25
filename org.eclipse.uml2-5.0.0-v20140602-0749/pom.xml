@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <version>5.0.0-v20140602-0749_1</version>
+
+    <groupId>hu.blackbelt.bundles.uml</groupId>
+    <artifactId>org.eclipse.uml2.uml</artifactId>
+    <packaging>bundle</packaging>
+    <description>Eclipse UML2</description>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>3.3.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>
+                            org.eclipse.uml2.common*;version=2.0.0,
+                            org.eclipse.uml2.types*;version=2.0.0,
+                            org.eclipse.uml2.uml;version=5.0.0,
+                            org.eclipse.uml2.uml.profile*;version=1.0.0,
+                            org.eclipse.uml2.uml.resources*;version=5.0.0,
+                            org.eclipse.uml2.uml.utils*;version=5.0.0,
+                            org.eclipse.uml2.uml.resource*;version=5.0.0
+                        </Export-Package>
+
+
+                        <Import-Package>!org.eclipse.core.runtime,*</Import-Package>
+                        <!-- bundle supplied resource prefixes -->
+                        <Include-Resource>{maven-resources}</Include-Resource>
+
+                        <!-- Do not inline jars, include as jar files -->
+                        <!-- There are config files with same name will be overwritten -->
+                        <Embed-Dependency>*;scope=compile;inline=true</Embed-Dependency>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.uml2</groupId>
+            <artifactId>uml</artifactId>
+            <version>5.0.0-v20140602-0749</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.emf</groupId>
+                    <artifactId>ecore</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.emf.ecore</groupId>
+                    <artifactId>xmi</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.emf.mapping</groupId>
+                    <artifactId>ecore2xml</artifactId>
+                </exclusion>
+            </exclusions>
+
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.uml2.uml</groupId>
+            <artifactId>resources</artifactId>
+            <version>5.0.0-v20140602-0749</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.emf</groupId>
+                    <artifactId>ecore</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.emf.ecore</groupId>
+                    <artifactId>xmi</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.emf.mapping</groupId>
+                    <artifactId>ecore2xml</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.uml2.uml.profile</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.0.0-v20140602-0749</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.emf</groupId>
+                    <artifactId>ecore</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.emf.ecore</groupId>
+                    <artifactId>xmi</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.emf.mapping</groupId>
+                    <artifactId>ecore2xml</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.uml2</groupId>
+            <artifactId>common</artifactId>
+            <version>2.0.0-v20140602-0749</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.emf</groupId>
+                    <artifactId>ecore</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.emf.ecore</groupId>
+                    <artifactId>xmi</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.emf.mapping</groupId>
+                    <artifactId>ecore2xml</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.uml2</groupId>
+            <artifactId>types</artifactId>
+            <version>2.0.0-v20140602-0749</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.emf</groupId>
+                    <artifactId>ecore</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.emf.ecore</groupId>
+                    <artifactId>xmi</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.emf.mapping</groupId>
+                    <artifactId>ecore2xml</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+</project>
