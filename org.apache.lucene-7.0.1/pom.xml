@@ -33,32 +33,7 @@
         <lucene.version>7.0.1</lucene.version>
     </properties>
     <modules>
-        <module>lucene-core</module>
-        <module>lucene-codecs</module>
-        <module>lucene-misc</module>
-        <module>lucene-queries</module>
-        <module>lucene-queryparser</module>
-        <module>lucene-spatial</module>
-        <module>lucene-spatial-extras</module>
-        <module>lucene-spatial3d</module>
-        
-        <module>lucene-suggest</module>
-        <module>lucene-expressions</module>
-        <module>lucene-facet</module>
-        <module>lucene-join</module>
-        <module>lucene-grouping</module>
-        <module>lucene-highlighter</module>
-        <module>lucene-memory</module>
-        <module>lucene-classification</module>
-        <!--		<module>lucene-replicator</module> -->
-        <module>lucene-analyzers-common</module>
-        <module>lucene-analyzers-icu</module>
-        <module>lucene-analyzers-phonetic</module>
-        <module>lucene-analyzers-stempel</module>
-        <!--		<module>lucene-analyzers-uima</module>
-         <module>lucene-analyzers-morfologik</module> -->
-        <module>lucene-analyzers-smartcn</module>
-        <module>lucene-analyzers-kuromoji</module>
+        <module>lucene-osgi</module>
     </modules>
     
     <dependencies>
@@ -184,7 +159,7 @@
                         <instructions>
                             <Bundle-Category>lucene</Bundle-Category>
                             <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                            <Import-Packages>!lombok,*</Import-Packages>
+                            <Import-Package>!lombok,*</Import-Package>
                         </instructions>
                     </configuration>
                 </plugin>

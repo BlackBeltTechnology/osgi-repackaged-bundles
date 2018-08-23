@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor
+    license agreements. See the NOTICE file distributed with this work for additional
+    information regarding copyright ownership. The ASF licenses this file to
+    you under the Apache License, Version 2.0 (the "License"); you may not use
+    this file except in compliance with the License. You may obtain a copy of
+    the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required
+    by applicable law or agreed to in writing, software distributed under the
+    License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
+    OF ANY KIND, either express or implied. See the License for the specific
+    language governing permissions and limitations under the License. -->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>hu.blackbelt.bundles.lucene</groupId>
+        <artifactId>hu.blackbelt.bundles.lucene.parent</artifactId>
+          <version>7.0.1_1</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <artifactId>lucene-osgi</artifactId>
+    <packaging>bundle</packaging>
+
+    <name>Apache Lucene :: OSGi</name>
+    <description>
+        This bundle contains the Apache Lucene</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>unpack</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.apache.lucene</groupId>
+                                    <artifactId>lucene-core</artifactId>
+                                    <version>${lucene.version}</version>
+                                    <outputDirectory>${project.build.directory}/lucene-core</outputDirectory>
+                                    <includes>META-INF/services/*</includes>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>org.apache.lucene</groupId>
+                                    <artifactId>lucene-analyzers-common</artifactId>
+                                    <version>${lucene.version}</version>
+                                    <outputDirectory>${project.build.directory}/lucene-analyzers-common</outputDirectory>
+                                    <includes>META-INF/services/*</includes>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>org.apache.lucene</groupId>
+                                    <artifactId>lucene-analyzers-icu</artifactId>
+                                    <version>${lucene.version}</version>
+                                    <outputDirectory>${project.build.directory}/lucene-analyzers-icu</outputDirectory>
+                                    <includes>META-INF/services/*</includes>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>org.apache.lucene</groupId>
+                                    <artifactId>lucene-analyzers-kuromoji</artifactId>
+                                    <version>${lucene.version}</version>
+                                    <outputDirectory>${project.build.directory}/lucene-analyzers-kuromoji</outputDirectory>
+                                    <includes>META-INF/services/*</includes>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>org.apache.lucene</groupId>
+                                    <artifactId>lucene-analyzers-phonetic</artifactId>
+                                    <version>${lucene.version}</version>
+                                    <outputDirectory>${project.build.directory}/lucene-analyzers-phonetic</outputDirectory>
+                                    <includes>META-INF/services/*</includes>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>org.apache.lucene</groupId>
+                                    <artifactId>lucene-analyzers-smartcn</artifactId>
+                                    <version>${lucene.version}</version>
+                                    <outputDirectory>${project.build.directory}/lucene-analyzers-smartcn</outputDirectory>
+                                    <includes>META-INF/services/*</includes>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>org.apache.lucene</groupId>
+                                    <artifactId>lucene-analyzers-stempel</artifactId>
+                                    <version>${lucene.version}</version>
+                                    <outputDirectory>${project.build.directory}/lucene-analyzers-stempel</outputDirectory>
+                                    <includes>META-INF/services/*</includes>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>org.apache.lucene</groupId>
+                                    <artifactId>lucene-codecs</artifactId>
+                                    <version>${lucene.version}</version>
+                                    <outputDirectory>${project.build.directory}/lucene-codecs</outputDirectory>
+                                    <includes>META-INF/services/*</includes>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>org.apache.lucene</groupId>
+                                    <artifactId>lucene-suggest</artifactId>
+                                    <version>${lucene.version}</version>
+                                    <outputDirectory>${project.build.directory}/lucene-suggest</outputDirectory>
+                                    <includes>META-INF/services/*</includes>
+                                </artifactItem>
+
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.zcore.maven</groupId>
+                <artifactId>merge-maven-plugin</artifactId>
+                <version>0.0.3</version>
+                <executions>
+                    <execution>
+                        <id>merge</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>merge</goal>
+                        </goals>
+                        <configuration>
+                            <mergers>
+                                <merger>
+                                    <target>${build.outputDirectory}/META-INF/services/org.apache.lucene.codecs.PostingsFormat</target>
+                                    <sources>
+                                        <source>${project.build.directory}/lucene-core/META-INF/services/org.apache.lucene.codecs.PostingsFormat</source>
+                                        <source>${project.build.directory}/lucene-codecs/META-INF/services/org.apache.lucene.codecs.PostingsFormat</source>
+                                        <source>${project.build.directory}/lucene-suggest/META-INF/services/org.apache.lucene.codecs.PostingsFormat</source>
+                                    </sources>
+                                </merger>
+
+                                <merger>
+                                    <target>${build.outputDirectory}/META-INF/services/org.apache.lucene.codecs.DocValuesFormat</target>
+                                    <sources>
+                                        <source>${project.build.directory}/lucene-core/META-INF/services/org.apache.lucene.codecs.DocValuesFormat</source>
+                                        <source>${project.build.directory}/lucene-codecs/META-INF/services/org.apache.lucene.codecs.DocValuesFormat</source>
+                                    </sources>
+                                </merger>
+
+                                <merger>
+                                    <target>${build.outputDirectory}/META-INF/services/org.apache.lucene.codecs.Codec</target>
+                                    <sources>
+                                        <source>${project.build.directory}/lucene-core/META-INF/services/org.apache.lucene.codecs.Codec</source>
+                                        <source>${project.build.directory}/lucene-codecs/META-INF/services/org.apache.lucene.codecs.Codec</source>
+                                    </sources>
+                                </merger>
+
+                                <merger>
+                                    <target>${build.outputDirectory}/META-INF/services/org.apache.lucene.analysis.util.CharFilterFactory</target>
+                                    <sources>
+                                        <source>${project.build.directory}/lucene-analyzers-common/META-INF/services/org.apache.lucene.analysis.util.CharFilterFactory</source>
+                                        <source>${project.build.directory}/lucene-analyzers-icu/META-INF/services/org.apache.lucene.analysis.util.CharFilterFactory</source>
+                                        <source>${project.build.directory}/lucene-analyzers-kuromoji/META-INF/services/org.apache.lucene.analysis.util.CharFilterFactory</source>
+                                    </sources>
+                                </merger>
+
+                                <merger>
+                                    <target>${build.outputDirectory}/META-INF/services/org.apache.lucene.analysis.util.TokenFilterFactory</target>
+                                    <sources>
+                                        <source>${project.build.directory}/lucene-analyzers-common/META-INF/services/org.apache.lucene.analysis.util.TokenFilterFactory</source>
+                                        <source>${project.build.directory}/lucene-analyzers-icu/META-INF/services/org.apache.lucene.analysis.util.TokenFilterFactory</source>
+                                        <source>${project.build.directory}/lucene-analyzers-kuromoji/META-INF/services/org.apache.lucene.analysis.util.TokenFilterFactory</source>
+                                        <source>${project.build.directory}/lucene-analyzers-phonetic/META-INF/services/org.apache.lucene.analysis.util.TokenFilterFactory</source>
+                                        <source>${project.build.directory}/lucene-analyzers-stempel/META-INF/services/org.apache.lucene.analysis.util.TokenFilterFactory</source>
+                                        <source>${project.build.directory}/lucene-suggest/META-INF/services/org.apache.lucene.analysis.util.TokenFilterFactory</source>
+                                    </sources>
+                                </merger>
+
+                                <merger>
+                                    <target>${build.outputDirectory}/META-INF/services/org.apache.lucene.analysis.util.TokenizerFactory</target>
+                                    <sources>
+                                        <source>${project.build.directory}/lucene-analyzers-common/META-INF/services/org.apache.lucene.analysis.util.TokenizerFactory</source>
+                                        <source>${project.build.directory}/lucene-analyzers-icu/META-INF/services/org.apache.lucene.analysis.util.TokenizerFactory</source>
+                                        <source>${project.build.directory}/lucene-analyzers-kuromoji/META-INF/services/org.apache.lucene.analysis.util.TokenizerFactory</source>
+                                        <source>${project.build.directory}/lucene-analyzers-smartcn/META-INF/services/org.apache.lucene.analysis.util.TokenizerFactory</source>
+                                    </sources>
+                                </merger>
+
+                            </mergers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-Category>Lucene</Bundle-Category>
+                        <Import-Package>
+                            org.apache.lucene.sandbox.queries.*;resolution:=optional,
+                            *
+                        </Import-Package>
+                        <_exportcontents>
+                            org.apache.lucene.*;version=${lucene.version},
+                            org.tartarus.snowball.*;version=${lucene.version},
+                            org.egothor.*;version=${lucene.version}
+                        </_exportcontents>
+                        <Embed-Dependency>
+                            lucene-core;inline=org/apache/lucene/**,
+                            lucene-analyzers-common;inline=org/apache/lucene/**|org/tartarus/snowball/**,
+                            lucene-analyzers-icu;inline=org/apache/lucene/**,
+                            lucene-analyzers-kuromoji;inline=org/apache/lucene/**,
+                            lucene-analyzers-phonetic;inline=org/apache/lucene/**,
+                            lucene-analyzers-smartcn;inline=org/apache/lucene/**,
+                            lucene-analyzers-stempel;inline=org/apache/lucene/**|org/egothor/*,
+                            lucene-classification;inline=org/apache/lucene/**,
+                            lucene-codecs;inline=org/apache/lucene/**,
+                            lucene-expressions;inline=org/apache/lucene/**,
+                            lucene-facet;inline=org/apache/lucene/**,
+                            lucene-grouping;inline=org/apache/lucene/**,
+                            lucene-highlighter;inline=org/apache/lucene/**,
+                            lucene-join;inline=org/apache/lucene/**,
+                            lucene-memory;inline=org/apache/lucene/**,
+                            lucene-misc;inline=org/apache/lucene/**,
+                            lucene-queries;inline=org/apache/lucene/**,
+                            lucene-queryparser;inline=org/apache/lucene/**,
+                            lucene-spatial;inline=org/apache/lucene/**,
+                            lucene-spatial-extras;inline=org/apache/lucene/**,
+                            lucene-spatial3d;inline=org/apache/lucene/**,
+                            lucene-suggest;inline=org/apache/lucene/**
+                        </Embed-Dependency>
+                        <Include-Resource>
+                            META-INF/services=${build.outputDirectory}/META-INF/services/
+                        </Include-Resource>
+                        <_dsannotations>*</_dsannotations>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-common</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-icu</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-kuromoji</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-phonetic</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-smartcn</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-stempel</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-classification</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-codecs</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-expressions</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-facet</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-grouping</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-highlighter</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-join</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-memory</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-misc</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-queries</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-queryparser</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-spatial</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-spatial-extras</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-spatial3d</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-suggest</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.compendium</artifactId>
+            <version>4.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.annotation</artifactId>
+            <version>6.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>4.3.0</version>
+        </dependency>
+
+    </dependencies>
+</project>
