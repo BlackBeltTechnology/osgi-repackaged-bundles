@@ -4,7 +4,9 @@ command-timeout: 60
 
 build:
   steps:
-    - echo "No build made"
+    - script:
+      name: Dummy buildstep
+      code: echo "Nothing to do"
 
 release_com.google.api-client-1.23.0:
   steps:
