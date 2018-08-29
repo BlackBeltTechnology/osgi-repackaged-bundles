@@ -23,7 +23,7 @@
     <groupId>hu.blackbelt.bundles.lucene</groupId>
     <artifactId>hu.blackbelt.bundles.lucene.parent</artifactId>
     <name>Apache Lucene</name>
-    <version>7.0.1_1</version>
+    <version>7.0.1_2</version>
     
     <packaging>pom</packaging>
     <description>
