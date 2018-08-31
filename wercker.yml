@@ -229,3 +229,16 @@ release-org.tinyjee.jgraphx.mxgraph-3.4.1.3:
       settings: .maven.xml
       cache_repo: true
 
+release-org.restlet-2.3.12:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./org.restlet-2.3.12/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
