@@ -346,3 +346,125 @@ release-org.subethamail.subethasmtp-3.1.7:
       profiles: release-central
       settings: .maven.xml
       cache_repo: true
+
+release-org.eclipse.xtext-2.18.0:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./org.eclipse.xtext-2.18.0/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
+release-org.eclipse.emf.codegen-2.16.0:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./org.eclipse.emf.codegen-2.16.0/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
+
+release-org.eclipse.emf.codegen.ecore-2.18.0:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./org.eclipse.emf.codegen.ecore-2.18.0/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
+release-org.eclipse.emf.codegen.ecore.xtext-1.4.0:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./org.eclipse.emf.codegen.ecore.xtext-1.4.0/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
+release-org.eclipse.emf.mwe-1.4.0:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./org.eclipse.emf.mwe.1.4.0/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
+release-org.eclipse.emf.mwe2.2.10.0:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./org.eclipse.emf.mwe2.2.10.0/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
+release-org.eclipse.emf.xcore-1.7.0:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./org.eclipse.emf.xcore-1.7.0/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
+release-org.eclipse.xbase-2.18.0:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./org.eclipse.xbase-2.18.0/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
+release-org.eclipse.xtend-2.18.0:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./org.eclipse.xtend-2.18.0/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
+
+
+
