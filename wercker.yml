@@ -407,7 +407,7 @@ release-org.eclipse.emf.mwe-1.4.0:
       ownertrust: $GPG_OWNERTRUST
 
     - wercker/maven:
-      pom: ./org.eclipse.emf.mwe.1.4.0/pom.xml
+      pom: ./org.eclipse.emf.mwe-1.4.0/pom.xml
       goals: clean deploy
       profiles: release-central
       settings: .maven.xml
@@ -420,7 +420,7 @@ release-org.eclipse.emf.mwe2.2.10.0:
       ownertrust: $GPG_OWNERTRUST
 
     - wercker/maven:
-      pom: ./org.eclipse.emf.mwe2.2.10.0/pom.xml
+      pom: ./org.eclipse.emf.mwe2-2.10.0/pom.xml
       goals: clean deploy
       profiles: release-central
       settings: .maven.xml
