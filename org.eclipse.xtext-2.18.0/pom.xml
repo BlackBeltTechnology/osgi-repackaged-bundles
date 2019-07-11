@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>2.16.0_3</version>
+    <version>2.18.0_1</version>
     
     <groupId>hu.blackbelt.bundles.eclipse-xtext</groupId>
     <artifactId>org.eclipse.xtext</artifactId>
@@ -23,7 +23,7 @@
     </scm>
     
     <properties>
-        <xtext-version>2.16.0</xtext-version>
+        <xtext-version>2.18.0</xtext-version>
     </properties>
     
     <developers>
@@ -212,15 +212,23 @@
                              org.eclipse.xtext.common.types.impl;version=${xtext-version},
                              org.eclipse.xtext.common.types.util;version=${xtext-version},
                              org.eclipse.xtext.common.types.xtext;version=${xtext-version},
+                             org.eclipse.xtext.ecore;version=${xtext-version},
                         </_exportcontents>
                         <Import-Package>
+                            org.osgi.framework;version="[1.8,2.0)",
+                            javax.annotation;version="[1.0,2)",
                             com.google.common.base;version="[18.0,30)",
                             com.google.common.collect;version="[18.0,30)",
                             com.google.common.io;version="[18.0,30)",
                             com.google.common.primitives;version="[18.0,30)",
+                            com.google.common.cache;version="[18.0,30)",
+                            com.google.common.hash;version="[14.0,30)",
+                            com.google.common.util.concurrent;version="[14.0,30)",
+
                             com.google.inject;version="[1.3,2)",
                             com.google.inject.binder;version="[1.3,2)",
                             com.google.inject.name;version="[1.3,2)",
+
                             org.antlr.runtime;version="[3,4)",
                             org.eclipse.core.runtime;resolution:=optional,
                             org.eclipse.emf.mwe.core;resolution:=optional,
@@ -256,6 +264,7 @@
                             org.eclipse.xtext;scope=compile;inline=false,
                             org.eclipse.xtext.util;scope=compile;inline=false,
                             org.eclipse.xtext.common.types;scope=compile;inline=false,
+                            org.eclipse.xtext.ecore;scope=compile;inline=false,
                         </Embed-Dependency>
                     </instructions>
                 </configuration>
@@ -286,6 +295,12 @@
         <dependency>
             <groupId>org.eclipse.xtext</groupId>
             <artifactId>org.eclipse.xtext.common.types</artifactId>
+            <version>${xtext-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.xtext</groupId>
+            <artifactId>org.eclipse.xtext.ecore</artifactId>
             <version>${xtext-version}</version>
         </dependency>
 
