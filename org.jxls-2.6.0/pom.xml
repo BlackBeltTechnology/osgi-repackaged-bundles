@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>2.6.0_1</version>
+    <version>2.6.0_2</version>
     
     <properties>
         <jxls.version>2.6.0</jxls.version>
@@ -126,6 +126,7 @@
                         <Export-Package>
                             org.jxls*;version=${jxls.version}
                         </Export-Package>
+                        <!--
                         <Require-Capability>
                             osgi.extender; filter:="(osgi.extender=osgi.serviceloader.registrar)"
                         </Require-Capability>
@@ -133,13 +134,22 @@
                             osgi.serviceloader; osgi.serviceloader=org.jxls.util.JxlsConfigProvider,
                             osgi.serviceloader; osgi.serviceloader=org.jxls.expression.ExpressionEvaluatorFactory
                         </Provide-Capability>
+                        -->
                         <!-- bundle supplied resource prefixes -->
-                        <Include-Resource>{maven-resources}</Include-Resource>
+                        <Include-Resource>{maven-resources},org/jxls=target/classes/org/jxls</Include-Resource>
                         
                         <!-- Do not inline jars, include as jar files -->
                         <!-- There are config files with same name will be overwritten -->
                         <Embed-Dependency>*;scope=compile;inline=true</Embed-Dependency>
                     </instructions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -154,10 +164,24 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.jxls/jxls-poi -->
-        <dependency>
+<!--        <dependency>
             <groupId>org.jxls</groupId>
             <artifactId>jxls-poi</artifactId>
             <version>2.6.0-rc1</version>
+        </dependency> -->
+        <!-- https://mvnrepository.com/artifact/org.jxls/jxls-poi -->
+        <dependency>
+            <groupId>org.jxls</groupId>
+            <artifactId>jxls-poi</artifactId>
+            <version>1.0.14</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>osgi.cmpn</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
