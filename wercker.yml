@@ -478,6 +478,19 @@ release-org.jxls-2.6.0:
       settings: .maven.xml
       cache_repo: true
 
+release-org.apache.poi-3.17:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./org.apache.poi-3.17/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
 
 
 

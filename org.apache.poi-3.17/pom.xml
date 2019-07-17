@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <version>3.17_1</version>
+    
+    <properties>
+        <poi.version>3.17</poi.version>
+        <poi.schema.version>1.1</poi.schema.version>
+        <poi.security.version>1.0</poi.security.version>
+    </properties>
+    
+    <groupId>hu.blackbelt.bundles.poi</groupId>
+    <artifactId>org.apache.poi</artifactId>
+    <packaging>bundle</packaging>
+    <name>Apache Poi</name>
+    <description>Apache POI</description>
+    
+    <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+    <issueManagement>
+        <url>https://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+    
+    <scm>
+        <connection>scm:git:git://github.com/BlackBeltTechnology/osgi-repackaged-bundles.git</connection>
+        <developerConnection>scm:git:ssh://${git.username}@github.com:BlackBeltTechnology/osgi-repackaged-bundles.git</developerConnection>
+        <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+        <tag>HEAD</tag>
+    </scm>
+    
+    <developers>
+        <developer>
+            <id>robson</id>
+            <name>Robert Csakany</name>
+            <email>robert.csakany@blackbelt.hu</email>
+            <url>https://github.com/robertcsakany</url>
+            <organization>BlackBelt Technology</organization>
+            <organizationUrl>http://www.blackbelt.hu</organizationUrl>
+        </developer>
+    </developers>
+    
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    
+    <profiles>
+        <profile>
+            <id>release-central</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.8</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                    
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <keyname>${gpg.keyname}</keyname>
+                                    <passphraseServerId>${gpg.keyname}</passphraseServerId>
+                                    <!-- This is necessary for gpg to not try to use the pinentry programs -->
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+        
+    <build>
+        <plugins>
+            
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.5.3</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <_exportcontents>
+                            org.apache.poi.*;version=${poi.version},
+                            org.openxmlformats.schemas.*;version=${poi.schema.version},
+                            schemasMicrosoftComOfficeExcel.*;version=${poi.schema.version},
+                            schemasMicrosoftComOfficeOffice.*;version=${poi.schema.version},
+                            schemasMicrosoftComOfficePowerpoint.*;version=${poi.schema.version},
+                            schemasMicrosoftComVml.*;version=${poi.schema.version},
+                            org.etsi.uri.*;version=${poi.security.version}
+                        </_exportcontents>
+
+                        <DynamicImport-Package>
+                            com.microsoft.schemas.office.powerpoint,
+                            com.microsoft.schemas.office.word,
+                            org.openxmlformats.schemas.officeDocument.x2006.math,
+                            org.openxmlformats.schemas.schemaLibrary.x2006.main,
+                            org.apache.xmlbeans.*,
+                            schemaorg_apache_xmlbeans.*
+                        </DynamicImport-Package>
+
+                        <Import-Package>
+                            !com.microsoft.schemas.office.powerpoint,
+                            !com.microsoft.schemas.office.word,
+                            !org.openxmlformats.schemas.officeDocument.x2006.math,
+                            !org.openxmlformats.schemas.schemaLibrary.x2006.main
+                            com.sun.javadoc;resolution:=optional,
+                            com.sun.tools.javadoc;resolution:=optional,
+                            org.apache.crimson.jaxp;resolution:=optional,
+                            org.apache.tools.ant;resolution:=optional,
+                            org.apache.tools.ant.taskdefs;resolution:=optional,
+                            org.apache.tools.ant.types;resolution:=optional,
+                            junit.framework.*;resolution:=optional,
+                            junit.textui.*;resolution:=optional,
+                            org.junit.*;resolution:=optional,
+                            org.apache.xml.security.*;resolution:=optional,
+                            org.apache.jcp.xml.dsig.internal.dom.*;resolution:=optional,
+                            com.graphbuilder.curve.*;resolution:=optional,
+                            com.graphbuilder.geom.*;resolution:=optional,
+                            *
+                        </Import-Package>
+                        
+                        <!-- bundle supplied resource prefixes -->
+                        <Include-Resource>{maven-resources}</Include-Resource>
+                        
+                        <!-- Do not inline jars, include as jar files -->
+                        <!-- There are config files with same name will be overwritten -->
+                        <Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency>
+                        
+                        
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <!-- Embedded dependencies -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-scratchpad</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>ooxml-schemas</artifactId>
+            <version>${poi.schema.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>ooxml-security</artifactId>
+            <version>${poi.security.version}</version>
+        </dependency>
+    </dependencies>
+</project>
