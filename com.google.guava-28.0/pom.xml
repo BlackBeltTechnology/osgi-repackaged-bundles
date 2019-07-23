@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <version>28.0_1</version>
+    
+    <!--
+     <feature name="guava" version="27.1" description="Google Guava" install="false">
+     <feature dependency="true">jsr305</feature>
+     <bundle>mvn:com.google.guava/failureaccess/1.0.1</bundle>
+     <bundle>mvn:com.google.guava/guava/27.1-jre</bundle>
+     </feature>
+     -->
+    <groupId>hu.blackbelt.bundles.guava</groupId>
+    <artifactId>com.google.guava</artifactId>
+    <packaging>bundle</packaging>
+    <name>com.google.guava</name>
+    <description>Google Guava multiple version export</description>
+    
+    <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+    <issueManagement>
+        <url>https://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+    
+    <scm>
+        <connection>scm:git:git://github.com/BlackBeltTechnology/osgi-repackaged-bundles.git</connection>
+        <developerConnection>scm:git:ssh://${git.username}@github.com:BlackBeltTechnology/osgi-repackaged-bundles.git</developerConnection>
+        <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+        <tag>HEAD</tag>
+    </scm>
+    
+    <developers>
+        <developer>
+            <id>robson</id>
+            <name>Robert Csakany</name>
+            <email>robert.csakany@blackbelt.hu</email>
+            <url>https://github.com/robertcsakany</url>
+            <organization>BlackBelt Technology</organization>
+            <organizationUrl>http://www.blackbelt.hu</organizationUrl>
+        </developer>
+    </developers>
+    
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    
+    <profiles>
+        <profile>
+            <id>release-central</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.8</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                    
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <keyname>${gpg.keyname}</keyname>
+                                    <passphraseServerId>${gpg.keyname}</passphraseServerId>
+                                    <!-- This is necessary for gpg to not try to use the pinentry programs -->
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+    
+    <build>
+        <plugins>
+            
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>3.3.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>
+                            com.google.common.annotations;version=28.0.0,
+                            com.google.common.base;version=28.0.0,
+                            com.google.common.cache;version=28.0.0,
+                            com.google.common.collect;version=28.0.0,
+                            com.google.common.escape;version=28.0.0,
+                            com.google.common.eventbus;version=28.0.0,
+                            com.google.common.graph;version=28.0.0,
+                            com.google.common.hash;version=28.0.0,
+                            com.google.common.html;version=28.0.0,
+                            com.google.common.io;version=28.0.0,
+                            com.google.common.math;version=28.0.0,
+                            com.google.common.net;version=28.0.0,
+                            com.google.common.primitives;version=28.0.0,
+                            com.google.common.reflect;version=28.0.0,
+                            com.google.common.util.concurrent;version=28.0.0,
+                            com.google.common.xml;version=28.0.0,
+                            
+                            com.google.common.annotations;version=27.1,
+                            com.google.common.base;version=27.1,
+                            com.google.common.cache;version=27.1,
+                            com.google.common.collect;version=27.1,
+                            com.google.common.escape;version=27.1,
+                            com.google.common.eventbus;version=27.1,
+                            com.google.common.graph;version=27.1,
+                            com.google.common.hash;version=27.1,
+                            com.google.common.html;version=27.1,
+                            com.google.common.io;version=27.1,
+                            com.google.common.math;version=27.1,
+                            com.google.common.net;version=27.1,
+                            com.google.common.primitives;version=27.1,
+                            com.google.common.reflect;version=27.1,
+                            com.google.common.util.concurrent;version=27.1,
+                            com.google.common.xml;version=27.1,
+                            
+                            com.google.common.annotations;version=26.0.0,
+                            com.google.common.base;version=26.0.0,
+                            com.google.common.cache;version=26.0.0,
+                            com.google.common.collect;version=26.0.0,
+                            com.google.common.escape;version=26.0.0,
+                            com.google.common.eventbus;version=26.0.0,
+                            com.google.common.graph;version=26.0.0,
+                            com.google.common.hash;version=26.0.0,
+                            com.google.common.html;version=26.0.0,
+                            com.google.common.io;version=26.0.0,
+                            com.google.common.math;version=26.0.0,
+                            com.google.common.net;version=26.0.0,
+                            com.google.common.primitives;version=26.0.0,
+                            com.google.common.reflect;version=26.0.0,
+                            com.google.common.util.concurrent;version=26.0.0,
+                            com.google.common.xml;version=26.0.0,
+
+                            com.google.common.annotations;version=25.1.0,
+                            com.google.common.base;version=25.1.0,
+                            com.google.common.cache;version=25.1.0,
+                            com.google.common.collect;version=25.1.0,
+                            com.google.common.escape;version=25.1.0,
+                            com.google.common.eventbus;version=25.1.0,
+                            com.google.common.graph;version=25.1.0,
+                            com.google.common.hash;version=25.1.0,
+                            com.google.common.html;version=25.1.0,
+                            com.google.common.io;version=25.1.0,
+                            com.google.common.math;version=25.1.0,
+                            com.google.common.net;version=25.1.0,
+                            com.google.common.primitives;version=25.1.0,
+                            com.google.common.reflect;version=25.1.0,
+                            com.google.common.util.concurrent;version=25.1.0,
+                            com.google.common.xml;version=25.1.0,
+
+                            com.google.common.annotations;version=24.1.1,
+                            com.google.common.base;version=24.1.1,
+                            com.google.common.cache;version=24.1.1,
+                            com.google.common.collect;version=24.1.1,
+                            com.google.common.escape;version=24.1.1,
+                            com.google.common.eventbus;version=24.1.1,
+                            com.google.common.graph;version=24.1.1,
+                            com.google.common.hash;version=24.1.1,
+                            com.google.common.html;version=24.1.1,
+                            com.google.common.io;version=24.1.1,
+                            com.google.common.math;version=24.1.1,
+                            com.google.common.net;version=24.1.1,
+                            com.google.common.primitives;version=24.1.1,
+                            com.google.common.reflect;version=24.1.1,
+                            com.google.common.util.concurrent;version=24.1.1,
+                            com.google.common.xml;version=24.1.1,
+
+                            com.google.common.annotations;version=23.6.1,
+                            com.google.common.base;version=23.6.1,
+                            com.google.common.cache;version=23.6.1,
+                            com.google.common.collect;version=23.6.1,
+                            com.google.common.escape;version=23.6.1,
+                            com.google.common.eventbus;version=23.6.1,
+                            com.google.common.graph;version=23.6.1,
+                            com.google.common.hash;version=23.6.1,
+                            com.google.common.html;version=23.6.1,
+                            com.google.common.io;version=23.6.1,
+                            com.google.common.math;version=23.6.1,
+                            com.google.common.net;version=23.6.1,
+                            com.google.common.primitives;version=23.6.1,
+                            com.google.common.reflect;version=23.6.1,
+                            com.google.common.util.concurrent;version=23.6.1,
+                            com.google.common.xml;version=23.6.1,
+
+                            com.google.common.annotations;version=22.0.0,
+                            com.google.common.base;version=22.0.0,
+                            com.google.common.cache;version=22.0.0,
+                            com.google.common.collect;version=22.0.0,
+                            com.google.common.escape;version=22.0.0,
+                            com.google.common.eventbus;version=22.0.0,
+                            com.google.common.graph;version=22.0.0,
+                            com.google.common.hash;version=22.0.0,
+                            com.google.common.html;version=22.0.0,
+                            com.google.common.io;version=22.0.0,
+                            com.google.common.math;version=22.0.0,
+                            com.google.common.net;version=22.0.0,
+                            com.google.common.primitives;version=22.0.0,
+                            com.google.common.reflect;version=22.0.0,
+                            com.google.common.util.concurrent;version=22.0.0,
+                            com.google.common.xml;version=22.0.0,
+                            com.google.common.annotations;version=21.0.0,
+
+                            com.google.common.base;version=21.0.0,
+                            com.google.common.cache;version=21.0.0,
+                            com.google.common.collect;version=21.0.0,
+                            com.google.common.escape;version=21.0.0,
+                            com.google.common.eventbus;version=21.0.0,
+                            com.google.common.graph;version=21.0.0,
+                            com.google.common.hash;version=21.0.0,
+                            com.google.common.html;version=21.0.0,
+                            com.google.common.io;version=21.0.0,
+                            com.google.common.math;version=21.0.0,
+                            com.google.common.net;version=21.0.0,
+                            com.google.common.primitives;version=21.0.0,
+                            com.google.common.reflect;version=21.0.0,
+                            com.google.common.util.concurrent;version=21.0.0,
+                            com.google.common.xml;version=21.0.0,
+
+                            com.google.common.annotations;version=20.0.0,
+                            com.google.common.base;version=20.0.0,
+                            com.google.common.cache;version=20.0.0,
+                            com.google.common.collect;version=20.0.0,
+                            com.google.common.escape;version=20.0.0,
+                            com.google.common.eventbus;version=20.0.0,
+                            com.google.common.graph;version=20.0.0,
+                            com.google.common.hash;version=20.0.0,
+                            com.google.common.html;version=20.0.0,
+                            com.google.common.io;version=20.0.0,
+                            com.google.common.math;version=20.0.0,
+                            com.google.common.net;version=20.0.0,
+                            com.google.common.primitives;version=20.0.0,
+                            com.google.common.reflect;version=20.0.0,
+                            com.google.common.util.concurrent;version=20.0.0,
+                            com.google.common.xml;version=20.0.0,
+                            
+                            com.google.common.net;version=19.0.0,
+                            com.google.common.html;version=19.0.0,
+                            com.google.common.collect;version=19.0.0,
+                            com.google.common.primitives;version=19.0.0,
+                            com.google.common.base;version=19.0.0,
+                            com.google.common.escape;version=19.0.0,
+                            com.google.common.cache;version=19.0.0,
+                            com.google.common.eventbus;version=19.0.0,
+                            com.google.common.util.concurrent;version=19.0.0,
+                            com.google.common.hash;version=19.0.0,
+                            com.google.common.io;version=19.0.0,
+                            com.google.common.xml;version=19.0.0,
+                            com.google.common.reflect;version=19.0.0,
+                            com.google.common.math;version=19.0.0,
+                            com.google.common.annotations;version=19.0.0,
+                            
+                            com.google.common.net;version=18.0.0,
+                            com.google.common.html;version=18.0.0,
+                            com.google.common.collect;version=18.0.0,
+                            com.google.common.primitives;version=18.0.0,
+                            com.google.common.base;version=18.0.0,
+                            com.google.common.escape;version=18.0.0,
+                            com.google.common.cache;version=18.0.0,
+                            com.google.common.eventbus;version=18.0.0,
+                            com.google.common.util.concurrent;version=18.0.0,
+                            com.google.common.hash;version=18.0.0,
+                            com.google.common.io;version=18.0.0,
+                            com.google.common.xml;version=18.0.0,
+                            com.google.common.reflect;version=18.0.0,
+                            com.google.common.math;version=18.0.0,
+                            com.google.common.annotations;version=18.0.0
+                        </Export-Package>
+                        <Import-Package>
+                            javax.annotation;resolution:=optional;version="[3.0,4)",
+                            javax.crypto;resolution:=optional,
+                            javax.crypto.spec;resolution:=optional,
+                            sun.misc;resolution:=optional
+                        </Import-Package>
+                        <Bundle-SymbolicName>com.google.guava</Bundle-SymbolicName>
+                        <!-- bundle supplied resource prefixes -->
+                        <Include-Resource>{maven-resources}</Include-Resource>
+                        
+                        <!-- Do not inline jars, include as jar files -->
+                        <!-- There are config files with same name will be overwritten -->
+                        <Embed-Dependency>*;scope=compile;inline=true</Embed-Dependency>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <!-- Embedded dependencies -->
+        <!--                             com.google.common.util.concurrent.internal;version="[1.0,2)", -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>failureaccess</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>28.0-jre</version>
+        </dependency>
+
+    </dependencies>
+</project>
