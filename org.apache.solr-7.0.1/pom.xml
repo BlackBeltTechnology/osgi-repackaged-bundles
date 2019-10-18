@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     
     <properties>
-        <solr.version>7.0.1</solr.version>
+        <solr.version>8.2.0</solr.version>
     </properties>
     
     <groupId>hu.blackbelt.bundles.solr</groupId>
