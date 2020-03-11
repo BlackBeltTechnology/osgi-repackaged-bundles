@@ -15,7 +15,7 @@
         <module>com.lowagie.itext-2.1.7</module>
         <module>com.tdunning.t-digest-3.2</module>
         <module>fr.opensagres.xdocreport-1.0.6</module>
-        <module>io.moquette-0.10</module>
+        <!-- <module>io.moquette-0.10</module> -->
         <module>io.moquette-0.11</module>
         <module>ma.glasnost.orika-1.5.4</module>
         <module>net.sf.jsignature.io-tools.easystream-1.2.15</module>
