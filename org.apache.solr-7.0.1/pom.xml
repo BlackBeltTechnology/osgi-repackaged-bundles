@@ -11,7 +11,7 @@
     <packaging>bundle</packaging>
     <name>Apache Solr</name>
     <description>A Solr bundle that embeds Solr 4 into OSGi </description>
-    <version>7.0.1_1</version>
+    <version>7.0.1_2</version>
 
     <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
     <issueManagement>
@@ -326,13 +326,13 @@
                             com.sun.mail.imap.*;resolution:=optional,
                             com.google.inject.*;resolution:=optional,
                             sun.misc.*;resolution:=optional,
-                            com.google.common.base;version="[14.0,30)",
-                            com.google.common.cache;version="[14.0,30)",
-                            com.google.common.collect;version="[14.0,30)",
-                            com.google.common.io;version="[14.0,30)",
-                            com.google.common.primitives;version="[14.0,30)",
-                            com.google.common.hash;version="[14.0,30)",
-                            com.google.common.util.concurrent;version="[14.0,30)",
+                            com.google.common.base;version="[20.0,21)",
+                            com.google.common.cache;version="[20.0,21)",
+                            com.google.common.collect;version="[20.0,21)",
+                            com.google.common.io;version="[20.0,21)",
+                            com.google.common.primitives;version="[20.0,21)",
+                            com.google.common.hash;version="[20.0,21)",
+                            com.google.common.util.concurrent;version="[20.0,21)",
                             *
                         </Import-Package>
                         <Embed-Transitive>true</Embed-Transitive>
