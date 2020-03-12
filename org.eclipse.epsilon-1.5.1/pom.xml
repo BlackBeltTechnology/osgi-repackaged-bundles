@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>1.5.1_1</version>
+    <version>1.5.1_2</version>
     
     <groupId>hu.blackbelt.bundles.eclipse-epsilon</groupId>
     <artifactId>org.eclipse.epsilon</artifactId>
@@ -354,6 +354,7 @@
                             com.google.gdata.data;resolution:=optional,
                             com.google.gdata.data.spreadsheet;resolution:=optional,
                             com.google.gdata.util;resolution:=optional,
+                            com.google.common.collect;version="[20.0,21)",
                             *
                         </Import-Package>
                         <!-- bundle supplied resource prefixes -->
