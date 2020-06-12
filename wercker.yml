@@ -413,14 +413,14 @@ release-org.eclipse.emf.codegen.ecore-2.18.0:
       settings: .maven.xml
       cache_repo: true
 
-release-org.eclipse.emf.codegen.ecore-2.19.0:
+release-org.eclipse.emf.codegen.ecore-2.21.0:
   steps:
     - blackbelttechnology/import-gpg-keys@1.0.4:
       secretkeys: $GPG_SECRET_KEYS
       ownertrust: $GPG_OWNERTRUST
 
     - wercker/maven:
-      pom: ./org.eclipse.emf.codegen.ecore-2.19.0/pom.xml
+      pom: ./org.eclipse.emf.codegen.ecore-2.21.0/pom.xml
       goals: clean deploy
       profiles: release-central
       settings: .maven.xml
