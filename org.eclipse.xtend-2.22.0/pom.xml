@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>1.4.0_3</version>
+    <version>2.22.0_1</version>
     
-    <groupId>hu.blackbelt.bundles.eclipse-emf-mwe</groupId>
-    <artifactId>org.eclipse.emf.mwe</artifactId>
+    <groupId>hu.blackbelt.bundles.eclipse-xtend</groupId>
+    <artifactId>org.eclipse.xtend</artifactId>
     <packaging>bundle</packaging>
-    <name>eclipse-emf-mwe</name>
-    <description>Eclipse EMF Model Workflow Engine 1</description>
+    <name>eclipse-xtend</name>
+    <description>Eclipse Xtend</description>
     
     <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
     <issueManagement>
@@ -23,7 +23,7 @@
     </scm>
     
     <properties>
-        <emf-mwe-utils-version>1.4.0</emf-mwe-utils-version>
+        <xtend-version>2.22.0</xtend-version>
     </properties>
     
     <developers>
@@ -115,12 +115,7 @@
     
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.2</version>
-            </plugin>
-
+            
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
@@ -129,46 +124,52 @@
                 <configuration>
                     <instructions>
                         <_exportcontents>
-                            org.eclipse.emf.mwe.utils;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.ant;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.ao;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.config;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.container;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.customizer;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.debug.model;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.debug.processing;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.issues;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.lib;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.monitor;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.resources;version=${emf-mwe-utils-version}
+                            org.eclipse.xtend.core,
+                            org.eclipse.xtend.core.compiler,
+                            org.eclipse.xtend.core.compiler.batch,
+                            org.eclipse.xtend.core.conversion,
+                            org.eclipse.xtend.core.documentation,
+                            org.eclipse.xtend.core.formatting2,
+                            org.eclipse.xtend.core.imports,
+                            org.eclipse.xtend.core.javaconverter,
+                            org.eclipse.xtend.core.jvmmodel,
+                            org.eclipse.xtend.core.linking,
+                            org.eclipse.xtend.core.macro,
+                            org.eclipse.xtend.core.macro.declaration,
+                            org.eclipse.xtend.lib.macro.services,
+                            org.eclipse.xtend.core.naming,
+                            org.eclipse.xtend.core.parser,
+                            org.eclipse.xtend.core.parser.antlr,
+                            org.eclipse.xtend.core.parser.antlr.internal,
+                            org.eclipse.xtend.core.resource,
+                            org.eclipse.xtend.core.richstring,
+                            org.eclipse.xtend.core.richstring.util,
+                            org.eclipse.xtend.core.scoping,
+                            org.eclipse.xtend.core.services,
+                            org.eclipse.xtend.core.validation,
+                            org.eclipse.xtend.core.xtend,
+                            org.eclipse.xtend.core.xtend.util,
+                            org.eclipse.xtend.lib,
+                            org.eclipse.xtend.lib.annotations,
+                            org.eclipse.xtend.lib.macro,
+                            org.eclipse.xtend.lib.macro.declaration,
+                            org.eclipse.xtend.lib.macro.expression,
+                            org.eclipse.xtend.lib.macro.file
                         </_exportcontents>
                         <Import-Package>
-                            org.eclipse.core.runtime;resolution:=optional,
-                            org.eclipse.equinox.app;resolution:=optional,
-                            org.eclipse.jdt.launching;resolution:=optional,
-                            org.eclipse.osgi.util;resolution:=optional,
-                            org.eclipse.core.runtime.jobs;resolution:=optional,
-                            org.eclipse.debug.core;resolution:=optional,
-                            org.eclipse.debug.core.model;resolution:=optional,
+                            org.antlr.runtime;version="[3,4)",
 
-                            org.apache.commons.cli;resolution:=optional,
-                            
                             org.apache.tools.ant;resolution:=optional,
                             org.apache.tools.ant.taskdefs;resolution:=optional,
                             org.apache.tools.ant.types;resolution:=optional,
+                            org.eclipse.core.runtime;resolution:=optional,
                             
-                            org.eclipse.emf.codegen.ecore.generator;resolution:=optional,
-                            org.eclipse.emf.codegen.ecore.genmodel;resolution:=optional,
-                            org.eclipse.emf.codegen.ecore.genmodel.generator;resolution:=optional,
-                            
-                            org.eclipse.emf.codegen.merge.java;resolution:=optional,
-                            org.eclipse.emf.codegen.util;resolution:=optional,
-                            
-                            org.eclipse.xtext.common.types;resolution:=optional,
-                            org.eclipse.xtext.common.types.access;resolution:=optional,
-                            org.eclipse.xtext.common.types.util;resolution:=optional,
-                            org.eclipse.xtext.common.types.xtext;resolution:=optional,
+                            org.eclipse.xtext.xbase.testing;resolution:=optional,
+
+                            org.eclipse.jdt.core;resolution:=optional,
+                            org.eclipse.jdt.core.compiler;resolution:=optional,
+                            org.eclipse.jdt.core.compiler.batch;resolution:=optional,
+                            org.eclipse.jdt.core.dom;resolution:=optional,
                             
                             *
                         </Import-Package>
@@ -178,8 +179,9 @@
                         <!-- Do not inline jars, include as jar files -->
                         <!-- There are config files with same name will be overwritten -->
                         <Embed-Dependency>
-                            org.eclipse.emf.mwe.utils;scope=compile;inline=false,
-                            org.eclipse.emf.mwe.core;scope=compile;inline=false
+                            org.eclipse.xtend.core;scope=compile;inline=false,
+                            org.eclipse.xtend.lib;scope=compile;inline=false,
+                            org.eclipse.xtend.lib.macro;scope=compile;inline=false
                         </Embed-Dependency>
                     </instructions>
                 </configuration>
@@ -188,14 +190,19 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>org.eclipse.emf</groupId>
-            <artifactId>org.eclipse.emf.mwe.utils</artifactId>
-            <version>${emf-mwe-utils-version}</version>
+            <groupId>org.eclipse.xtend</groupId>
+            <artifactId>org.eclipse.xtend.core</artifactId>
+            <version>${xtend-version}</version>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.emf</groupId>
-            <artifactId>org.eclipse.emf.mwe.core</artifactId>
-            <version>${emf-mwe-utils-version}</version>
+            <groupId>org.eclipse.xtend</groupId>
+            <artifactId>org.eclipse.xtend.lib</artifactId>
+            <version>${xtend-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.xtend</groupId>
+            <artifactId>org.eclipse.xtend.lib.macro</artifactId>
+            <version>${xtend-version}</version>
         </dependency>
 
     </dependencies>
