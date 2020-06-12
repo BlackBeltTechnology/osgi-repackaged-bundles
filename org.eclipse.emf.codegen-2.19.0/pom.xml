@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>1.4.0_3</version>
+    <version>2.19.0_1</version>
     
-    <groupId>hu.blackbelt.bundles.eclipse-emf-mwe</groupId>
-    <artifactId>org.eclipse.emf.mwe</artifactId>
+    <groupId>hu.blackbelt.bundles.eclipse-emf-codegen</groupId>
+    <artifactId>org.eclipse.emf.codegen</artifactId>
     <packaging>bundle</packaging>
-    <name>eclipse-emf-mwe</name>
-    <description>Eclipse EMF Model Workflow Engine 1</description>
+    <name>eclipse-emf-codegen</name>
+    <description>Eclipse EMF Codegen</description>
     
     <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
     <issueManagement>
@@ -23,7 +23,7 @@
     </scm>
     
     <properties>
-        <emf-mwe-utils-version>1.4.0</emf-mwe-utils-version>
+        <emf-codegen-version>2.19.0</emf-codegen-version>
     </properties>
     
     <developers>
@@ -59,7 +59,6 @@
                             <serverId>ossrh</serverId>
                             <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                             <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                            <stagingProgressTimeoutMinutes>15</stagingProgressTimeoutMinutes>
                         </configuration>
                     </plugin>
                     
@@ -116,12 +115,7 @@
     
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.2</version>
-            </plugin>
-
+            
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
@@ -130,47 +124,38 @@
                 <configuration>
                     <instructions>
                         <_exportcontents>
-                            org.eclipse.emf.mwe.utils;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.ant;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.ao;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.config;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.container;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.customizer;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.debug.model;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.debug.processing;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.issues;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.lib;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.monitor;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.resources;version=${emf-mwe-utils-version}
+                            org.eclipse.emf.codegen;version=${emf-codegen-version},
+                            org.eclipse.emf.codegen.jet;version=${emf-codegen-version},
+                            org.eclipse.emf.codegen.jmerge;version=${emf-codegen-version},
+                            org.eclipse.emf.codegen.merge.java;version=${emf-codegen-version},
+                            org.eclipse.emf.codegen.merge.java.facade;version=${emf-codegen-version},
+                            org.eclipse.emf.codegen.merge.java.facade.ast;version=${emf-codegen-version},
+                            org.eclipse.emf.codegen.merge.java.facade.jdom;version=${emf-codegen-version},
+                            org.eclipse.emf.codegen.merge.properties,org.eclipse.emf.codegen.util;version=${emf-codegen-version}
                         </_exportcontents>
                         <Import-Package>
+                            org.osgi.framework;version="[1.8,2)",
+                            com.google.common.base;version="[18.0,30)",
+                            com.google.common.collect;version="[18.0,30)",
+                            com.google.common.io;version="[18.0,30)",
+                            com.google.common.primitives;version="[18.0,30)",
+                            com.google.inject;version="[1.3,2)",
+                            com.google.inject.binder;version="[1.3,2)",
+                            com.google.inject.name;version="[1.3,2)",
+                            org.antlr.runtime;version="[3,4)",
                             org.eclipse.core.runtime;resolution:=optional,
+                            org.eclipse.core.resources;resolution:=optional,
+                            org.eclipse.core.runtime.preferences;resolution:=optional,
                             org.eclipse.equinox.app;resolution:=optional,
-                            org.eclipse.jdt.launching;resolution:=optional,
-                            org.eclipse.osgi.util;resolution:=optional,
-                            org.eclipse.core.runtime.jobs;resolution:=optional,
-                            org.eclipse.debug.core;resolution:=optional,
-                            org.eclipse.debug.core.model;resolution:=optional,
-
-                            org.apache.commons.cli;resolution:=optional,
-                            
-                            org.apache.tools.ant;resolution:=optional,
-                            org.apache.tools.ant.taskdefs;resolution:=optional,
-                            org.apache.tools.ant.types;resolution:=optional,
-                            
-                            org.eclipse.emf.codegen.ecore.generator;resolution:=optional,
-                            org.eclipse.emf.codegen.ecore.genmodel;resolution:=optional,
-                            org.eclipse.emf.codegen.ecore.genmodel.generator;resolution:=optional,
-                            
-                            org.eclipse.emf.codegen.merge.java;resolution:=optional,
-                            org.eclipse.emf.codegen.util;resolution:=optional,
-                            
-                            org.eclipse.xtext.common.types;resolution:=optional,
-                            org.eclipse.xtext.common.types.access;resolution:=optional,
-                            org.eclipse.xtext.common.types.util;resolution:=optional,
-                            org.eclipse.xtext.common.types.xtext;resolution:=optional,
-                            
+                            org.eclipse.jdt.core;resolution:=optional,
+                            org.eclipse.jdt.core.compiler;resolution:=optional,
+                            org.eclipse.jdt.core.dom;resolution:=optional,
+                            org.eclipse.jdt.core.dom.rewrite;resolution:=optional,
+                            org.eclipse.jdt.core.formatter;resolution:=optional,
+                            org.eclipse.jdt.core.jdom;resolution:=optional,
+                            org.eclipse.jdt.internal.core.dom.rewrite;resolution:=optional,
+                            org.eclipse.jface.text;resolution:=optional,
+                            org.eclipse.text.edits;resolution:=optional,
                             *
                         </Import-Package>
                         <!-- bundle supplied resource prefixes -->
@@ -179,25 +164,19 @@
                         <!-- Do not inline jars, include as jar files -->
                         <!-- There are config files with same name will be overwritten -->
                         <Embed-Dependency>
-                            org.eclipse.emf.mwe.utils;scope=compile;inline=false,
-                            org.eclipse.emf.mwe.core;scope=compile;inline=false
+                            org.eclipse.emf.codegen;scope=compile;inline=false
                         </Embed-Dependency>
                     </instructions>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
     <dependencies>
         <dependency>
             <groupId>org.eclipse.emf</groupId>
-            <artifactId>org.eclipse.emf.mwe.utils</artifactId>
-            <version>${emf-mwe-utils-version}</version>
+            <artifactId>org.eclipse.emf.codegen</artifactId>
+            <version>${emf-codegen-version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.emf</groupId>
-            <artifactId>org.eclipse.emf.mwe.core</artifactId>
-            <version>${emf-mwe-utils-version}</version>
-        </dependency>
-
     </dependencies>
 </project>
