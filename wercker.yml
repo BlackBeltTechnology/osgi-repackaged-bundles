@@ -610,6 +610,18 @@ release-com.google.guava-20.0:
       settings: .maven.xml
       cache_repo: true
 
+release-org.eclipse.jdt.ecj-3.21.0:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./org.eclipse.jdt.ecj-3.21.0/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
 
 
 
