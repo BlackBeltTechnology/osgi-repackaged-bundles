@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>4.3.1_1</version>
+    <version>1.0.47_1</version>
     
     <properties>
-        <openapitools-generator.version>4.3.1</openapitools-generator.version>
+        <swagger-parser.version>1.0.47</swagger-parser.version>
     </properties>
     
-    <groupId>hu.blackbelt.bundles.openapitools.openapi-generator</groupId>
-    <artifactId>org.openapitools.openapi-generator</artifactId>
+    <groupId>hu.blackbelt.bundles.swagger-parser</groupId>
+    <artifactId>io.swagger.parser</artifactId>
     <packaging>bundle</packaging>
     <name>org.openapitools.openapi-generator</name>
     <description>OpenAPI Tools Generator</description>
@@ -129,16 +129,11 @@
                 <configuration>
                     <instructions>
                         <Export-Package>
-                            org.openapitools.codegen.*;version=${openapitools-generator.version}
+                            io.swagger.parser.*;version=${swagger-parser.version}
                         </Export-Package>
                         <Import-Package>
-                            org.slf4j.ext;resolution:=optional,
-                            com.google.common.base;version="[20.0,21)",
-                            com.google.common.collect;version="[20.0,21)",
-                            com.google.common.io;version="[20.0,21)",
                             *
                         </Import-Package>
- 
                         <!-- bundle supplied resource prefixes -->
                         <Include-Resource>{maven-resources}</Include-Resource>
                         
@@ -151,44 +146,10 @@
         </plugins>
     </build>
     <dependencies>
-        <!-- Embedded dependencies -->
-		<dependency>
-		    <groupId>org.openapitools</groupId>
-		    <artifactId>openapi-generator</artifactId>
-		    <version>${openapitools-generator.version}</version>
-		</dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.openapitools/openapi-generator-core -->
         <dependency>
-            <groupId>org.openapitools</groupId>
-            <artifactId>openapi-generator-core</artifactId>
-            <version>${openapitools-generator.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.mifmif</groupId>
-            <artifactId>generex</artifactId>
-            <version>1.0.2</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/dk.brics.automaton/automaton -->
-        <dependency>
-            <groupId>dk.brics.automaton</groupId>
-            <artifactId>automaton</artifactId>
-            <version>1.11-8</version>
-        </dependency>
-        
-        <!-- https://mvnrepository.com/artifact/com.atlassian.commonmark/commonmark -->
-        <dependency>
-            <groupId>com.atlassian.commonmark</groupId>
-            <artifactId>commonmark</artifactId>
-            <version>0.15.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.bluetrainsoftware.maven</groupId>
-            <artifactId>openapi-dart-generator</artifactId>
-            <version>3.4</version>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-parser</artifactId>
+            <version>1.0.47</version>
         </dependency>
 
     </dependencies>

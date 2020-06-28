@@ -624,8 +624,44 @@ release-org.eclipse.jdt.ecj-3.21.0:
       cache_repo: true
 
 
+release-io.swagger.swagger-parser-1.0.47:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./io.swagger.swagger-parser-1.0.47/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
 
 
+release-io.swagger.v3.swagger-parser-2.0.19:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
 
+    - wercker/maven:
+      pom: ./io.swagger.v3.swagger-parser-2.0.19/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
+release-org.openapitools.openapi-generator-4.3.1:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./org.openapitools.openapi-generator-4.3.1/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
 
 

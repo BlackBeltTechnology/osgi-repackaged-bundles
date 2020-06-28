@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>2.0.20_1</version>
+    <version>2.0.19_1</version>
     
     <properties>
-        <swagger-parser.version>2.0.20</swagger-parser.version>
+        <swagger-parser.version>2.0.19</swagger-parser.version>
     </properties>
     
     <groupId>hu.blackbelt.bundles.swagger-parser-v3</groupId>
@@ -131,7 +131,13 @@
                         <Export-Package>
                             io.swagger.v3.parser.*;version=${swagger-parser.version}
                         </Export-Package>
-                        
+                        <Import-Package>
+                            io.swagger.models;version="[1.5,2)",
+                            io.swagger.models.auth;version="[1.5,2)",
+                            io.swagger.models.parameters;version="[1.5,2)",
+                            io.swagger.models.properties;version="[1.5,2)",
+                            *
+                        </Import-Package>
                         <!-- bundle supplied resource prefixes -->
                         <Include-Resource>{maven-resources}</Include-Resource>
                         
@@ -151,12 +157,13 @@
             <version>${swagger-parser.version}</version>
         </dependency>
 
+        <!--
         <dependency>
             <groupId>io.swagger.parser.v3</groupId>
             <artifactId>swagger-parser</artifactId>
             <version>${swagger-parser.version}</version>
         </dependency>
-        
+        -->
         <dependency>
             <groupId>io.swagger.parser.v3</groupId>
             <artifactId>swagger-parser-v3</artifactId>
@@ -167,12 +174,6 @@
             <groupId>io.swagger.parser.v3</groupId>
             <artifactId>swagger-parser-core</artifactId>
             <version>${swagger-parser.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-models</artifactId>
-            <version>1.6.1</version>
         </dependency>
 
     </dependencies>
