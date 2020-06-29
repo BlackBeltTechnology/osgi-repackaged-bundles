@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>4.3.1_1</version>
+    <version>4.3.1_2</version>
     
     <properties>
         <openapitools-generator.version>4.3.1</openapitools-generator.version>
@@ -133,9 +133,21 @@
                         </Export-Package>
                         <Import-Package>
                             org.slf4j.ext;resolution:=optional,
-                            com.google.common.base;version="[20.0,21)",
-                            com.google.common.collect;version="[20.0,21)",
-                            com.google.common.io;version="[20.0,21)",
+                            com.google.common.base;version="[27.0,28)",
+                            com.google.common.collect;version="[27.0,28)",
+                            com.google.common.io;version="[27.0,28)",
+                            io.swagger.v3.core.util;version="[2.0,3)",
+                            io.swagger.v3.oas.models;version="[2.0,3)",
+                            io.swagger.v3.oas.models.callbacks;version="[2.0,3)",
+                            io.swagger.v3.oas.models.examples;version="[2.0,3)",
+                            io.swagger.v3.oas.models.headers;version="[2.0,3)",
+                            io.swagger.v3.oas.models.info;version="[2.0,3)",
+                            io.swagger.v3.oas.models.media;version="[2.0,3)",
+                            io.swagger.v3.oas.models.parameters;version="[2.0,3)",
+                            io.swagger.v3.oas.models.responses;version="[2.0,3)",
+                            io.swagger.v3.oas.models.security;version="[2.0,3)",
+                            io.swagger.v3.oas.models.servers;version="[2.0,3)",
+                            io.swagger.v3.oas.models.tags;version="[2.0,3)",
                             *
                         </Import-Package>
  
