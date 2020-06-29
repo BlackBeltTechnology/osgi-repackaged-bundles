@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>2.0.19_1</version>
+    <version>2.0.19_2</version>
     
     <properties>
         <swagger-parser.version>2.0.19</swagger-parser.version>
@@ -136,6 +136,24 @@
                             io.swagger.models.auth;version="[1.5,2)",
                             io.swagger.models.parameters;version="[1.5,2)",
                             io.swagger.models.properties;version="[1.5,2)",
+                            io.swagger.v3.core.util;version="[2.0,3)",
+                            io.swagger.v3.oas.models;version="[2.0,3)",
+                            io.swagger.v3.oas.models.callbacks;version="[2.0,3)",
+                            io.swagger.v3.oas.models.examples;version="[2.0,3)",
+                            io.swagger.v3.oas.models.headers;version="[2.0,3)",
+                            io.swagger.v3.oas.models.info;version="[2.0,3)",
+                            io.swagger.v3.oas.models.links;version="[2.0,3)",
+                            io.swagger.v3.oas.models.media;version="[2.0,3)",
+                            io.swagger.v3.oas.models.parameters;version="[2.0,3)",
+                            io.swagger.v3.oas.models.responses;version="[2.0,3)",
+                            io.swagger.v3.oas.models.security;version="[2.0,3)",
+                            io.swagger.v3.oas.models.servers;version="[2.0,3)",
+                            io.swagger.v3.oas.models.tags;version="[2.0,3)",
+                            com.fasterxml.jackson.annotation;version="[2.9,3)",
+                            com.fasterxml.jackson.core;version="[2.9,3)",
+                            com.fasterxml.jackson.databind;version="[2.9,3)",
+                            com.fasterxml.jackson.databind.node;version="[2.9,3)",
+                            com.fasterxml.jackson.dataformat.yaml;version="[2.9,3)",
                             *
                         </Import-Package>
                         <!-- bundle supplied resource prefixes -->
