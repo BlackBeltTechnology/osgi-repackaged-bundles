@@ -207,6 +207,20 @@ release-org.eclipse.epsilon-1.5.1:
       settings: .maven.xml
       cache_repo: true
 
+release-org.eclipse.epsilon-2.2.0:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./org.eclipse.epsilon-2.2.0/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
+
 release-org.eclipse.xtext-2.16.0:
   steps:
     - blackbelttechnology/import-gpg-keys@1.0.4:
