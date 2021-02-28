@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>2.2.0_1</version>
+    <version>2.2.0_2</version>
     
     <groupId>hu.blackbelt.bundles.eclipse-epsilon</groupId>
     <artifactId>org.eclipse.epsilon</artifactId>
@@ -129,6 +129,7 @@
                 <configuration>
                     <instructions>
 
+                        
                         <Export-Package>
                             org.eclipse.epsilon.antlr.postprocessor;version=${epsilon-version},
                             org.eclipse.epsilon.antlr.postprocessor.model;version=${epsilon-version},
@@ -200,14 +201,18 @@
                             org.eclipse.epsilon.eml.strategy;version=${epsilon-version},
                             org.eclipse.epsilon.eml.trace;version=${epsilon-version},
                             org.eclipse.epsilon.eol;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.concurrent;version=${epsilon-version},
                             org.eclipse.epsilon.eol.compile.context;version=${epsilon-version},
                             org.eclipse.epsilon.eol.compile.m3;version=${epsilon-version},
                             org.eclipse.epsilon.eol.dom;version=${epsilon-version},
                             org.eclipse.epsilon.eol.exceptions;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.exceptions.concurrent;version=${epsilon-version},
                             org.eclipse.epsilon.eol.exceptions.flowcontrol;version=${epsilon-version},
                             org.eclipse.epsilon.eol.exceptions.models;version=${epsilon-version},
                             org.eclipse.epsilon.eol.execute;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.concurrent;version=${epsilon-version},
                             org.eclipse.epsilon.eol.execute.context;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.context.concurrent;version=${epsilon-version},
                             org.eclipse.epsilon.eol.execute.control;version=${epsilon-version},
                             org.eclipse.epsilon.eol.execute.introspection;version=${epsilon-version},
                             org.eclipse.epsilon.eol.execute.introspection.java;version=${epsilon-version},
@@ -237,23 +242,30 @@
                             org.eclipse.epsilon.epl.execute.model;version=${epsilon-version},
                             org.eclipse.epsilon.epl.parse;version=${epsilon-version},
                             org.eclipse.epsilon.erl;version=${epsilon-version},
+                            org.eclipse.epsilon.erl.concurrent;version=${epsilon-version},
                             org.eclipse.epsilon.erl.dom;version=${epsilon-version},
+                            org.eclipse.epsilon.erl.execute.context.concurrent;version=${epsilon-version},
                             org.eclipse.epsilon.erl.execute;version=${epsilon-version},
                             org.eclipse.epsilon.erl.execute.data;version=${epsilon-version},
                             org.eclipse.epsilon.erl.exceptions;version=${epsilon-version},
                             org.eclipse.epsilon.erl.strategy;version=${epsilon-version},
                             org.eclipse.epsilon.erl.execute.context;version=${epsilon-version},
                             org.eclipse.epsilon.etl;version=${epsilon-version},
+                            org.eclipse.epsilon.etl.concurrent;version=${epsilon-version},
                             org.eclipse.epsilon.etl.dom;version=${epsilon-version},
                             org.eclipse.epsilon.etl.execute.context;version=${epsilon-version},
+                            org.eclipse.epsilon.etl.execute.context.concurrent;version=${epsilon-version},
                             org.eclipse.epsilon.etl.execute.operations;version=${epsilon-version},
                             org.eclipse.epsilon.etl.parse;version=${epsilon-version},
                             org.eclipse.epsilon.etl.strategy;version=${epsilon-version},
                             org.eclipse.epsilon.etl.trace;version=${epsilon-version},
                             org.eclipse.epsilon.evl;version=${epsilon-version},
+                            org.eclipse.epsilon.evl.concurrent;version=${epsilon-version},
                             org.eclipse.epsilon.evl.dom;version=${epsilon-version},
                             org.eclipse.epsilon.evl.execute;version=${epsilon-version},
+                            org.eclipse.epsilon.evl.execute.atoms;version=${epsilon-version},
                             org.eclipse.epsilon.evl.execute.context;version=${epsilon-version},
+                            org.eclipse.epsilon.evl.execute.context.concurrent;version=${epsilon-version},
                             org.eclipse.epsilon.evl.execute.exceptions;version=${epsilon-version},
                             org.eclipse.epsilon.evl.execute.operations;version=${epsilon-version},
                             org.eclipse.epsilon.evl.parse;version=${epsilon-version},
