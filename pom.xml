@@ -34,6 +34,8 @@
         <module>org.eclipse.emf.xcore-1.7.0</module>
         <module>org.eclipse.epsilon-1.4.0</module>
         <module>org.eclipse.epsilon-1.5.1</module>
+        <module>org.eclipse.epsilon-2.2.0</module>
+        <module>org.eclipse.epsilon-2.3.0</module>
         <module>org.eclipse.uml2-5.0.0-v20140602-0749</module>
         <module>org.eclipse.xbase-2.16.0</module>
         <module>org.eclipse.xbase-2.18.0</module>
@@ -43,6 +45,7 @@
         <module>org.eclipse.xtext-2.18.0</module>
         <module>org.functionaljava-4.8.1</module>
         <module>org.jxls-2.6.0</module>
+        <module>org.jxls-2.10.0</module>
         <module>org.odftoolkit.odfdom-java-0.8.7</module>
         <module>org.restlet-2.3.12</module>
         <module>org.subethamail.subethasmtp-3.1.7</module>
