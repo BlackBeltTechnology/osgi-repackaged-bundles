@@ -721,3 +721,18 @@ release-org.openapitools.openapi-generator-4.3.1:
       cache_repo: true
 
 
+release-com.vdurmont.semver4j-3.1.0:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./com.vdurmont.semver4j-3.1.0/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
+
+
