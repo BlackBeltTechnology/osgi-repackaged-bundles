@@ -734,5 +734,18 @@ release-com.vdurmont.semver4j-3.1.0:
       settings: .maven.xml
       cache_repo: true
 
+release-com.pivovarit.throwing-function-1.5.1:
+  steps:
+    - blackbelttechnology/import-gpg-keys@1.0.4:
+      secretkeys: $GPG_SECRET_KEYS 
+      ownertrust: $GPG_OWNERTRUST
+
+    - wercker/maven:
+      pom: ./com.pivovarit.throwing-function-1.5.1/pom.xml
+      goals: clean deploy
+      profiles: release-central
+      settings: .maven.xml
+      cache_repo: true
+
 
 
