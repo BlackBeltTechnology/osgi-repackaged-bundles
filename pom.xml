@@ -50,6 +50,7 @@
         <module>org.restlet-2.3.12</module>
         <module>org.subethamail.subethasmtp-3.1.7</module>
         <module>org.tinyjee.jgraphx.mxgraph-3.4.1.3</module>
+        <module>com.pivovarit.throwing-function-1.5.1</module>
     </modules>
     <properties>
         <revision>1.0.0-SNAPSHOT</revision>
