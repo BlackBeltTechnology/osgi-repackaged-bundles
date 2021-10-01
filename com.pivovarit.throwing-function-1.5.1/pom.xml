@@ -8,7 +8,7 @@
     </properties>
     
     <groupId>hu.blackbelt.bundles.throwing-function</groupId>
-    <artifactId>com.vdurmont.semver4j</artifactId>
+    <artifactId>com.pivovarit.throwing-function</artifactId>
     <packaging>bundle</packaging>
     <name>com.pivovarit.throwing-function</name>
     <description>Throwing Function</description>
