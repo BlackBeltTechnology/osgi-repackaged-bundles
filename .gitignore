@@ -56,3 +56,4 @@ wercker.env
 /**/.wercker
 /**/.classpath
 /**/.project
+**/.flattened-pom.xml
