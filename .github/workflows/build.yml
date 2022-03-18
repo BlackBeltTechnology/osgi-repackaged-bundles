@@ -111,7 +111,7 @@ jobs:
         run: |-
           ./mvnw -B -Dstyle.color=always \
           -Drevision=${{ steps.version.outputs.version }} \
-          DdeployOnly \
+          -DdeployOnly \
           -P"release-central,sign-artifacts,-verify-feature" \
           -Dmaven.test.skip=true \
           deploy
