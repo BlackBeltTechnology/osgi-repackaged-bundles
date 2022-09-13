@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <version>${revision}</version>
+    
+    <groupId>hu.blackbelt.bundles.eclipse-epsilon</groupId>
+    <artifactId>org.eclipse.epsilon</artifactId>
+    <packaging>bundle</packaging>
+    <name>eclipse-epsilon</name>
+    <description>Eclipse Epsilon</description>
+    
+    <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+    <issueManagement>
+        <url>https://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+    
+    <scm>
+        <connection>scm:git:git://github.com/BlackBeltTechnology/osgi-repackaged-bundles.git</connection>
+        <developerConnection>scm:git:ssh://${git.username}@github.com:BlackBeltTechnology/osgi-repackaged-bundles.git</developerConnection>
+        <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+        <tag>HEAD</tag>
+    </scm>
+    
+    <properties>
+        <epsilon-version>2.4.0</epsilon-version>
+        <revision>2.4.0_1</revision>
+    </properties>
+    
+    <developers>
+        <developer>
+            <id>robson</id>
+            <name>Robert Csakany</name>
+            <email>robert.csakany@blackbelt.hu</email>
+            <url>https://github.com/robertcsakany</url>
+            <organization>BlackBelt Technology</organization>
+            <organizationUrl>http://www.blackbelt.hu</organizationUrl>
+        </developer>
+    </developers>
+    
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    
+    <profiles>
+        <profile>
+            <id>sign-artifacts</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.simplify4u.plugins</groupId>
+                        <artifactId>sign-maven-plugin</artifactId>
+                        <version>1.0.1</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+
+        <profile>
+            <id>release-central</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.8</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                    
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+
+        <profile>
+            <id>release-judong</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>judong-nexus-distribution</id>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <url>https://nexus.judo.technology/repository/maven-judong-snapshots/</url>
+                </snapshotRepository>
+                <repository>
+                    <id>judong-nexus-distribution</id>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <url>https://nexus.judo.technology/repository/maven-judong-snapshots/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>5.1.8</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>
+                            org.eclipse.epsilon.antlr.postprocessor;version=${epsilon-version},
+                            org.eclipse.epsilon.antlr.postprocessor.model;version=${epsilon-version},
+                            org.eclipse.epsilon.antlr.postprocessor.model.antlrAst;version=${epsilon-version},
+                            org.eclipse.epsilon.antlr.postprocessor.model.antlrAst.impl;version=${epsilon-version},
+                            org.eclipse.epsilon.antlr.postprocessor.model.antlrAst.util;version=${epsilon-version},
+                            org.eclipse.epsilon.common.module;version=${epsilon-version},
+                            org.eclipse.epsilon.common.parse;version=${epsilon-version},
+                            org.eclipse.epsilon.common.parse.problem;version=${epsilon-version},
+                            org.eclipse.epsilon.common.util;version=${epsilon-version},
+                            org.eclipse.epsilon.common.function;version=${epsilon-version},
+                            org.eclipse.epsilon.common.concurrent;version=${epsilon-version},
+                            org.eclipse.epsilon.ecl;version=${epsilon-version},
+                            org.eclipse.epsilon.ecl.dom;version=${epsilon-version},
+                            org.eclipse.epsilon.ecl.exceptions;version=${epsilon-version},
+                            org.eclipse.epsilon.ecl.execute;version=${epsilon-version},
+                            org.eclipse.epsilon.ecl.execute.context;version=${epsilon-version},
+                            org.eclipse.epsilon.ecl.execute.operations;version=${epsilon-version},
+                            org.eclipse.epsilon.ecl.parse;version=${epsilon-version},
+                            org.eclipse.epsilon.ecl.trace;version=${epsilon-version},
+                            org.eclipse.epsilon.egl;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.config;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.dom;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.engine.traceability.fine;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.engine.traceability.fine.trace;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.exceptions;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.execute;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.execute.context;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.execute.control;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.execute.operations;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.formatter;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.formatter.language;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.formatter.linebyline;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.formatter.simple;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.incremental;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.merge;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.merge.output;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.merge.partition;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.model;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.output;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.parse;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.parse.problem;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.preprocessor;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.spec;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.status;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.traceability;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.types;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.util;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.internal;version=${epsilon-version},
+                            org.eclipse.epsilon.egl.engine.traceability.fine.internal;version=${epsilon-version},
+                            org.eclipse.epsilon.emc.composite;version=${epsilon-version},
+                            org.eclipse.epsilon.emc.csv;version=${epsilon-version},
+                            org.eclipse.epsilon.emc.emf;version=${epsilon-version},
+                            org.eclipse.epsilon.emc.emf.bmi;version=${epsilon-version},
+                            org.eclipse.epsilon.emc.emf.m0;version=${epsilon-version},
+                            org.eclipse.epsilon.emc.emf.tools;version=${epsilon-version},
+                            org.eclipse.epsilon.emc.emf.transactions;version=${epsilon-version},
+                            org.eclipse.epsilon.emc.emf.util;version=${epsilon-version},
+                            org.eclipse.epsilon.emc.emf.xml;version=${epsilon-version},
+                            org.eclipse.epsilon.emc.plainxml;version=${epsilon-version},
+                            org.eclipse.epsilon.emc.spreadsheets;version=${epsilon-version},
+                            org.eclipse.epsilon.emc.spreadsheets.excel;version=${epsilon-version},
+                            org.eclipse.epsilon.emc.spreadsheets.google;version=${epsilon-version},
+                            org.eclipse.epsilon.eml;version=${epsilon-version},
+                            org.eclipse.epsilon.eml.dom;version=${epsilon-version},
+                            org.eclipse.epsilon.eml.execute.context;version=${epsilon-version},
+                            org.eclipse.epsilon.eml.execute.operations;version=${epsilon-version},
+                            org.eclipse.epsilon.eml.parse;version=${epsilon-version},
+                            org.eclipse.epsilon.eml.strategy;version=${epsilon-version},
+                            org.eclipse.epsilon.eml.trace;version=${epsilon-version},
+                            org.eclipse.epsilon.eol;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.concurrent;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.compile.context;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.compile.m3;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.dom;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.exceptions;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.exceptions.concurrent;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.exceptions.flowcontrol;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.exceptions.models;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.concurrent;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.context;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.context.concurrent;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.control;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.introspection;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.introspection.java;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.introspection.recording;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.operations;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.operations.contributors;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.operations.contributors.compatibility;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.operations.declarative;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.operations.simple;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.operations.simple.assertions;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.execute.prettyprinting;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.function;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.models;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.models.java;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.models.transactions;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.m3;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.parse;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.tools;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.types;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.types.concurrent;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.userinput;version=${epsilon-version},
+                            org.eclipse.epsilon.eol.util;version=${epsilon-version},
+                            org.eclipse.epsilon.epl;version=${epsilon-version},
+                            org.eclipse.epsilon.epl.combinations;version=${epsilon-version},
+                            org.eclipse.epsilon.epl.dom;version=${epsilon-version},
+                            org.eclipse.epsilon.epl.execute;version=${epsilon-version},
+                            org.eclipse.epsilon.epl.execute.context;version=${epsilon-version},
+                            org.eclipse.epsilon.epl.execute.model;version=${epsilon-version},
+                            org.eclipse.epsilon.epl.parse;version=${epsilon-version},
+                            org.eclipse.epsilon.erl;version=${epsilon-version},
+                            org.eclipse.epsilon.erl.concurrent;version=${epsilon-version},
+                            org.eclipse.epsilon.erl.dom;version=${epsilon-version},
+                            org.eclipse.epsilon.erl.execute.context.concurrent;version=${epsilon-version},
+                            org.eclipse.epsilon.erl.execute;version=${epsilon-version},
+                            org.eclipse.epsilon.erl.execute.data;version=${epsilon-version},
+                            org.eclipse.epsilon.erl.exceptions;version=${epsilon-version},
+                            org.eclipse.epsilon.erl.strategy;version=${epsilon-version},
+                            org.eclipse.epsilon.erl.execute.context;version=${epsilon-version},
+                            org.eclipse.epsilon.erl.parse;version=${epsilon-version},
+                            org.eclipse.epsilon.etl;version=${epsilon-version},
+                            org.eclipse.epsilon.etl.concurrent;version=${epsilon-version},
+                            org.eclipse.epsilon.etl.dom;version=${epsilon-version},
+                            org.eclipse.epsilon.etl.execute.context;version=${epsilon-version},
+                            org.eclipse.epsilon.etl.execute.context.concurrent;version=${epsilon-version},
+                            org.eclipse.epsilon.etl.execute.operations;version=${epsilon-version},
+                            org.eclipse.epsilon.etl.parse;version=${epsilon-version},
+                            org.eclipse.epsilon.etl.strategy;version=${epsilon-version},
+                            org.eclipse.epsilon.etl.trace;version=${epsilon-version},
+                            org.eclipse.epsilon.evl;version=${epsilon-version},
+                            org.eclipse.epsilon.evl.concurrent;version=${epsilon-version},
+                            org.eclipse.epsilon.evl.dom;version=${epsilon-version},
+                            org.eclipse.epsilon.evl.execute;version=${epsilon-version},
+                            org.eclipse.epsilon.evl.execute.atoms;version=${epsilon-version},
+                            org.eclipse.epsilon.evl.execute.context;version=${epsilon-version},
+                            org.eclipse.epsilon.evl.execute.context.concurrent;version=${epsilon-version},
+                            org.eclipse.epsilon.evl.execute.exceptions;version=${epsilon-version},
+                            org.eclipse.epsilon.evl.execute.operations;version=${epsilon-version},
+                            org.eclipse.epsilon.evl.parse;version=${epsilon-version},
+                            org.eclipse.epsilon.evl.trace;version=${epsilon-version},
+                            org.eclipse.epsilon.ewl;version=${epsilon-version},
+                            org.eclipse.epsilon.ewl.dom;version=${epsilon-version},
+                            org.eclipse.epsilon.ewl.execute;version=${epsilon-version},
+                            org.eclipse.epsilon.ewl.execute.context;version=${epsilon-version},
+                            org.eclipse.epsilon.ewl.parse;version=${epsilon-version},
+                            org.eclipse.epsilon.flock;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.context;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.emc.wrappers;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.equivalences;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.equivalences.factory;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.execute;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.execute.context;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.execute.exceptions;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.execute.exceptions;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.execute.operations;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.model.checker;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.model.domain;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.model.domain.common;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.model.domain.rules;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.model.domain.typemappings;version=${epsilon-version},
+                            org.eclipse.epsilon.flock.parse;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.exceptions;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.generate;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.generate.metamodel;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.generate.model;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.model;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.model.config;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.model.config.hutnConfig;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.model.config.hutnConfig.impl;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.model.config.hutnConfig.util;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.model.hutn;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.model.hutn.impl;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.model.hutn.util;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.model.hutnAntlrAst;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.model.hutnAntlrAst.impl;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.model.hutnAntlrAst.util;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.parse;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.parse.postprocessor;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.parse.spec;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.translate;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.unparser;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.unparser.formatter;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.util;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.validation;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.validation.config;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.validation.model;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.xmi;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.xmi.coerce;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.xmi.parser;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.xmi.parser.generator;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.xmi.parser.sax;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.xmi.postprocessor;version=${epsilon-version},
+                            org.eclipse.epsilon.hutn.xmi.util;version=${epsilon-version},
+                            org.eclipse.epsilon.pinset;version=${epsilon-version},
+                            org.eclipse.epsilon.pinset.columnGenerators;version=${epsilon-version},
+                            org.eclipse.epsilon.profiling;version=${epsilon-version},
+                        </Export-Package>
+                        <Import-Package>
+                            !org.junit.runner,
+                            !org.junit.runner.notification,
+                            !org.junit.runners,
+                            !org.junit.runners.model,
+                            !org.eclipse.ui.console,
+                            !org.eclipse.xsd.ecore,
+                            !org.eclipse.epsilon.evl.dt.launching,
+                            !org.eclipse.epsilon.etl.dt.launching,
+                            !org.eclipse.epsilon.epl.dt.launching,
+                            !org.eclipse.epsilon.eol.dt.userinput,
+                            !org.eclipse.epsilon.eol.dt.debug,
+                            !org.eclipse.epsilon.eol.dt,
+                            !org.eclipse.epsilon.eml.dt.launching,
+                            !org.eclipse.epsilon.emf.dt,
+                            !org.eclipse.epsilon.egl.dt.debug,
+                            !org.eclipse.epsilon.ecl.dt.launching,
+                            !org.eclipse.epsilon.common.dt.console,
+                            !org.eclipse.epsilon.common.dt.extensions,
+                            !org.eclipse.epsilon.common.dt.launching,
+                            !org.eclipse.epsilon.common.dt.launching.extensions,
+                            !org.eclipse.emf.ecore.change,
+                            !org.eclipse.emf.ecore.change.util,
+                            !org.apache.tools.ant,
+                            !org.apache.tools.ant.input,
+                            !org.apache.tools.ant.types,
+                            !org.eclipse.core.resources,
+                            !org.eclipse.core.runtime,
+                            !org.eclipse.debug.core,
+                            !org.eclipse.debug.core.model,
+                            com.google.gdata.client;resolution:=optional,
+                            com.google.gdata.client.spreadsheet;resolution:=optional,
+                            com.google.gdata.data;resolution:=optional,
+                            com.google.gdata.data.spreadsheet;resolution:=optional,
+                            com.google.gdata.util;resolution:=optional,
+                            *
+                        </Import-Package>
+                        <!-- bundle supplied resource prefixes -->
+                        <Include-Resource>{maven-resources}</Include-Resource>
+                        
+                        <!-- Do not inline jars, include as jar files -->
+                        <!-- There are config files with same name will be overwritten -->
+                        <Embed-Dependency>org.eclipse.epsilon*;scope=compile;inline=true;
+                            artifactId=org.eclipse.epsilon.common|org.eclipse.epsilon.profiling|
+                            org.eclipse.epsilon.emc.emf|org.eclipse.epsilon.emc.spreadsheets|org.eclipse.epsilon.emc.composite|org.eclipse.epsilon.emc.plainxml|
+                            org.eclipse.epsilon.emc.hutn|org.eclipse.epsilon.eol.engine|org.eclipse.epsilon.erl.engine|org.eclipse.epsilon.etl.engine|org.eclipse.epsilon.evl.engine|org.eclipse.epsilon.egl.engine|org.eclipse.epsilon.ewl.engine|org.eclipse.epsilon.epl.engine|org.eclipse.epsilon.flock.engine|
+                            org.eclipse.epsilon.emg.engine|org.eclipse.epsilon.ecl.engine|org.eclipse.epsilon.eml.engine|org.eclipse.epsilon.pinset.engine|org.eclipse.epsilon.hutn.model.config|
+                            org.eclipse.epsilon.hutn.engine|org.eclipse.epsilon.hutn.model|org.eclipse.epsilon.hutn.model.antlrAst|org.eclipse.epsilon.hutn.xmi|
+                            org.eclipse.epsilon.hutn.unparser|org.eclipse.epsilon.antlr.postprocessor|org.eclipse.epsilon.antlr.postprocessor.model|org.eclipse.epsilon.egl.traceability.fine|org.eclipse.epsilon.flexmi
+                        </Embed-Dependency>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.common</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.profiling</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.flexmi</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.emc.emf</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.emc.spreadsheets</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.emc.composite</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.emc.plainxml</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.emc.hutn</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.eol.engine</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.erl.engine</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.egl.engine</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.flock.engine</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.etl.engine</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.evl.engine</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.emg.engine</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.ecl.engine</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.eml.engine</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.ewl.engine</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.epl.engine</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.pinset.engine</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.egl.traceability.fine</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.hutn.model.config</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.hutn.engine</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.hutn.model</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.hutn.model.antlrAst</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.hutn.xmi</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.hutn.unparser</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.antlr.postprocessor</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.epsilon</groupId>
+            <artifactId>org.eclipse.epsilon.antlr.postprocessor.model</artifactId>
+            <version>${epsilon-version}</version>
+        </dependency>
+
+    </dependencies>
+</project>
