@@ -10,7 +10,7 @@
     <description>Apache Directory Service API</description>
     <properties>
         <apache-ds-api-version>1.0.0-RC2</apache-ds-api-version>
-        <apache-mina-version>2.0.16</apache-mina-version>
+        <apache-mina-version>2.0.22</apache-mina-version>
         <openldap-accelerator-version>1.0-RC41</openldap-accelerator-version>
     </properties>
     <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
