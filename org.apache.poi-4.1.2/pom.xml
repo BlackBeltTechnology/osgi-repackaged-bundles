@@ -4,7 +4,7 @@
     <version>4.1.2_2</version>
     
     <properties>
-        <poi.version>4.1.2</poi.version>
+        <poi.version>5.2.1</poi.version>
         <poi.schema.version>1.4</poi.schema.version>
         <poi.security.version>1.1</poi.security.version>
     </properties>
