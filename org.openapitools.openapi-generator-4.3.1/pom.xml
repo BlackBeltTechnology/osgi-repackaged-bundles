@@ -4,7 +4,7 @@
     <version>4.3.1_3</version>
     
     <properties>
-        <openapitools-generator.version>4.3.1</openapitools-generator.version>
+        <openapitools-generator.version>5.1.0</openapitools-generator.version>
     </properties>
     
     <groupId>hu.blackbelt.bundles.openapitools.openapi-generator</groupId>
