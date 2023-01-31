@@ -127,8 +127,6 @@
         </profile>
     </profiles>
     
-    </profiles>
-    
     <build>
         <plugins>
             <plugin>
