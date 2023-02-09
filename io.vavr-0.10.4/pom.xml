@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>1.7.1_1</version>
+    <version>0.10.4_0</version>
     
     <properties>
-        <resilience4j.version>1.7.1</resilience4j.version>
+        <vavr.version>0.10.4</vavr.version>
     </properties>
     
-    <groupId>hu.blackbelt.bundles.resilience4j</groupId>
-    <artifactId>io.github.resilience4j</artifactId>
+    <groupId>hu.blackbelt.bundles.vavr</groupId>
+    <artifactId>io.vavr</artifactId>
     <packaging>bundle</packaging>
-    <name>io.github.resilience4j</name>
-    <description>io.github.resilience4j</description>
+    <name>io.vavr</name>
+    <description>io.vavr</description>
     
     <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
     <issueManagement>
@@ -148,9 +148,7 @@
                             *
                         </Import-Package>
                         <Export-Package>
-                            !io.github.resilience4j.*.internal,
-                            !io.github.resilience4j.core.lang,
-                            io.github.resilience4j*;version="${resilience4j.version}"
+                            io.vavr*;version="${vavr.version}"
                         </Export-Package>
                         
                         <!-- bundle supplied resource prefixes -->
@@ -167,40 +165,9 @@
     <dependencies>
         <!-- Embedded dependencies -->
         <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-retry</artifactId>
-            <version>${resilience4j.version}</version>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>${vavr.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-core</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-circuitbreaker</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-ratelimiter</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-bulkhead</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-timelimiter</artifactId>
-            <version>${resilience4j.version}</version>
-        </dependency>
-
     </dependencies>
 </project>
