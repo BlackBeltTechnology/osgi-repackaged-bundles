@@ -48,8 +48,8 @@ public abstract class SAXXDocPreprocessor
     extends AbstractXDocPreprocessor<InputStream>
 {
 
-	//private static XMLReader xmlReader = null;
-	
+    //private static XMLReader xmlReader = null;
+
     @Override
     public boolean preprocess( String entryName, InputStream reader, Writer writer, FieldsMetadata fieldsMetadata,
                                IDocumentFormatter formatter, Map<String, Object> sharedContext )
@@ -58,9 +58,9 @@ public abstract class SAXXDocPreprocessor
         try
         {
             XMLReader xmlReader = XMLReaderFactory.createXMLReader();
-//        	if (xmlReader == null) {
-//        		xmlReader = XMLReaderFactory.createXMLReader();
-//        	}
+//            if (xmlReader == null) {
+//                xmlReader = XMLReaderFactory.createXMLReader();
+//            }
             BufferedDocumentContentHandler<?> contentHandler =
                 createBufferedDocumentContentHandler( entryName, fieldsMetadata, formatter, sharedContext );
             xmlReader.setContentHandler( contentHandler );

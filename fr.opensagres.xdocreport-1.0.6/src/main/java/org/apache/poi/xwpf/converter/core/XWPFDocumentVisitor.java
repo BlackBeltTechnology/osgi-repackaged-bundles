@@ -549,13 +549,13 @@ public abstract class XWPFDocumentVisitor<T, O extends Options, E extends IXWPFM
                                 boolean instrTextPage = XWPFRunHelper.isInstrTextPage( instrText );
                                 if ( !instrTextPage )
                                 {
-                                	                                	
-                                	                                	// test if it's <w:r><w:instrText>NUMPAGES</w:instrText></w:r>
-                                	 processingTotalPageCountField = XWPFRunHelper.isInstrTextNumpages( instrText );
-                                	 if(!totalPageFieldUsed){
-                                	 	totalPageFieldUsed = true;
-                                	 }
-                                	                                	
+                                                                        
+                                                                        // test if it's <w:r><w:instrText>NUMPAGES</w:instrText></w:r>
+                                     processingTotalPageCountField = XWPFRunHelper.isInstrTextNumpages( instrText );
+                                     if(!totalPageFieldUsed){
+                                         totalPageFieldUsed = true;
+                                     }
+                                                                        
                                     // test if it's <w:instrText>HYPERLINK
                                     // "http://code.google.com/p/xdocrepor"</w:instrText>
                                     String instrTextHyperlink = XWPFRunHelper.getInstrTextHyperlink( instrText );
@@ -706,7 +706,7 @@ public abstract class XWPFDocumentVisitor<T, O extends Options, E extends IXWPFM
         CTR ctr = run.getCTR();
         CTRPr rPr = ctr.getRPr();
         boolean hasTexStyles = rPr != null && (rPr.getHighlight() != null  || rPr.getStrike() != null || 
-        								rPr.getDstrike() != null || rPr.getVertAlign() != null ) ;
+                                        rPr.getDstrike() != null || rPr.getVertAlign() != null ) ;
         StringBuilder text = new StringBuilder();
 
         // Loop for each element of <w:run text, tab, image etc
@@ -730,14 +730,14 @@ public abstract class XWPFDocumentVisitor<T, O extends Options, E extends IXWPFM
                 }
                 else
                 {
-                	if(hasTexStyles)
-                	{
-                		text.append(ctText.getStringValue());
-                	}
-                	else
-                	{
-                		visitText( ctText, pageNumber, paragraphContainer );
-                	}                    
+                    if(hasTexStyles)
+                    {
+                        text.append(ctText.getStringValue());
+                    }
+                    else
+                    {
+                        visitText( ctText, pageNumber, paragraphContainer );
+                    }                    
                 }
             }
             else if ( o instanceof CTPTab )
@@ -777,7 +777,7 @@ public abstract class XWPFDocumentVisitor<T, O extends Options, E extends IXWPFM
         }
         if(hasTexStyles && StringUtils.isNotEmpty(text.toString()))
         {
-        	visitStyleText(run, text.toString());
+            visitStyleText(run, text.toString());
         }
         c.dispose();
     }
@@ -790,7 +790,7 @@ public abstract class XWPFDocumentVisitor<T, O extends Options, E extends IXWPFM
      */
     protected void visitStyleText(XWPFRun run, String text) throws Exception
     {
-    	//child should implement
+        //child should implement
     }
 
     protected abstract void visitText( CTText ctText, boolean pageNumber, T paragraphContainer )
