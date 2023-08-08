@@ -72,7 +72,7 @@ jobs:
             ]
 
       # Phase 1 - Build and deploy to judong nexus
-      - name: 🔥 Deploy with Maven (central)
+      - name: 🔥 Deploy with Maven (judo-ng)
         run: |-
           ./mvnw -B -Dstyle.color=always \
           -Drevision=${{ github.event.inputs.version }} \
