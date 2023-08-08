@@ -124,13 +124,14 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <_exportcontents>
-                            fr.opensagres.xdocreport.*;version=${xdocreport.version},
-                            org.apache.poi.xwpf.converter.*;version=${xdocreport.version},
-                            org.odftoolkit.odfdom.converter.*;version=${xdocreport.version},
+                            fr.opensagres.xdocreport.*;version="${xdocreport.version}",
+                            org.apache.poi.xwpf.converter.*;version="${xdocreport.version}",
+                            org.odftoolkit.odfdom.converter.*;version="${xdocreport.version}",
                         </_exportcontents>
                         <Export-Package>
                         </Export-Package>

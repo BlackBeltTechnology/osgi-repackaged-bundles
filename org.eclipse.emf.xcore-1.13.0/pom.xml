@@ -24,7 +24,7 @@
     
     <properties>
         <xcore-version>1.13.0</xcore-version>
-        <xcore-lib-version>1.4.0</xcore-lib-version>
+        <xcore-lib-version>1.5.0</xcore-lib-version>
 
     </properties>
     
@@ -121,7 +121,7 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -180,5 +180,24 @@
             <version>${xcore-lib-version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.eclipse.xtext</groupId>
+            <artifactId>org.eclipse.xtext.xbase.lib</artifactId>
+            <version>2.18.0</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>fr.jmini.ecentral</groupId>
+                <artifactId>eclipse-platform-dependencies</artifactId>
+                <version>4.18</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 </project>

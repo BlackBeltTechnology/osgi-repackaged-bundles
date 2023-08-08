@@ -124,12 +124,13 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <_exportcontents>
-                            com.lowagie.text.*;version=${itext.version},
-                            com.lowagie.tools.*;version=${itext.version}
+                            com.lowagie.text.*;version="${itext.version}",
+                            com.lowagie.tools.*;version="${itext.version}"
                         </_exportcontents>
                         <Import-Package>
                             com.apple.mrj.*;resolution:=optional,

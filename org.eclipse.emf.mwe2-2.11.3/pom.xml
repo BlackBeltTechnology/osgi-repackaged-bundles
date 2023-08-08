@@ -119,19 +119,19 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <_exportcontents>
-                            org.eclipse.emf.mwe2.runtime;version=${emf-mwe2-version},
-                            org.eclipse.emf.mwe2.runtime.workflow;version=${emf-mwe2-version},
-                            org.eclipse.emf.mwe2.ecore;version=${emf-mwe2-version},
-                            org.eclipse.emf.mwe2.util;version=${emf-mwe2-version},
-                            org.eclipse.emf.mwe2.language.mwe2;version=${emf-mwe2-version},
-                            org.eclipse.emf.mwe2.language.factory;version=${emf-mwe2-version},
-                            org.eclipse.emf.mwe2.language.scoping;version=${emf-mwe2-version},
-                            org.eclipse.emf.mwe2.launch.runtime;version=${emf-mwe2-version}
+                            org.eclipse.emf.mwe2.runtime;version="${emf-mwe2-version}",
+                            org.eclipse.emf.mwe2.runtime.workflow;version="${emf-mwe2-version}",
+                            org.eclipse.emf.mwe2.ecore;version="${emf-mwe2-version}",
+                            org.eclipse.emf.mwe2.util;version="${emf-mwe2-version}",
+                            org.eclipse.emf.mwe2.language.mwe2;version="${emf-mwe2-version}",
+                            org.eclipse.emf.mwe2.language.factory;version="${emf-mwe2-version}",
+                            org.eclipse.emf.mwe2.language.scoping;version="${emf-mwe2-version}",
+                            org.eclipse.emf.mwe2.launch.runtime;version="${emf-mwe2-version}"
                         </_exportcontents>
 
                         <!--
@@ -221,4 +221,15 @@
             <version>${emf-mwe2-version}</version>
         </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>fr.jmini.ecentral</groupId>
+                <artifactId>eclipse-platform-dependencies</artifactId>
+                <version>4.18</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

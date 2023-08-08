@@ -125,24 +125,24 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <_exportcontents>
-                            org.eclipse.emf.mwe.utils;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.ant;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.ao;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.config;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.container;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.customizer;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.debug.model;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.debug.processing;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.issues;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.lib;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.monitor;version=${emf-mwe-utils-version},
-                            org.eclipse.emf.mwe.core.resources;version=${emf-mwe-utils-version}
+                            org.eclipse.emf.mwe.utils;version="${emf-mwe-utils-version}",
+                            org.eclipse.emf.mwe.core;version="${emf-mwe-utils-version}",
+                            org.eclipse.emf.mwe.core.ant;version="${emf-mwe-utils-version}",
+                            org.eclipse.emf.mwe.core.ao;version="${emf-mwe-utils-version}",
+                            org.eclipse.emf.mwe.core.config;version="${emf-mwe-utils-version}",
+                            org.eclipse.emf.mwe.core.container;version="${emf-mwe-utils-version}",
+                            org.eclipse.emf.mwe.core.customizer;version="${emf-mwe-utils-version}",
+                            org.eclipse.emf.mwe.core.debug.model;version="${emf-mwe-utils-version}",
+                            org.eclipse.emf.mwe.core.debug.processing;version="${emf-mwe-utils-version}",
+                            org.eclipse.emf.mwe.core.issues;version="${emf-mwe-utils-version}",
+                            org.eclipse.emf.mwe.core.lib;version="${emf-mwe-utils-version}",
+                            org.eclipse.emf.mwe.core.monitor;version="${emf-mwe-utils-version}",
+                            org.eclipse.emf.mwe.core.resources;version="${emf-mwe-utils-version}"
                         </_exportcontents>
                         <Import-Package>
                             org.eclipse.core.runtime;resolution:=optional,
@@ -198,6 +198,17 @@
             <artifactId>org.eclipse.emf.mwe.core</artifactId>
             <version>${emf-mwe-utils-version}</version>
         </dependency>
-
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>fr.jmini.ecentral</groupId>
+                <artifactId>eclipse-platform-dependencies</artifactId>
+                <version>4.18</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

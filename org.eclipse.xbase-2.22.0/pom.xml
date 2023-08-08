@@ -119,57 +119,57 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <_exportcontents>
-                             org.eclipse.xtext.xbase;version=${xbase-version},
-                             org.eclipse.xtext.xbase.annotations;version=${xbase-version},
-                             org.eclipse.xtext.xbase.annotations.formatting;version=${xbase-version},
-                             org.eclipse.xtext.xbase.annotations.formatting2;version=${xbase-version},
-                             org.eclipse.xtext.xbase.annotations.services;version=${xbase-version},
-                             org.eclipse.xtext.xbase.annotations.serializer;version=${xbase-version},
-                             org.eclipse.xtext.xbase.annotations.typesystem;version=${xbase-version},
-                             org.eclipse.xtext.xbase.annotations.typing;version=${xbase-version},
-                             org.eclipse.xtext.xbase.annotations.validation;version=${xbase-version},
-                             org.eclipse.xtext.xbase.annotations.xAnnotations;version=${xbase-version},
-                             org.eclipse.xtext.xbase.compiler;version=${xbase-version},
-                             org.eclipse.xtext.xbase.compiler.output;version=${xbase-version},
-                             org.eclipse.xtext.xbase.conversion;version=${xbase-version},
-                             org.eclipse.xtext.xbase.featurecalls;version=${xbase-version},
-                             org.eclipse.xtext.xbase.formatting;version=${xbase-version},
-                             org.eclipse.xtext.xbase.formatting2;version=${xbase-version},
-                             org.eclipse.xtext.xbase.impl;version=${xbase-version},
-                             org.eclipse.xtext.xbase.imports;version=${xbase-version},
-                             org.eclipse.xtext.xbase.interpreter;version=${xbase-version},
-                             org.eclipse.xtext.xbase.interpreter.impl;version=${xbase-version},
-                             org.eclipse.xtext.xbase.jvmmodel;version=${xbase-version},
-                             org.eclipse.xtext.xbase.linking;version=${xbase-version},
-                             org.eclipse.xtext.xbase.parser;version=${xbase-version},
-                             org.eclipse.xtext.xbase.resource;version=${xbase-version},
-                             org.eclipse.xtext.xbase.scoping;version=${xbase-version},
-                             org.eclipse.xtext.xbase.scoping.batch;version=${xbase-version},
-                             org.eclipse.xtext.xbase.scoping.featurecalls;version=${xbase-version},
-                             org.eclipse.xtext.xbase.serializer;version=${xbase-version},
-                             org.eclipse.xtext.xbase.services;version=${xbase-version},
-                             org.eclipse.xtext.xbase.typesystem;version=${xbase-version},
-                             org.eclipse.xtext.xbase.typesystem.computation;version=${xbase-version},
-                             org.eclipse.xtext.xbase.typesystem.conformance;version=${xbase-version},
-                             org.eclipse.xtext.xbase.typesystem.internal;version=${xbase-version},
-                             org.eclipse.xtext.xbase.typesystem.override;version=${xbase-version},
-                             org.eclipse.xtext.xbase.typesystem.references;version=${xbase-version},
-                             org.eclipse.xtext.xbase.typesystem.util;version=${xbase-version},
-                             org.eclipse.xtext.xbase.typing;version=${xbase-version},
-                             org.eclipse.xtext.xbase.util;version=${xbase-version},
-                             org.eclipse.xtext.xbase.validation;version=${xbase-version},
-                             org.eclipse.xtext.xtype;version=${xbase-version},
-                             org.eclipse.xtext.xtype.impl;version=${xbase-version},
-                             org.eclipse.xtext.xtype.util;version=${xbase-version},
-                             org.eclipse.xtext.xbase.lib;version=${xbase-version},
-                             org.eclipse.xtext.xbase.lib.internal;version=${xbase-version},
-                             org.eclipse.xtext.xbase.lib.util;version=${xbase-version},
-                             org.eclipse.xtend2.lib;version=${xbase-version},
+                             org.eclipse.xtext.xbase;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.annotations;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.annotations.formatting;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.annotations.formatting2;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.annotations.services;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.annotations.serializer;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.annotations.typesystem;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.annotations.typing;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.annotations.validation;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.annotations.xAnnotations;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.compiler;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.compiler.output;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.conversion;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.featurecalls;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.formatting;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.formatting2;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.impl;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.imports;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.interpreter;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.interpreter.impl;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.jvmmodel;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.linking;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.parser;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.resource;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.scoping;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.scoping.batch;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.scoping.featurecalls;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.serializer;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.services;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.typesystem;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.typesystem.computation;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.typesystem.conformance;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.typesystem.internal;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.typesystem.override;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.typesystem.references;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.typesystem.util;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.typing;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.util;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.validation;version="${xbase-version}",
+                             org.eclipse.xtext.xtype;version="${xbase-version}",
+                             org.eclipse.xtext.xtype.impl;version="${xbase-version}",
+                             org.eclipse.xtext.xtype.util;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.lib;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.lib.internal;version="${xbase-version}",
+                             org.eclipse.xtext.xbase.lib.util;version="${xbase-version}",
+                             org.eclipse.xtend2.lib;version="${xbase-version}",
                         </_exportcontents>
                         <Import-Package>
                             com.google.common.base;version="[27.1,28)",
@@ -211,4 +211,15 @@
             <version>${xbase-version}</version>
         </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>fr.jmini.ecentral</groupId>
+                <artifactId>eclipse-platform-dependencies</artifactId>
+                <version>4.18</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

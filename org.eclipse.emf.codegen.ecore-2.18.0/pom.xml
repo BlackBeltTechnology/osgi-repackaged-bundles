@@ -125,22 +125,22 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <_exportcontents>
-                            org.eclipse.emf.codegen.ecore;version=${emf-codegen-ecore-version},
-                            org.eclipse.emf.codegen.ecore.generator;version=${emf-codegen-ecore-version},
-                            org.eclipse.emf.codegen.ecore.genmodel;version=${emf-codegen-ecore-version},
-                            org.eclipse.emf.codegen.ecore.genmodel.generator;version=${emf-codegen-ecore-version},
-                            org.eclipse.emf.codegen.ecore.genmodel.impl;version=${emf-codegen-ecore-version},
-                            org.eclipse.emf.codegen.ecore.genmodel.util;version=${emf-codegen-ecore-version},
-                            org.eclipse.emf.codegen.ecore.gwt;version=${emf-codegen-ecore-version},
-                            org.eclipse.emf.codegen.ecore.templates.edit;version=${emf-codegen-ecore-version},
-                            org.eclipse.emf.codegen.ecore.templates.editor;version=${emf-codegen-ecore-version},
-                            org.eclipse.emf.codegen.ecore.templates.model;version=${emf-codegen-ecore-version},
-                            org.eclipse.emf.codegen.ecore.templates.model.test;version=${emf-codegen-ecore-version},
+                            org.eclipse.emf.codegen.ecore;version="${emf-codegen-ecore-version}",
+                            org.eclipse.emf.codegen.ecore.generator;version="${emf-codegen-ecore-version}",
+                            org.eclipse.emf.codegen.ecore.genmodel;version="${emf-codegen-ecore-version}",
+                            org.eclipse.emf.codegen.ecore.genmodel.generator;version="${emf-codegen-ecore-version}",
+                            org.eclipse.emf.codegen.ecore.genmodel.impl;version="${emf-codegen-ecore-version}",
+                            org.eclipse.emf.codegen.ecore.genmodel.util;version="${emf-codegen-ecore-version}",
+                            org.eclipse.emf.codegen.ecore.gwt;version="${emf-codegen-ecore-version}",
+                            org.eclipse.emf.codegen.ecore.templates.edit;version="${emf-codegen-ecore-version}",
+                            org.eclipse.emf.codegen.ecore.templates.editor;version="${emf-codegen-ecore-version}",
+                            org.eclipse.emf.codegen.ecore.templates.model;version="${emf-codegen-ecore-version}",
+                            org.eclipse.emf.codegen.ecore.templates.model.test;version="${emf-codegen-ecore-version}",
                         </_exportcontents>
                         <Import-Package>
                             org.osgi.framework;version="[1.8,2)",
@@ -189,4 +189,15 @@
             <version>${emf-codegen-ecore-version}</version>
         </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>fr.jmini.ecentral</groupId>
+                <artifactId>eclipse-platform-dependencies</artifactId>
+                <version>4.18</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

@@ -124,12 +124,12 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>5.1.7</version>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <_exportcontents>
-                            org.eclipse.emf.codegen.ecore.xtext;version=${emf-codegen-ecore-xtext-version},
+                            org.eclipse.emf.codegen.ecore.xtext;version="${emf-codegen-ecore-xtext-version}",
                         </_exportcontents>
                         <Import-Package>
                             org.osgi.framework;version="[1.8,2)",
@@ -170,4 +170,17 @@
             <version>${emf-codegen-ecore-xtext-version}</version>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>fr.jmini.ecentral</groupId>
+                <artifactId>eclipse-platform-dependencies</artifactId>
+                <version>4.18</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 </project>

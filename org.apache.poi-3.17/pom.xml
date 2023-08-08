@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>3.17_1</version>
+    <version>3.17_2</version>
     
     <properties>
         <poi.version>3.17</poi.version>
-        <poi.schema.version>1.1</poi.schema.version>
-        <poi.security.version>1.0</poi.security.version>
+        <poi.schema.version>1.4</poi.schema.version>
+        <poi.security.version>1.1</poi.security.version>
     </properties>
     
     <groupId>hu.blackbelt.bundles.poi</groupId>
@@ -127,34 +127,51 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.5.3</version>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <_exportcontents>
-                            org.apache.poi.*;version=${poi.version},
-                            org.openxmlformats.schemas.*;version=${poi.schema.version},
-                            schemasMicrosoftComOfficeExcel.*;version=${poi.schema.version},
-                            schemasMicrosoftComOfficeOffice.*;version=${poi.schema.version},
-                            schemasMicrosoftComOfficePowerpoint.*;version=${poi.schema.version},
-                            schemasMicrosoftComVml.*;version=${poi.schema.version},
-                            org.etsi.uri.*;version=${poi.security.version}
+                            org.apache.poi*;version="${poi.version}",
+                            org.openxmlformats.schemas*;version="${poi.schema.version}",
+                            com.microsoft.schemas*;version="${poi.schema.version}"
                         </_exportcontents>
+                        <!--
+                            org.w3.x2000.x09.xmldsig,
+                            org.etsi.uri.*,
+                            org.purl.dc.*
+                        -->
+                        <!--
+                            org.openxmlformats.schemas.drawingml.x2006.chartDrawing
+                            org.openxmlformats.schemas.officeDocument.x2006.customProperties,
+                            org.openxmlformats.schemas.officeDocument.x2006.extendedProperties,
+                            org.openxmlformats.schemas.officeDocument.x2006.relationships,
+                            org.openxmlformats.schemas.drawingml.x2006.main,
+                            org.openxmlformats.schemas.drawingml.x2006.chart,
+                            org.openxmlformats.schemas.presentationml.x2006.main,
+                            org.openxmlformats.schemas.drawingml.x2006.spreadsheetDrawing,
+                            org.openxmlformats.schemas.spreadsheetml.x2006.main,
+                            org.openxmlformats.schemas.wordprocessingml.x2006.main,
+                            org.openxmlformats.schemas.drawingml.x2006.picture,
+                            org.openxmlformats.schemas.officeDocument.x2006.docPropsVTypes,
+                            org.openxmlformats.schemas.drawingml.x2006.wordprocessingDrawing,
 
+                            com.microsoft.schemas.office.excel,
+                            com.microsoft.schemas.office.office,
+                            com.microsoft.schemas.office.visio.x2012.main,
+                            com.microsoft.schemas.office.x2006.encryption,
+                            com.microsoft.schemas.vml,
+                            com.microsoft.schemas.office.x2006.keyEncryptor.certificate,
+                            com.microsoft.schemas.office.x2006.keyEncryptor.password,
+
+                        -->
                         <DynamicImport-Package>
-                            com.microsoft.schemas.office.powerpoint,
-                            com.microsoft.schemas.office.word,
-                            org.openxmlformats.schemas.officeDocument.x2006.math,
-                            org.openxmlformats.schemas.schemaLibrary.x2006.main,
                             org.apache.xmlbeans.*,
                             schemaorg_apache_xmlbeans.*
                         </DynamicImport-Package>
 
                         <Import-Package>
-                            !com.microsoft.schemas.office.powerpoint,
-                            !com.microsoft.schemas.office.word,
-                            !org.openxmlformats.schemas.officeDocument.x2006.math,
-                            !org.openxmlformats.schemas.schemaLibrary.x2006.main
+                            org.apache.poi.generator;resolution:=optional,
                             com.sun.javadoc;resolution:=optional,
                             com.sun.tools.javadoc;resolution:=optional,
                             org.apache.crimson.jaxp;resolution:=optional,
@@ -162,7 +179,6 @@
                             org.apache.tools.ant.taskdefs;resolution:=optional,
                             org.apache.tools.ant.types;resolution:=optional,
                             junit.framework.*;resolution:=optional,
-                            junit.textui.*;resolution:=optional,
                             org.junit.*;resolution:=optional,
                             org.apache.xml.security.*;resolution:=optional,
                             org.apache.jcp.xml.dsig.internal.dom.*;resolution:=optional,
