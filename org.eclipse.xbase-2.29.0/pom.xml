@@ -17,6 +17,7 @@
     
     <scm>
         <connection>scm:git:git://github.com/BlackBeltTechnology/osgi-repackaged-bundles.git</connection>
+        <!--suppress UnresolvedMavenProperty -->
         <developerConnection>scm:git:ssh://${git.username}@github.com:BlackBeltTechnology/osgi-repackaged-bundles.git</developerConnection>
         <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
         <tag>HEAD</tag>
