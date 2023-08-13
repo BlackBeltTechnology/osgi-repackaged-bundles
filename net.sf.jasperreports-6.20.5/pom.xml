@@ -206,6 +206,7 @@
                         <!-- There are config files with same name will be overwritten -->
                         <Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency>
 
+                        <DynamicImport-Package>*</DynamicImport-Package>
 
                     </instructions>
                 </configuration>
