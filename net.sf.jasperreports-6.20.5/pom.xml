@@ -10,8 +10,8 @@
     <groupId>hu.blackbelt.bundles.jasperreports</groupId>
     <artifactId>net.sf.jasperreports</artifactId>
     <packaging>bundle</packaging>
-    <name>Apache Poi</name>
-    <description>Apache POI</description>
+    <name>Jasper Reports</name>
+    <description>Jasper Reports</description>
 
     <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
     <issueManagement>
