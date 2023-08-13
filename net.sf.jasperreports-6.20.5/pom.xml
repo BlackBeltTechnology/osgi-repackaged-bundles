@@ -131,28 +131,6 @@
                         <_exportcontents>
                             net.sf.jasperreports.*;version="${jasper.version}"
                         </_exportcontents>
-                        <!--
-                            org.openxmlformats.schemas*;version="${poi.schema.version}",
-                            com.microsoft.schemas*;version="${poi.schema.version}",
-                            org.etsi.uri*;version="${poi.security.version}",
-                            org.w3.x2000.x09.xmldsig*;version="${poi.security.version}",
-                            org.purl.dc.elements.x11*;version=2.0.1,
-                            com.zaxxer.sparsebits*;version=1.2,
-                            org.apache.batik*;version="${batik.version}",
-
-                            com.github.kklisura.cdt.launch;resolution:=optional,
-                            com.github.kklisura.cdt.launch.support.annotations;resolution:=optional,
-                            com.github.kklisura.cdt.protocol.commands;resolution:=optional,
-                            com.github.kklisura.cdt.protocol.events.log;resolution:=optional,
-                            com.github.kklisura.cdt.protocol.events.page;resolution:=optional,
-                            com.github.kklisura.cdt.protocol.events.runtime;resolution:=optional,
-                            com.github.kklisura.cdt.protocol.support.types;resolution:=optional,
-                            com.github.kklisura.cdt.protocol.types.log;resolution:=optional,
-                            com.github.kklisura.cdt.protocol.types.page;resolution:=optional,
-                            com.github.kklisura.cdt.protocol.types.runtime;resolution:=optional,
-                            com.github.kklisura.cdt.services;resolution:=optional,
-
-                        -->
                         <Import-Package>
                             javax.servlet;resolution:=optional,
                             javax.servlet.http;resolution:=optional,
