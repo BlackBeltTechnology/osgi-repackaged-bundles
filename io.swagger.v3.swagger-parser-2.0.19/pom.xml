@@ -124,12 +124,12 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <Export-Package>
-                            io.swagger.v3.parser.*;version=${swagger-parser.version}
+                            io.swagger.v3.parser.*;version="${swagger-parser.version}"
                         </Export-Package>
                         <Import-Package>
                             io.swagger.models;version="[1.5,2)",

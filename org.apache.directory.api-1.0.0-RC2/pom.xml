@@ -125,7 +125,7 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.5.3</version>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -133,7 +133,7 @@
                             org.apache.directory.api.*;version=1.0.0.RC2,
                             org.apache.directory.ldap.*;version=1.0.0.RC2,
                             org.openldap.accelerator.*;version=1.0
-                            <!--org.apache.mina.*;version=${apache-mina-version}-->
+                            <!--org.apache.mina.*;version="${apache-mina-version}"-->
                         </Export-Package>
                         <Import-Package>
                             *

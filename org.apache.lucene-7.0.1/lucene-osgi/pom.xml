@@ -197,6 +197,7 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -206,9 +207,9 @@
                             *
                         </Import-Package>
                         <_exportcontents>
-                            org.apache.lucene.*;version=${lucene.version},
-                            org.tartarus.snowball.*;version=${lucene.version},
-                            org.egothor.*;version=${lucene.version}
+                            org.apache.lucene.*;version="${lucene.version}",
+                            org.tartarus.snowball.*;version="${lucene.version}",
+                            org.egothor.*;version="${lucene.version}"
                         </_exportcontents>
                         <Embed-Dependency>
                             lucene-core;inline=org/apache/lucene/**,

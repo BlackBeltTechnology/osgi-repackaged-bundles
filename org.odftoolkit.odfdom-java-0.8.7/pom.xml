@@ -125,11 +125,12 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <_exportcontents>
-                            org.odftoolkit.odfdom.*;version=${odfdom.version}
+                            org.odftoolkit.odfdom.*;version="${odfdom.version}"
                         </_exportcontents>
                         <!-- bundle supplied resource prefixes -->
                         <Include-Resource>{maven-resources}</Include-Resource>

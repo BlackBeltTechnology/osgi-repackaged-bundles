@@ -125,12 +125,13 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <_exportcontents>
-                            org.apache.solr.*;version=${solr.version}
+                            org.apache.solr.*;version="${solr.version}"
                         </_exportcontents>
                         <Import-Package>
                             org.apache.lucene.analysis.ar;version="[7,8)";resolution:=optional,

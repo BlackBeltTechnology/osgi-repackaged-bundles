@@ -6,6 +6,7 @@
     <version>${revision}</version>
     <packaging>pom</packaging>
     <modules>
+        <module>com.diogonunes.jcolor-5.2.0</module>
         <module>com.github.albfernandez.juniversalchardet-2.3.0</module>
         <module>com.google.api-client-1.23.0</module>
         <module>com.google.api-services-calendar-1.23.0</module>
@@ -13,10 +14,16 @@
         <module>com.google.guava-20.0</module>
         <module>com.google.guava-28.0</module>
         <module>com.lowagie.itext-2.1.7</module>
+        <module>com.pivovarit.throwing-function-1.5.1</module>
         <module>com.tdunning.t-digest-3.2</module>
+        <module>com.vdurmont.semver4j-3.1.0</module>
         <module>fr.opensagres.xdocreport-1.0.6</module>
-        <!-- <module>io.moquette-0.10</module> -->
+        <module>io.github.resilience4j-1.7.1</module>
+        <module>io.github.resilience4j-2.0.2</module>
         <module>io.moquette-0.11</module>
+        <module>io.swagger.swagger-parser-1.0.47</module>
+        <module>io.swagger.v3.swagger-parser-2.0.19</module>
+        <module>io.vavr-0.10.4</module>
         <module>ma.glasnost.orika-1.5.4</module>
         <module>net.sf.jsignature.io-tools.easystream-1.2.15</module>
         <module>org.apache.directory.api-1.0.0-RC2</module>
@@ -24,33 +31,23 @@
         <module>org.apache.poi-3.13.1</module>
         <module>org.apache.poi-3.17</module>
         <module>org.apache.poi-4.0.1</module>
+        <module>org.apache.poi-4.1.2</module>
+        <module>org.apache.poi-5.2.3</module>
         <module>org.apache.solr-7.0.1</module>
         <module>org.docx4j-2.1.5</module>
-        <module>org.eclipse.emf.codegen-2.16.0</module>
-        <module>org.eclipse.emf.codegen.ecore-2.18.0</module>
-        <module>org.eclipse.emf.codegen.ecore.xtext-1.4.0</module>
-        <module>org.eclipse.emf.mwe-1.4.0</module>
-        <module>org.eclipse.emf.mwe2-2.10.0</module>
-        <module>org.eclipse.emf.xcore-1.7.0</module>
-        <module>org.eclipse.epsilon-1.4.0</module>
-        <module>org.eclipse.epsilon-1.5.1</module>
-        <module>org.eclipse.epsilon-2.2.0</module>
-        <module>org.eclipse.epsilon-2.3.0</module>
+        <module>org.eclipse.epsilon-2.4.0</module>
+        <module>org.eclipse.jdt.ecj-3.21.0</module>
         <module>org.eclipse.uml2-5.0.0-v20140602-0749</module>
-        <module>org.eclipse.xbase-2.16.0</module>
-        <module>org.eclipse.xbase-2.18.0</module>
-        <module>org.eclipse.xtend-2.16.0</module>
-        <module>org.eclipse.xtend-2.18.0</module>
-        <module>org.eclipse.xtext-2.16.0</module>
-        <module>org.eclipse.xtext-2.18.0</module>
+        <module>org.eclipse.xbase-2.29.0</module>
+        <module>org.eclipse.xtext-2.29.0</module>
         <module>org.functionaljava-4.8.1</module>
-        <module>org.jxls-2.6.0</module>
         <module>org.jxls-2.10.0</module>
+        <module>org.jxls-2.6.0</module>
         <module>org.odftoolkit.odfdom-java-0.8.7</module>
+        <module>org.openapitools.openapi-generator-4.3.1</module>
         <module>org.restlet-2.3.12</module>
         <module>org.subethamail.subethasmtp-3.1.7</module>
-        <module>org.tinyjee.jgraphx.mxgraph-3.4.1.3</module>
-        <module>com.pivovarit.throwing-function-1.5.1</module>
+        <module>org.tinyjee.jgraphx.mxgraph-3.4.1.3</module>        
     </modules>
     <properties>
         <revision>1.0.0-SNAPSHOT</revision>
