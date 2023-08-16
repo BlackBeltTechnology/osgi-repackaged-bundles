@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <version>17.0.1_0</version>
+    
+    <groupId>hu.blackbelt.bundles.keycloak-adapter</groupId>
+    <artifactId>org.keycloak-adapter</artifactId>
+    <packaging>bundle</packaging>
+    <name>keycloak-adapter</name>
+    <description>Keycloak adapters</description>
+    
+    <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+    <issueManagement>
+        <url>https://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+    
+    <scm>
+        <connection>scm:git:git://github.com/BlackBeltTechnology/osgi-repackaged-bundles.git</connection>
+        <!--suppress UnresolvedMavenProperty -->
+        <developerConnection>scm:git:ssh://${git.username}@github.com:BlackBeltTechnology/osgi-repackaged-bundles.git</developerConnection>
+        <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+        <tag>HEAD</tag>
+    </scm>
+    
+    <properties>
+        <keycloak-version>17.0.1</keycloak-version>
+        <jackson-version>2.15.2</jackson-version>
+    </properties>
+    
+    <developers>
+        <developer>
+            <id>robson</id>
+            <name>Robert Csakany</name>
+            <email>robert.csakany@blackbelt.hu</email>
+            <url>https://github.com/robertcsakany</url>
+            <organization>BlackBelt Technology</organization>
+            <organizationUrl>http://www.blackbelt.hu</organizationUrl>
+        </developer>
+    </developers>
+    
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    
+    <profiles>
+        <profile>
+            <id>sign-artifacts</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.simplify4u.plugins</groupId>
+                        <artifactId>sign-maven-plugin</artifactId>
+                        <version>1.0.1</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>release-judong</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>judong-nexus-distribution</id>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <url>https://nexus.judo.technology/repository/maven-judong-snapshots/</url>
+                </snapshotRepository>
+                <repository>
+                    <id>judong-nexus-distribution</id>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <url>https://nexus.judo.technology/repository/maven-judong-snapshots/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+
+        <profile>
+            <id>release-central</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.8</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            <stagingProgressTimeoutMinutes>15</stagingProgressTimeoutMinutes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+    
+    <build>
+        <plugins>
+            
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>5.1.8</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <_noee>true</_noee>
+                        <_exportcontents>
+                             org.keycloak*;version="${keycloak-version}",
+                        </_exportcontents>
+                        <Import-Package>
+                            org.osgi.framework;version="[1.8,2.0)",
+                            com.sun.security.jgss;resolution:=optional,
+                            javax.activation;resolution:=optional;version="[1.2,2)",
+                            javax.crypto;resolution:=optional,
+                            javax.crypto.spec;resolution:=optional,
+                            javax.net.ssl;resolution:=optional,
+                            javax.security.auth;resolution:=optional,
+                            javax.security.auth.callback;resolution:=optional,
+                            javax.security.auth.kerberos;resolution:=optional,
+                            javax.security.auth.login;resolution:=optional,
+                            javax.security.auth.spi;resolution:=optional,
+                            javax.security.cert;resolution:=optional,
+                            org.ietf.jgss;resolution:=optional,
+                            org.jboss.logging;resolution:=optional;version="[3.4,4)",
+                            *
+                        </Import-Package>
+                        <!-- bundle supplied resource prefixes -->
+                        <Include-Resource>{maven-resources}</Include-Resource>
+                        
+                        <!-- Do not inline jars, include as jar files -->
+                        <!-- There are config files with same name will be overwritten -->
+                        <Embed-Dependency>
+                            keycloak-common;scope=compile;inline=false,
+                            keycloak-core;scope=compile;inline=false,
+                            keycloak-authz-client;scope=compile;inline=false,
+                            keycloak-adapter-spi;scope=compile;inline=false,
+                            keycloak-adapter-core;scope=compile;inline=false,
+                            keycloak-policy-enforcer;scope=compile;inline=false,
+                        </Embed-Dependency>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-common</artifactId>
+            <version>${keycloak-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-core</artifactId>
+            <version>${keycloak-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-authz-client</artifactId>
+            <version>${keycloak-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-adapter-spi</artifactId>
+            <version>${keycloak-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-adapter-core</artifactId>
+            <version>${keycloak-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+
+        <!--
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-policy-enforcer</artifactId>
+            <version>${keycloak-version}</version>
+        </dependency>
+        -->
+    </dependencies>
+
+</project>
