@@ -43,6 +43,22 @@
 
     <profiles>
         <profile>
+            <id>release-judong</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>judong-nexus-distribution</id>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <url>https://nexus.judo.technology/repository/maven-judong-snapshots/</url>
+                </snapshotRepository>
+                <repository>
+                    <id>judong-nexus-distribution</id>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <url>https://nexus.judo.technology/repository/maven-judong-snapshots/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+
+        <profile>
             <id>release-central</id>
             <build>
                 <plugins>
