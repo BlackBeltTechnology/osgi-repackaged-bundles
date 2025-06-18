@@ -151,46 +151,6 @@
                             io.opentelemetry.api.incubator.propagation;resolution:=optional,
                             io.opentelemetry.api.incubator.trace;resolution:=optional,
                             io.opentelemetry.sdk.autoconfigure;resolution:=optional,
-
-                            <!--                            com.google.auth.appengine;resolution:=optional,-->
-<!--                            com.oracle.svm.core.annotate;resolution:=optional,-->
-<!--                            android.net;resolution:=optional,-->
-<!--                            android.net.ssl;resolution:=optional,-->
-<!--                            com.sun.jndi.dns;resolution:=optional,-->
-<!--                            io.grpc.okhttp;resolution:=optional,-->
-<!--                            io.grpc.override;resolution:=optional,-->
-<!--                            io.grpc.util;resolution:=optional,-->
-<!--                            io.grpc.xds;resolution:=optional,-->
-<!--                            io.netty.bootstrap;resolution:=optional,-->
-<!--                            io.netty.buffer;resolution:=optional,-->
-<!--                            io.netty.channel;resolution:=optional,-->
-<!--                            io.netty.channel.epoll;resolution:=optional,-->
-<!--                            io.netty.channel.group;resolution:=optional,-->
-<!--                            io.netty.channel.nio;resolution:=optional,-->
-<!--                            io.netty.channel.socket.nio;resolution:=optional,-->
-<!--                            io.netty.channel.unix;resolution:=optional,-->
-<!--                            io.netty.handler.codec;resolution:=optional,-->
-<!--                            io.netty.handler.codec.http;resolution:=optional,-->
-<!--                            io.netty.handler.codec.http2;resolution:=optional,-->
-<!--                            io.netty.handler.logging;resolution:=optional,-->
-<!--                            io.netty.handler.proxy;resolution:=optional,-->
-<!--                            io.netty.handler.ssl;resolution:=optional,-->
-<!--                            io.netty.util;resolution:=optional,-->
-<!--                            io.netty.util.concurrent;resolution:=optional,-->
-<!--                            io.netty.util.internal;resolution:=optional,-->
-<!--                            io.netty.util.internal.logging;resolution:=optional,-->
-<!--                            com.google.common.base;version="[30.0,35)",-->
-<!--                            com.google.common.collect;version="[30.0,35)",-->
-<!--                            org.bouncycastle.jcajce.provider;resolution:=optional,-->
-<!--                            org.bouncycastle.jsse;resolution:=optional,-->
-<!--                            org.bouncycastle.jsse.provider;resolution:=optional,-->
-<!--                            org.eclipse.jetty.alpn;resolution:=optional,-->
-<!--                            org.eclipse.jetty.npn;resolution:=optional,-->
-<!--                            org.jboss.marshalling;resolution:=optional,-->
-<!--                            reactor.blockhound;resolution:=optional,-->
-<!--                            reactor.blockhound.integration;resolution:=optional,-->
-<!--                            sun.security.ssl;resolution:=optional,-->
-<!--                            sun.security.x509;resolution:=optional,-->
                             *
                         </Import-Package>
                         <!-- bundle supplied resource prefixes -->
