@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>38.0.0_0</version>
+    <version>38.0.0_1</version>
 
     <groupId>hu.blackbelt.bundles.google-api-ads</groupId>
-    <name>google-api-extension</name>
+    <name>google-api-ads</name>
     <artifactId>com.google.api-ads</artifactId>
     <packaging>bundle</packaging>
     <description>Google Ads API</description>
@@ -143,10 +143,6 @@
                             com.google.ads.*;version="38.0.0"
                         </Export-Package>
                         <Import-Package>
-                            com.google.ads.googleads.v18.errors;resolution:=optional,
-                            com.google.ads.googleads.v18.services;resolution:=optional,
-                            com.google.ads.googleads.v19.errors;resolution:=optional,
-                            com.google.ads.googleads.v19.services;resolution:=optional,
                             com.squareup.javapoet;resolution:=optional,
                             *
                         </Import-Package>
@@ -183,6 +179,18 @@
         <dependency>
             <groupId>com.google.api-ads</groupId>
             <artifactId>google-ads-stubs-v20</artifactId>
+            <version>38.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.api-ads</groupId>
+            <artifactId>google-ads-stubs-v19</artifactId>
+            <version>38.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.api-ads</groupId>
+            <artifactId>google-ads-stubs-v18</artifactId>
             <version>38.0.0</version>
         </dependency>
 
