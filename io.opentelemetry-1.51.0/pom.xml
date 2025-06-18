@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <version>1.51.0_0</version>
+
+    <groupId>hu.blackbelt.bundles.opentelemetry</groupId>
+    <name>google-api-extension</name>
+    <artifactId>io.opentelemetry</artifactId>
+    <packaging>bundle</packaging>
+    <description>Google API Extension</description>
+
+    <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+    <issueManagement>
+        <url>https://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:git:git://github.com/BlackBeltTechnology/osgi-repackaged-bundles.git</connection>
+        <developerConnection>scm:git:ssh://${git.username}@github.com:BlackBeltTechnology/osgi-repackaged-bundles.git</developerConnection>
+        <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>robson</id>
+            <name>Robert Csakany</name>
+            <email>robert.csakany@blackbelt.hu</email>
+            <url>https://github.com/robertcsakany</url>
+            <organization>BlackBelt Technology</organization>
+            <organizationUrl>http://www.blackbelt.hu</organizationUrl>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <profiles>
+        <profile>
+            <id>release-central</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.8</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            <stagingProgressTimeoutMinutes>15</stagingProgressTimeoutMinutes>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <keyname>${gpg.keyname}</keyname>
+                                    <passphraseServerId>${gpg.keyname}</passphraseServerId>
+                                    <!-- This is necessary for gpg to not try to use the pinentry programs -->
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>6.0.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>
+                            io.opentelemetry.*;version="1.51.0",
+                            !io.opentelemetry.internal*,
+                        </Export-Package>
+                        <Import-Package>
+                            io.opentelemetry.api.incubator;resolution:=optional,
+                            io.opentelemetry.api.incubator.common;resolution:=optional,
+                            io.opentelemetry.api.incubator.logs;resolution:=optional,
+                            io.opentelemetry.api.incubator.metrics;resolution:=optional,
+                            io.opentelemetry.api.incubator.propagation;resolution:=optional,
+                            io.opentelemetry.api.incubator.trace;resolution:=optional,
+                            io.opentelemetry.sdk.autoconfigure;resolution:=optional,
+
+                            <!--                            com.google.auth.appengine;resolution:=optional,-->
+<!--                            com.oracle.svm.core.annotate;resolution:=optional,-->
+<!--                            android.net;resolution:=optional,-->
+<!--                            android.net.ssl;resolution:=optional,-->
+<!--                            com.sun.jndi.dns;resolution:=optional,-->
+<!--                            io.grpc.okhttp;resolution:=optional,-->
+<!--                            io.grpc.override;resolution:=optional,-->
+<!--                            io.grpc.util;resolution:=optional,-->
+<!--                            io.grpc.xds;resolution:=optional,-->
+<!--                            io.netty.bootstrap;resolution:=optional,-->
+<!--                            io.netty.buffer;resolution:=optional,-->
+<!--                            io.netty.channel;resolution:=optional,-->
+<!--                            io.netty.channel.epoll;resolution:=optional,-->
+<!--                            io.netty.channel.group;resolution:=optional,-->
+<!--                            io.netty.channel.nio;resolution:=optional,-->
+<!--                            io.netty.channel.socket.nio;resolution:=optional,-->
+<!--                            io.netty.channel.unix;resolution:=optional,-->
+<!--                            io.netty.handler.codec;resolution:=optional,-->
+<!--                            io.netty.handler.codec.http;resolution:=optional,-->
+<!--                            io.netty.handler.codec.http2;resolution:=optional,-->
+<!--                            io.netty.handler.logging;resolution:=optional,-->
+<!--                            io.netty.handler.proxy;resolution:=optional,-->
+<!--                            io.netty.handler.ssl;resolution:=optional,-->
+<!--                            io.netty.util;resolution:=optional,-->
+<!--                            io.netty.util.concurrent;resolution:=optional,-->
+<!--                            io.netty.util.internal;resolution:=optional,-->
+<!--                            io.netty.util.internal.logging;resolution:=optional,-->
+<!--                            com.google.common.base;version="[30.0,35)",-->
+<!--                            com.google.common.collect;version="[30.0,35)",-->
+<!--                            org.bouncycastle.jcajce.provider;resolution:=optional,-->
+<!--                            org.bouncycastle.jsse;resolution:=optional,-->
+<!--                            org.bouncycastle.jsse.provider;resolution:=optional,-->
+<!--                            org.eclipse.jetty.alpn;resolution:=optional,-->
+<!--                            org.eclipse.jetty.npn;resolution:=optional,-->
+<!--                            org.jboss.marshalling;resolution:=optional,-->
+<!--                            reactor.blockhound;resolution:=optional,-->
+<!--                            reactor.blockhound.integration;resolution:=optional,-->
+<!--                            sun.security.ssl;resolution:=optional,-->
+<!--                            sun.security.x509;resolution:=optional,-->
+                            *
+                        </Import-Package>
+                        <!-- bundle supplied resource prefixes -->
+                        <Include-Resource>{maven-resources}</Include-Resource>
+
+                        <!-- Do not inline jars, include as jar files -->
+                        <!-- There are config files with same name will be overwritten -->
+                        <Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-api</artifactId>
+            <version>1.51.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-context</artifactId>
+            <version>1.51.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-sdk</artifactId>
+            <version>1.51.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-sdk-common</artifactId>
+            <version>1.51.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-sdk-metrics</artifactId>
+            <version>1.51.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-sdk-trace</artifactId>
+            <version>1.51.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-sdk-logs</artifactId>
+            <version>1.51.0</version>
+        </dependency>
+
+    </dependencies>
+</project>
