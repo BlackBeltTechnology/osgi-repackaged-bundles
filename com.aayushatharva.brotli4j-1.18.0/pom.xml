@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>38.0.0_2</version>
+    <version>1.18.0_1</version>
 
-    <groupId>hu.blackbelt.bundles.google-api-ads</groupId>
-    <name>google-api-ads</name>
-    <artifactId>com.google.api-ads</artifactId>
+    <groupId>hu.blackbelt.bundles.brotli4j</groupId>
+    <name>brotli4j</name>
+    <artifactId>com.aayushatharva.brotli4j</artifactId>
     <packaging>bundle</packaging>
-    <description>Google Ads API</description>
+    <description>Brotli4j provides Brotli compression and decompression for Java.</description>
 
     <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
     <issueManagement>
@@ -140,16 +140,18 @@
                 <configuration>
                     <instructions>
                         <Export-Package>
-                            com.google.ads.*;version="38.0.0",
+                            com.aayushatharva.brotli4j*;version="1.18.0",
                         </Export-Package>
                         <Import-Package>
-                            javax.annotation;version="[3.0,4)",
-                            com.google.protobuf;version="[3.25,4)",
-                            com.google.protobuf.util;version="[3.25,4)",
-                            com.google.protobuf.nano;version="[3,4)",
-                            com.squareup.javapoet;resolution:=optional,
+                            io.netty.util;resolution:=optional,
+                            io.netty.util.concurrent;resolution:=optional,
+                            io.netty.util.internal;resolution:=optional,
+                            io.netty.util.internal.logging;resolution:=optional,
+                            com.oracle.svm.core.annotate;resolution:=optional,
+                            jdk.jfr;resolution:=optional,
                             *
                         </Import-Package>
+
                         <!-- bundle supplied resource prefixes -->
                         <Include-Resource>{maven-resources}</Include-Resource>
 
@@ -163,40 +165,19 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>google-ads</artifactId>
-            <version>38.0.0</version>
+            <groupId>com.aayushatharva.brotli4j</groupId>
+            <artifactId>brotli4j</artifactId>
+            <version>1.18.0</version>
         </dependency>
-
         <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>google-ads-codegen</artifactId>
-            <version>38.0.0</version>
+            <groupId>com.aayushatharva.brotli4j</groupId>
+            <artifactId>service</artifactId>
+            <version>1.18.0</version>
         </dependency>
-
         <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>google-ads-stubs-lib</artifactId>
-            <version>38.0.0</version>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-buffer</artifactId>
+            <version>4.2.3.Final</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>google-ads-stubs-v20</artifactId>
-            <version>38.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>google-ads-stubs-v19</artifactId>
-            <version>38.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>google-ads-stubs-v18</artifactId>
-            <version>38.0.0</version>
-        </dependency>
-
     </dependencies>
 </project>

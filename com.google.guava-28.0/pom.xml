@@ -319,7 +319,7 @@
                             com.google.common.annotations;version=18.0.0
                         </Export-Package>
                         <Import-Package>
-                            javax.annotation;resolution:=optional;version="[3.0,4)",
+                            javax.annotation;version="[3.0,4)",
                             javax.crypto;resolution:=optional,
                             javax.crypto.spec;resolution:=optional,
                             sun.misc;resolution:=optional

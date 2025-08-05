@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>2.58.2_1</version>
+    <version>2.58.2_2</version>
 
     <groupId>hu.blackbelt.bundles.google-api-gcloud</groupId>
     <name>google-api-gcloud</name>
@@ -143,11 +143,10 @@
                             com.google.cloud*;version="2.58.2"
                         </Export-Package>
                         <Import-Package>
-                            com.squareup.javapoet;resolution:=optional,
                             com.google.api.client.extensions.appengine.http;resolution:=optional,
-                            org.threeten.bp;resolution:=optional,
-                            org.threeten.bp.format;resolution:=optional,
+                            com.squareup.javapoet;resolution:=optional,
                             javax.annotation;version="[3.0,4)",
+                            com.fasterxml.jackson.core.io;version="[2.17,3)",
                             *
                         </Import-Package>
                         <!-- bundle supplied resource prefixes -->
@@ -161,16 +160,38 @@
             </plugin>
         </plugins>
     </build>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.cloud</groupId>
+                <artifactId>libraries-bom</artifactId>
+                <version>26.64.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-core</artifactId>
-            <version>2.58.2</version>
         </dependency>
         <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-core-http</artifactId>
-            <version>2.58.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>4.31.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java-util</artifactId>
+            <version>4.31.1</version>
+        </dependency>
+
     </dependencies>
 </project>

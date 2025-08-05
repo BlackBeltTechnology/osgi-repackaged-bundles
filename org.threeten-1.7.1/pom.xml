@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>38.0.0_2</version>
+    <version>1.7.1_1</version>
 
-    <groupId>hu.blackbelt.bundles.google-api-ads</groupId>
-    <name>google-api-ads</name>
-    <artifactId>com.google.api-ads</artifactId>
+    <groupId>hu.blackbelt.bundles.threeten</groupId>
+    <name>threeten</name>
+    <artifactId>org.threeten</artifactId>
     <packaging>bundle</packaging>
-    <description>Google Ads API</description>
+    <description>ThreeTen Backport of JSR-310 from JDK 8 to JDK 7 and JDK 6. NOT an implementation of the JSR.</description>
 
     <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
     <issueManagement>
@@ -140,16 +140,14 @@
                 <configuration>
                     <instructions>
                         <Export-Package>
-                            com.google.ads.*;version="38.0.0",
+                            org.threeten.bp*;version="1.7.1",
+                            org.threeten.extra*;version="1.8.0",
                         </Export-Package>
                         <Import-Package>
-                            javax.annotation;version="[3.0,4)",
-                            com.google.protobuf;version="[3.25,4)",
-                            com.google.protobuf.util;version="[3.25,4)",
-                            com.google.protobuf.nano;version="[3,4)",
-                            com.squareup.javapoet;resolution:=optional,
+                            org.joda.convert;resolution:=optional,
                             *
                         </Import-Package>
+
                         <!-- bundle supplied resource prefixes -->
                         <Include-Resource>{maven-resources}</Include-Resource>
 
@@ -163,40 +161,15 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>google-ads</artifactId>
-            <version>38.0.0</version>
+            <groupId>org.threeten</groupId>
+            <artifactId>threetenbp</artifactId>
+            <version>1.7.1</version>
         </dependency>
 
         <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>google-ads-codegen</artifactId>
-            <version>38.0.0</version>
+            <groupId>org.threeten</groupId>
+            <artifactId>threeten-extra</artifactId>
+            <version>1.8.0</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>google-ads-stubs-lib</artifactId>
-            <version>38.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>google-ads-stubs-v20</artifactId>
-            <version>38.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>google-ads-stubs-v19</artifactId>
-            <version>38.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.api-ads</groupId>
-            <artifactId>google-ads-stubs-v18</artifactId>
-            <version>38.0.0</version>
-        </dependency>
-
     </dependencies>
 </project>
