@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>2.66.0_2</version>
-
-    <groupId>hu.blackbelt.bundles.google-api-extension</groupId>
-    <name>google-api-extension</name>
-    <artifactId>com.google.api-extension</artifactId>
+    <version>17.0.0_1</version>
+    
+    <properties>
+        <arrow.version>17.0.0</arrow.version>
+    </properties>
+    
+    <groupId>hu.blackbelt.bundles.arrow</groupId>
+    <artifactId>org.apache.arrow</artifactId>
     <packaging>bundle</packaging>
-    <description>Google API Extension</description>
-
+    <name>Apache Arrow</name>
+    <description>Apache Arrow</description>
+    
     <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
     <issueManagement>
         <url>https://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
         <system>GitHub Issues</system>
     </issueManagement>
-
+    
     <scm>
         <connection>scm:git:git://github.com/BlackBeltTechnology/osgi-repackaged-bundles.git</connection>
+        <!--suppress UnresolvedMavenProperty -->
         <developerConnection>scm:git:ssh://${git.username}@github.com:BlackBeltTechnology/osgi-repackaged-bundles.git</developerConnection>
         <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
         <tag>HEAD</tag>
     </scm>
-
+    
     <developers>
         <developer>
             <id>robson</id>
@@ -32,7 +37,7 @@
             <organizationUrl>http://www.blackbelt.hu</organizationUrl>
         </developer>
     </developers>
-
+    
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -40,7 +45,7 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
+    
     <profiles>
         <profile>
             <id>sign-artifacts</id>
@@ -94,20 +99,6 @@
                             <stagingProgressTimeoutMinutes>15</stagingProgressTimeoutMinutes>
                         </configuration>
                     </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <version>2.2.1</version>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
                 </plugins>
             </build>
             <distributionManagement>
@@ -122,10 +113,9 @@
             </distributionManagement>
         </profile>
     </profiles>
-
+        
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
@@ -135,62 +125,64 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>6.0.0</version>
+                <version>5.1.8</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <Export-Package>
-                            com.google.api.gax.*;version="2.66.0",
-                            com.google.longrunning.*;version="2.66.0",
-                            com.google.longrunning.stub.*;version="2.66.0"
-                        </Export-Package>
+                        <_exportcontents>
+                            org.apache.arrow*;version="${arrow.version}",
+                        </_exportcontents>
                         <Import-Package>
-                            org.graalvm.nativeimage.hosted;resolution:=optional,
+                            org.checkerframework.checker.initialization.qual;resolution:=optional,
+                            org.checkerframework.checker.nullness.qual;resolution:=optional,
+                            org.checkerframework.dataflow.qual;resolution:=optional,
                             *
                         </Import-Package>
-
+                        
                         <!-- bundle supplied resource prefixes -->
                         <Include-Resource>{maven-resources}</Include-Resource>
-
+                        
                         <!-- Do not inline jars, include as jar files -->
                         <!-- There are config files with same name will be overwritten -->
                         <Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency>
+                        
+                        
                     </instructions>
                 </configuration>
             </plugin>
         </plugins>
     </build>
     <dependencies>
+        <!-- Embedded dependencies -->
         <dependency>
-            <groupId>com.google.api</groupId>
-            <artifactId>gax</artifactId>
-            <version>2.66.0</version>
-        </dependency>
-
+            <groupId>org.apache.arrow</groupId>
+            <artifactId>arrow-vector</artifactId>
+            <version>${arrow.version}</version>
+        </dependency>   
         <dependency>
-            <groupId>com.google.api</groupId>
-            <artifactId>gax-grpc</artifactId>
-            <version>2.66.0</version>
-        </dependency>
-
+            <groupId>org.apache.arrow</groupId>
+            <artifactId>arrow-format</artifactId>
+            <version>${arrow.version}</version>
+        </dependency>   
         <dependency>
-            <groupId>org.threeten</groupId>
-            <artifactId>threetenbp</artifactId>
-            <version>1.7.1</version>
-        </dependency>
-
+            <groupId>org.apache.arrow</groupId>
+            <artifactId>arrow-memory-core</artifactId>
+            <version>${arrow.version}</version>
+        </dependency>   
         <dependency>
-            <groupId>com.google.api.grpc</groupId>
-            <artifactId>proto-google-common-protos</artifactId>
-            <version>2.57.0</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.google.api/gax-httpjson -->
+            <groupId>org.apache.arrow</groupId>
+            <artifactId>arrow-memory-netty</artifactId>
+            <version>${arrow.version}</version>
+        </dependency>   
         <dependency>
-            <groupId>com.google.api</groupId>
-            <artifactId>gax-httpjson</artifactId>
-            <version>2.66.0</version>
+            <groupId>org.apache.arrow</groupId>
+            <artifactId>arrow-memory-netty-buffer-patch</artifactId>
+            <version>${arrow.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-common</artifactId>
+            <version>4.2.3.Final</version>
+        </dependency>
     </dependencies>
 </project>

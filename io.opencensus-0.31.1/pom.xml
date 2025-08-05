@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>0.31.1_0</version>
+    <version>0.31.1_1</version>
 
     <groupId>hu.blackbelt.bundles.opencensus</groupId>
     <name>opencensus</name>
@@ -144,6 +144,7 @@
                             io.opencensus.*;version="0.31.1"
                         </Export-Package>
                         <Import-Package>
+                            javax.annotation;version="[3.0,4)",
                             com.google.common.base;version="[30.0,35)",
                             com.google.common.collect;version="[30.0,35)",
                             com.google.common.primitives;version="[30.0,35)",

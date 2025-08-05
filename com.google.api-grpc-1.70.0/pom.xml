@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>1.70.0_2</version>
+    <version>1.70.0_3</version>
 
     <groupId>hu.blackbelt.bundles.google-api-grpc</groupId>
     <name>google-api-grpc</name>
@@ -142,8 +142,17 @@
                         <Export-Package>
                             !io.grpc.netty.shaded*,
                             io.grpc.*;version="1.70.0",
+                            com.google.type.*;version="1.70.0",
+                            com.google.shopping.*;version="1.70.0",
                             com.google.rpc.*;version="2.57.0",
+                            com.google.longrunning.*;version="2.57.0",
+                            com.google.logging.*;version="2.57.0",
+                            com.google.geo.*;version="2.57.0",
+                            com.google.cloud.*;version="2.57.0",
+                            com.google.apps.*;version="2.57.0",
                             com.google.api;version="2.57.0",
+                            com.google.iam.v1;version="1.54.2",
+                            com.google.iam.v1.logging;version="1.54.2",
                         </Export-Package>
                         <Import-Package>
                             org.eclipse.jetty.alpn;resolution:=optional,
@@ -275,6 +284,12 @@
             <groupId>com.google.api.grpc</groupId>
             <artifactId>proto-google-common-protos</artifactId>
             <version>2.57.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.api.grpc</groupId>
+            <artifactId>proto-google-iam-v1</artifactId>
+            <version>1.54.2</version>
         </dependency>
 
         <dependency>
