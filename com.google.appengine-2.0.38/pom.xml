@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <version>2.0.38_1</version>
+
+    <groupId>hu.blackbelt.bundles.google-appengine</groupId>
+    <name>google-appengine</name>
+    <artifactId>com.google.appengine</artifactId>
+    <packaging>bundle</packaging>
+    <description>Google AppEngine</description>
+
+    <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+    <issueManagement>
+        <url>https://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:git:git://github.com/BlackBeltTechnology/osgi-repackaged-bundles.git</connection>
+        <developerConnection>scm:git:ssh://${git.username}@github.com:BlackBeltTechnology/osgi-repackaged-bundles.git</developerConnection>
+        <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>robson</id>
+            <name>Robert Csakany</name>
+            <email>robert.csakany@blackbelt.hu</email>
+            <url>https://github.com/robertcsakany</url>
+            <organization>BlackBelt Technology</organization>
+            <organizationUrl>http://www.blackbelt.hu</organizationUrl>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <profiles>
+        <profile>
+            <id>sign-artifacts</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.simplify4u.plugins</groupId>
+                        <artifactId>sign-maven-plugin</artifactId>
+                        <version>1.0.1</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>release-judong</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>judong-nexus-distribution</id>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <url>https://nexus.judo.technology/repository/maven-judong-snapshots/</url>
+                </snapshotRepository>
+                <repository>
+                    <id>judong-nexus-distribution</id>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <url>https://nexus.judo.technology/repository/maven-judong-snapshots/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+
+        <profile>
+            <id>release-central</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.7.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://ossrh-staging-api.central.sonatype.com/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            <stagingProgressTimeoutMinutes>15</stagingProgressTimeoutMinutes>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>6.0.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>
+                            com.google.appengine.api*;version="2.0.38"
+                        </Export-Package>
+                        <Import-Package>
+                            javax.annotation;version="[3.0,4)",
+                            com.google.async.threadsafety.annotations;resolution:=optional,
+                            com.google.auto.common;resolution:=optional,
+                            com.google.common.inject;resolution:=optional,
+                            com.google.common.labs.collect;resolution:=optional,
+                            com.google.common.logging.syslog;resolution:=optional,
+                            com.google.common.time;resolution:=optional,
+                            com.google.datastore.v1;resolution:=optional,
+                            com.google.datastore.v1.client;resolution:=optional,
+                            com.google.net;resolution:=optional,
+                            com.google.net.rpc;resolution:=optional,
+                            com.google.net.rpc3;resolution:=optional,
+                            com.google.net.rpc.impl;resolution:=optional,
+                            com.google.net.rpc3.client;resolution:=optional,
+                            com.google.net.rpc3.impl;resolution:=optional,
+                            com.google.net.rpc3.impl.compatibility;resolution:=optional,
+                            com.google.net.rpc3.impl.server;resolution:=optional,
+                            com.google.net.rpc3.server;resolution:=optional,
+                            com.google.net.ssl;resolution:=optional,
+                            com.google.protos.apphosting.proto1api;resolution:=optional,
+                            com.mysql.jdbc;resolution:=optional,
+                            com.sun.security.auth.module;resolution:=optional,
+                            jakarta.servlet;resolution:=optional,
+                            jakarta.servlet.http;resolution:=optional,
+                            javax.mail;resolution:=optional,
+                            android.os;resolution:=optional,
+                            kotlin;resolution:=optional,
+                            kotlin.annotation;resolution:=optional,
+                            kotlin.jvm.internal;resolution:=optional,
+                            kotlin.jvm.internal.markers;resolution:=optional,
+                            libcore.io;resolution:=optional,
+                            org.antlr.runtime;resolution:=optional,
+                            org.antlr.runtime.tree;resolution:=optional,
+                            org.checkerframework.checker.nullness.compatqual;resolution:=optional,
+                            org.checkerframework.checker.initialization.qual;resolution:=optional,
+                            org.checkerframework.checker.nullness.qual;resolution:=optional,
+                            org.checkerframework.dataflow.qual;resolution:=optional,
+                            org.jspecify.annotations;resolution:=optional,
+                            org.jspecify.nullness;resolution:=optional,
+                            sun.net.www.protocol.http;resolution:=optional,
+                            *
+                        </Import-Package>
+                        <!-- bundle supplied resource prefixes -->
+                        <Include-Resource>{maven-resources}</Include-Resource>
+
+                        <!-- Do not inline jars, include as jar files -->
+                        <!-- There are config files with same name will be overwritten -->
+                        <Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>appengine-apis</artifactId>
+            <version>2.0.38</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>protos</artifactId>
+            <version>2.0.38</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>proto1</artifactId>
+            <version>0.7</version>
+        </dependency>
+
+    </dependencies>
+</project>

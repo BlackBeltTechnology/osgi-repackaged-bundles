@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <version>1.47.0_1</version>
+    <version>1.47.0_2</version>
 
     <groupId>hu.blackbelt.bundles.google-http-client</groupId>
     <name>google-http-client</name>
@@ -89,7 +89,7 @@
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>ossrh</serverId>
-                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <nexusUrl>https://ossrh-staging-api.central.sonatype.com/</nexusUrl>
                             <autoReleaseAfterClose>true</autoReleaseAfterClose>
                             <stagingProgressTimeoutMinutes>15</stagingProgressTimeoutMinutes>
                         </configuration>
@@ -150,6 +150,9 @@
                             com.google.common.util.concurrent;version="[30.0,35)",
                             io.grpc;resolution:=optional,
                             com.fasterxml.jackson.core;version="[2.17,3)",
+                            com.google.appengine.api.datastore;resolution:=optional;version="[2,3)",
+                            com.google.appengine.api.memcache;resolution:=optional;version="[2,3)",
+                            com.google.appengine.api.urlfetch;resolution:=optional;version="[2,3)",
                             *
                         </Import-Package>
                         <!-- bundle supplied resource prefixes -->
@@ -185,6 +188,12 @@
         <dependency>
             <groupId>com.google.http-client</groupId>
             <artifactId>google-http-client-jackson2</artifactId>
+            <version>1.47.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-appengine</artifactId>
             <version>1.47.0</version>
         </dependency>
 
