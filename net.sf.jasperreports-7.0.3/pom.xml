@@ -281,16 +281,15 @@
             <artifactId>commons-digester</artifactId>
             <version>2.1</version>
         </dependency>
-<!--        <dependency>-->
-<!--           <groupId>com.mpobjects.jasperreports.font</groupId>-->
-<!--           <artifactId>jasperreports-fonts-liberation</artifactId>-->
-<!--           <version>2.1.2</version>-->
-<!--        </dependency>-->
-        <!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports-fonts -->
-        <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports-fonts</artifactId>
-            <version>7.0.3</version>
+       <dependency>
+          <groupId>com.mpobjects.jasperreports.font</groupId>
+          <artifactId>jasperreports-fonts-liberation</artifactId>
+          <version>2.1.2</version>
         </dependency>
+        <!-- <dependency> -->
+            <!-- <groupId>net.sf.jasperreports</groupId> -->
+            <!-- <artifactId>jasperreports-fonts</artifactId> -->
+            <!-- <version>7.0.3</version> -->
+        <!-- </dependency> -->
     </dependencies>
 </project>
