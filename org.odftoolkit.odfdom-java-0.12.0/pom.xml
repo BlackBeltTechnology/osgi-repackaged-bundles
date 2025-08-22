@@ -4,7 +4,7 @@
     <groupId>hu.blackbelt.bundles.odfdom</groupId>
     <artifactId>org.odftoolkit.odfdom-java</artifactId>
     <packaging>bundle</packaging>
-    <version>0.12.0-1</version>
+    <version>0.12.0_1</version>
     <name>odfdom</name>
     <description>odfdom</description>
 
@@ -138,7 +138,53 @@
                         <!-- Do not inline jars, include as jar files -->
                         <!-- There are config files with same name will be overwritten -->
                         <Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency>
-                        
+                        <Import-Package>
+                            java.awt,
+                            java.awt.image,
+                            java.io,java.lang,
+                            java.lang.invoke,
+                            java.lang.reflect,
+                            java.net,
+                            java.nio.charset,
+                            java.nio.file,
+                            java.security,
+                            java.security.spec,
+                            java.text,
+                            java.util,
+                            java.util.jar,
+                            java.util.logging,
+                            java.util.regex,
+                            java.util.zip,
+                            javax.crypto,
+                            javax.crypto.spec,
+                            javax.imageio,
+                            javax.xml.datatype,
+                            javax.xml.namespace,
+                            javax.xml.parsers,
+                            javax.xml.stream,
+                            javax.xml.stream.events,
+                            javax.xml.transform,
+                            javax.xml.transform.dom,
+                            javax.xml.transform.sax,
+                            javax.xml.transform.stream,
+                            javax.xml.xpath,net.rootdev.javardfa;version="[1.0,2)",
+                            net.rootdev.javardfa.literal;version="[1.0,2)",
+                            net.rootdev.javardfa.uri;version="[1.0,2)",
+                            org.apache.commons.compress.archivers.zip;version="[1.25,2)",
+                            org.apache.commons.lang3.time;version="[3.14,4)",
+                            org.apache.commons.validator.routines;version="[1.7,2)",
+                            org.apache.jena.rdf.model,
+                            org.apache.jena.util,
+                            org.apache.xerces.dom,
+                            org.apache.xerces.impl.dv,
+                            org.apache.xerces.impl.dv.util,
+                            org.apache.xerces.impl.validation,
+                            org.apache.xerces.jaxp,
+                            org.apache.xerces.jaxp.datatype,
+                            org.apache.xml.serializer,
+                            org.json;version="[20231013.0,20231014)",
+                            *
+                        </Import-Package>
                         
                     </instructions>
                 </configuration>
@@ -152,6 +198,13 @@
             <groupId>org.odftoolkit</groupId>
             <artifactId>odfdom-java</artifactId>
             <version>0.12.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.jena/jena-core -->
+        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>jena-core</artifactId>
+            <version>4.1.0</version>
         </dependency>
     </dependencies>
     
