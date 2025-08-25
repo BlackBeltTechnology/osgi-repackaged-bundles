@@ -47,7 +47,8 @@
         <module>org.openapitools.openapi-generator-4.3.1</module>
         <module>org.restlet-2.3.12</module>
         <module>org.subethamail.subethasmtp-3.1.7</module>
-        <module>org.tinyjee.jgraphx.mxgraph-3.4.1.3</module>        
+        <module>org.tinyjee.jgraphx.mxgraph-3.4.1.3</module>
+        <module>org.jxls-3.0.0</module>
     </modules>
     <properties>
         <revision>1.0.0-SNAPSHOT</revision>
