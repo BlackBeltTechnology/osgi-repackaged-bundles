@@ -2,23 +2,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <version>2.4.1_1</version>
-    
+
     <properties>
         <jena.version>4.1.0</jena.version>
     </properties>
-    
+
     <groupId>hu.blackbelt.bundles.velocity</groupId>
     <artifactId>org.apache.velocity</artifactId>
     <packaging>bundle</packaging>
     <name>Apache Velocity</name>
     <description>Apache Velocity</description>
-    
+
     <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
     <issueManagement>
         <url>https://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
         <system>GitHub Issues</system>
     </issueManagement>
-    
+
     <scm>
         <connection>scm:git:git://github.com/BlackBeltTechnology/osgi-repackaged-bundles.git</connection>
         <!--suppress UnresolvedMavenProperty -->
@@ -26,7 +26,7 @@
         <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
         <tag>HEAD</tag>
     </scm>
-    
+
     <developers>
         <developer>
             <id>robson</id>
@@ -37,7 +37,7 @@
             <organizationUrl>http://www.blackbelt.hu</organizationUrl>
         </developer>
     </developers>
-    
+
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -45,7 +45,7 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-    
+
     <profiles>
         <profile>
             <id>sign-artifacts</id>
@@ -113,7 +113,7 @@
             </distributionManagement>
         </profile>
     </profiles>
-        
+
     <build>
         <plugins>
             <plugin>

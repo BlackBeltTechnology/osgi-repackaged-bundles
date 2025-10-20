@@ -3,18 +3,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <version>5.3.0_1</version>
-    
+
     <groupId>hu.blackbelt.bundles.xmlbeans</groupId>
     <artifactId>org.apache.xmlbeans</artifactId>
     <name>Apache Xmlbeans</name>
     <description>Apache XmlBeans</description>
-    
+
     <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
     <issueManagement>
         <url>https://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
         <system>GitHub Issues</system>
     </issueManagement>
-    
+
     <scm>
         <connection>scm:git:git://github.com/BlackBeltTechnology/osgi-repackaged-bundles.git</connection>
         <!--suppress UnresolvedMavenProperty -->
@@ -22,7 +22,7 @@
         <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
         <tag>HEAD</tag>
     </scm>
-    
+
 
 
     <properties>
@@ -77,7 +77,7 @@
         </dependency>
     </dependencies>
 
-        <profiles>
+    <profiles>
         <profile>
             <id>sign-artifacts</id>
             <build>
@@ -326,7 +326,7 @@
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.IncludeResourceTransformer">
                                     <resource>META-INF/MANIFEST.MF</resource>
                                     <file>${project.build.outputDirectory}/META-INF/MANIFEST.MF</file>
-                                </transformer>                                
+                                </transformer>
                                 <!-- add other transformers as needed (ServicesResourceTransformer, etc.) -->
                             </transformers>
                             <promoteTransitiveDependencies>true</promoteTransitiveDependencies>
