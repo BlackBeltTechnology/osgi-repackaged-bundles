@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <version>5.3.0_1</version>
+
+    <groupId>hu.blackbelt.bundles.xmlbeans</groupId>
+    <artifactId>org.apache.xmlbeans</artifactId>
+    <name>Apache Xmlbeans</name>
+    <description>Apache XmlBeans</description>
+
+    <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+    <issueManagement>
+        <url>https://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:git:git://github.com/BlackBeltTechnology/osgi-repackaged-bundles.git</connection>
+        <developerConnection>scm:git:ssh://${git.username}@github.com:BlackBeltTechnology/osgi-repackaged-bundles.git</developerConnection>
+        <url>http://github.com/BlackBeltTechnology/osgi-repackaged-bundles</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>robson</id>
+            <name>Robert Csakany</name>
+            <email>robert.csakany@blackbelt.hu</email>
+            <url>https://github.com/robertcsakany</url>
+            <organization>BlackBelt Technology</organization>
+            <organizationUrl>http://www.blackbelt.hu</organizationUrl>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <properties>
+        <pkgGroupId>org.apache.xmlbeans</pkgGroupId>
+        <pkgArtifactId>xmlbeans</pkgArtifactId>
+        <pkgVersion>5.3.0</pkgVersion>
+    	<servicemix.osgi.source.version>5.3.0.1</servicemix.osgi.source.version>
+        <servicemix.osgi.export>
+            org.apache.xmlbeans.impl.common;version=${pkgVersion};-split-package:=merge-first,
+            org.apache.xmlbeans.impl.values;version=${pkgVersion};-split-package:=merge-first,
+            org.apache.xmlbeans.impl.schema;version=${pkgVersion};-split-package:=merge-first,
+            org.apache.xmlbeans.impl.xb.xmlschema;version=${pkgVersion};-split-package:=merge-first,
+            org.apache.xmlbeans.impl.xb.xsdschema;version=${pkgVersion};-split-package:=merge-first,
+            org.apache.xmlbeans.impl.regex;version=${pkgVersion};-split-package:=merge-first,
+            !org.apache.xmlbeans.impl*,
+            org.apache.xmlbeans*;version=${pkgVersion};-split-package:=merge-first,
+            schemaorg_apache_xmlbeans*;version=${pkgVersion};-split-package:=merge-first
+        </servicemix.osgi.export>
+        <servicemix.osgi.import.pkg>
+	    com.github.javaparser*;resolution:=optional,
+            com.sun.javadoc;resolution:=optional,
+	    com.sun.tools.javadoc;resolution:=optional,
+	    com.sun.org.apache.xml.internal.resolver*;resolution:=optional,
+            org.apache.tools.ant*;resolution:=optional;version="[1.7,2)",
+	    org.apache.maven*;resolution:=optional,
+            net.sf.saxon*;resolution:=optional,
+            *
+        </servicemix.osgi.import.pkg>
+        <servicemix.osgi.private.pkg>
+            repackage.*;-split-package:=merge-first,
+            <!--org.apache.xml.resolver.*;-split-package:=merge-first-->
+            org.apache.xmlbeans.impl*;-split-package:=merge-first
+        </servicemix.osgi.private.pkg>
+        <servicemix.osgi.failok>true</servicemix.osgi.failok>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>${pkgGroupId}</groupId>
+            <artifactId>${pkgArtifactId}</artifactId>
+            <version>${pkgVersion}</version>
+            <optional>false</optional>
+        </dependency>
+
+        <!-- sources -->
+        <dependency>
+            <groupId>${pkgGroupId}</groupId>
+            <artifactId>${pkgArtifactId}</artifactId>
+            <version>${pkgVersion}</version>
+            <classifier>sources</classifier>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>sign-artifacts</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.simplify4u.plugins</groupId>
+                        <artifactId>sign-maven-plugin</artifactId>
+                        <version>1.0.1</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>release-judong</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>judong-nexus-distribution</id>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <url>https://nexus.judo.technology/repository/maven-judong-snapshots/</url>
+                </snapshotRepository>
+                <repository>
+                    <id>judong-nexus-distribution</id>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <url>https://nexus.judo.technology/repository/maven-judong-snapshots/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+
+        <profile>
+            <id>release-central</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.7.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://ossrh-staging-api.central.sonatype.com/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            <stagingProgressTimeoutMinutes>15</stagingProgressTimeoutMinutes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
+    <build>
+        <!-- <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>3.5.1</version>
+                    <executions>
+                        <execution>
+                            <id>sources</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                            <configuration>
+                                <artifactSet>
+                                    <includes>
+                                        <include>*:*:*:sources</include>
+                                        <include>${project.groupId}:${project.artifactId}:*:sources</include>
+                                    </includes>
+                                </artifactSet>
+                                <filters>
+                                    <filter>
+                                        <artifact>*:*</artifact>
+                                        <excludes>
+                                            <exclude>**/*.class</exclude>
+                                        </excludes>
+                                    </filter>
+                                </filters>
+                                <transformers>
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                        <manifestEntries>
+                                            <Bundle-SymbolicName>${project.artifactId}.source</Bundle-SymbolicName>
+                                            <Eclipse-SourceBundle>${project.artifactId};version="${servicemix.osgi.source.version}"</Eclipse-SourceBundle>
+                                            <Export-Package />
+                                            <Import-Package />
+                                            <Provide-Capability />
+                                            <Require-Capability />
+                                        </manifestEntries>
+                                    </transformer>
+                                </transformers>
+                                <promoteTransitiveDependencies>false</promoteTransitiveDependencies>
+                                <shadedArtifactAttached>true</shadedArtifactAttached>
+                                <shadedClassifierName>sources</shadedClassifierName>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement> -->
+
+        <resources>
+            <resource>
+                <directory>${project.build.directory}/xml-commons-resolver-1.1/resolver</directory>
+                <excludes><exclude>META-INF/*</exclude></excludes>
+            </resource>
+            <resource>
+                <directory>${project.build.directory}/xml-commons-resolver-1.1/src</directory>
+                <excludes><exclude>manifest.resolver</exclude></excludes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>com.googlecode.maven-download-plugin</groupId>
+                <artifactId>download-maven-plugin</artifactId>
+                <version>1.3.0</version>
+                <executions>
+                    <execution>
+                        <!-- the wget goal actually binds itself to this phase by default -->
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>http://archive.apache.org/dist/xml/commons/binaries/xml-commons-resolver-1.1.zip</url>
+                            <unpack>true</unpack>
+                            <!-- default target location, just to demonstrate the parameter -->
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <target>
+                                <unzip src="${project.build.directory}/xml-commons-resolver-1.1/resolver.jar" dest="${project.build.directory}/xml-commons-resolver-1.1/resolver" />
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>5.1.9</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>bundle-manifest</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>manifest</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Description>${project.description}</Bundle-Description>
+                        <Export-Package>${servicemix.osgi.export}</Export-Package>
+                        <Import-Package>${servicemix.osgi.import.pkg}</Import-Package>
+                        <Private-Package>${servicemix.osgi.private.pkg}</Private-Package>
+                        <DynamicImport-Package>${servicemix.osgi.dynamicimport.pkg}</DynamicImport-Package>
+                        <Embed-Dependency>${servicemix.osgi.embed.dependency}</Embed-Dependency>
+                        <!-- <Bundle-NativeCode>${servicemix.osgi.native}</Bundle-NativeCode> -->
+                        <Bundle-Activator>${servicemix.osgi.activator}</Bundle-Activator>
+                        <Fragment-Host>${servicemix.osgi.fragment.host}</Fragment-Host>
+                        <Provide-Capability>${servicemix.osgi.provide.capability}</Provide-Capability>
+                        <Require-Capability>${servicemix.osgi.require.capability}</Require-Capability>
+                        <SPI-Provider>${servicemix.spi.provider}</SPI-Provider>
+                        <SPI-Consumer>${servicemix.spi.consumer}</SPI-Consumer>
+                        <_failok>${servicemix.osgi.failok}</_failok>
+                        <_versionpolicy>[$(version;==;$(@)),$(version;+;$(@)))</_versionpolicy>
+                        <_removeheaders>Ignore-Package,Include-Resource,Private-Package,Embed-Dependency
+                        </_removeheaders>
+                    </instructions>
+                    <unpackBundle>true</unpackBundle>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.5.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>${project.groupId}:${project.artifactId}:${project.version}</include>
+                                    <include>${pkgGroupId}:${pkgArtifactId}:${pkgVersion}</include>
+                                </includes>
+                            </artifactSet>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/MANIFEST.MF</exclude>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>**/*.java</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <transformers>
+                                <!-- Drop any manifest found in dependencies -->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.DontIncludeResourceTransformer">
+                                    <!-- matches resources ending with this name -->
+                                    <resource>MANIFEST.MF</resource>
+                                </transformer>
+
+                                <!-- Inject the manifest generated by m-b-p -->
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.IncludeResourceTransformer">
+                                    <resource>META-INF/MANIFEST.MF</resource>
+                                    <file>${project.build.outputDirectory}/META-INF/MANIFEST.MF</file>
+                                </transformer>
+                                <!-- add other transformers as needed (ServicesResourceTransformer, etc.) -->
+                            </transformers>
+                            <promoteTransitiveDependencies>true</promoteTransitiveDependencies>
+                            <createDependencyReducedPom>true</createDependencyReducedPom>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.5.1</version>
+                <executions>
+                    <execution>
+                        <id>sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>${pkgGroupId}:${pkgArtifactId}</include>
+                                </includes>
+                            </artifactSet>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>**/*.class</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <manifestEntries>
+                                        <Bundle-SymbolicName>${project.artifactId}.source</Bundle-SymbolicName>
+                                        <Eclipse-SourceBundle>${project.artifactId};version="${servicemix.osgi.source.version}"</Eclipse-SourceBundle>
+                                        <Export-Package />
+                                        <Import-Package />
+                                        <Provide-Capability />
+                                        <Require-Capability />
+                                    </manifestEntries>
+                                </transformer>
+                            </transformers>
+                            <promoteTransitiveDependencies>false</promoteTransitiveDependencies>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <shadedClassifierName>sources</shadedClassifierName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <failOnError>false</failOnError>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
