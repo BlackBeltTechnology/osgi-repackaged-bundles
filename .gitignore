@@ -57,3 +57,7 @@ wercker.env
 /**/.classpath
 /**/.project
 **/.flattened-pom.xml
+.claude
+.gemini
+.opencode
+.agent
