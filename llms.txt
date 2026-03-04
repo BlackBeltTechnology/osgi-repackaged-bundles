@@ -123,6 +123,14 @@ Key facts:
 - [com.github.albfernandez.juniversalchardet-2.3.0/pom.xml](com.github.albfernandez.juniversalchardet-2.3.0/pom.xml): Character encoding detection
 - [org.tinyjee.jgraphx.mxgraph-3.4.1.3/pom.xml](org.tinyjee.jgraphx.mxgraph-3.4.1.3/pom.xml): Graph visualization
 
+## Used by
+
+- [judo-generator-commons](../../runtime/judo-generator-commons): runtime/judo-generator-commons
+- [judo-tatami](../../runtime/judo-tatami): runtime/judo-tatami
+- [judo-tatami-base](../../runtime/judo-tatami-base): runtime/judo-tatami-base
+- [judo-tatami-client](../../runtime/judo-tatami-client): runtime/judo-tatami-client
+- [judo-tatami-jsl](../../runtime/judo-tatami-jsl): runtime/judo-tatami-jsl
+
 ## Optional
 
 - [.github/workflows/build-release.yml](.github/workflows/build-release.yml): Manual release workflow (dispatched per-module)
