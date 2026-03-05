@@ -125,11 +125,11 @@ Key facts:
 
 ## Used by
 
-- [judo-generator-commons](../../runtime/judo-generator-commons): runtime/judo-generator-commons
-- [judo-tatami](../../runtime/judo-tatami): runtime/judo-tatami
-- [judo-tatami-base](../../runtime/judo-tatami-base): runtime/judo-tatami-base
-- [judo-tatami-client](../../runtime/judo-tatami-client): runtime/judo-tatami-client
-- [judo-tatami-jsl](../../runtime/judo-tatami-jsl): runtime/judo-tatami-jsl
+- [judo-generator-commons](../../runtime/judo-generator-commons): Handlebars template-based code generation framework
+- [judo-tatami](../../runtime/judo-tatami): Model transformation pipeline — ESM/PSM to deployable application artifacts
+- [judo-tatami-base](../../runtime/judo-tatami-base): PSM transformation pipeline — models to schemas, expressions, and configurations
+- [judo-tatami-client](../../runtime/judo-tatami-client): ESM-to-UI model transformation using Eclipse Epsilon ETL
+- [judo-tatami-jsl](../../runtime/judo-tatami-jsl): JSL-to-runtime model transformation engine (PSM, ASM, UI, RDBMS, etc.)
 
 ## Optional
 
