@@ -2,6 +2,7 @@
 
 ## Project Overview
 
+
 **Repository:** BlackBeltTechnology/osgi-repackaged-bundles
 **License:** Apache License 2.0
 **Java Version:** JDK 21
@@ -11,6 +12,17 @@
 2. Each module wraps one or more upstream JARs using the Apache Felix `maven-bundle-plugin`, controlling exported/imported packages and embedding transitive dependencies.
 3. Bundles are published to both an internal Nexus repository (judo.technology) and Maven Central.
 4. There is no application source code — every module is a pure repackaging project consisting only of a `pom.xml`.
+
+## Code Instructions
+
+1. First think through the problem, read the codebase for relevant files.
+2. Before you make any major changes, check in with me and I will verify the plan.
+3. Please every step of the way just give me a high level explanation of what changes you made.
+4. Make every task and code change you do as simple as possible. We want to avoid making any massive or complex changes. Every change should impact as little code as possible. Everything is about simplicity.
+5. Maintain a documentation file that describes how the architecture of the app works inside and out.
+6. Never speculate about code you have not opened. If the user references a specific file, you MUST read the file before answering. Make sure to investigate and read relevant files BEFORE answering questions about the codebase. Never make any claims about code before investigating unless you are certain of the correct answer - give grounded and hallucination-free answers.
+7. For implementation use TDD (Test-Driven Development): write or update tests first to define the expected behaviour, verify they fail, then write the minimal implementation to make them pass.
+8. Use DRY (Don't Repeat Yourself): extract reusable logic into separate classes, utilities, or components. If the same pattern appears in multiple places, refactor it into a shared helper.
 
 ## Directory Structure
 
