@@ -1,0 +1,138 @@
+# OSGi Repackaged Bundles
+
+> Repackages third-party Java libraries as OSGi-compliant bundles for deployment in Apache Karaf within the JUDO NG ecosystem.
+
+Key facts:
+- Java 21, Maven 3.9.4 (via Maven Wrapper)
+- 78 bundle modules — pure POM-based repackaging, no application source code
+- Uses Apache Felix `maven-bundle-plugin` 5.1.8 for OSGi manifest generation
+- Targets OSGi R7 runtime on Apache Karaf
+- Published to both Judo NG Nexus and Maven Central
+- License: Apache License 2.0
+
+## Docs
+
+- [AGENTS.md](AGENTS.md): Developer guide with build commands, module listing, and coding conventions
+- [README.md](README.md): Project title
+
+## Modules — Google Libraries
+
+- [com.google.api-ads-38.0.0/pom.xml](com.google.api-ads-38.0.0/pom.xml): Google Ads API client library
+- [com.google.api-bigquery-2.54.0/pom.xml](com.google.api-bigquery-2.54.0/pom.xml): Google BigQuery API client
+- [com.google.api-client-1.23.0/pom.xml](com.google.api-client-1.23.0/pom.xml): Google API Client Library (legacy)
+- [com.google.api-client-2.8.0/pom.xml](com.google.api-client-2.8.0/pom.xml): Google API Client Library (current)
+- [com.google.api-gax-2.66.0/pom.xml](com.google.api-gax-2.66.0/pom.xml): Google API Extensions (GAX) for Java
+- [com.google.api-gcloud-2.58.2/pom.xml](com.google.api-gcloud-2.58.2/pom.xml): Google Cloud client libraries
+- [com.google.api-grpc-1.70.0/pom.xml](com.google.api-grpc-1.70.0/pom.xml): Google gRPC API stubs
+- [com.google.api-services-calendar-1.23.0/pom.xml](com.google.api-services-calendar-1.23.0/pom.xml): Google Calendar API
+- [com.google.api-services-oauth2-1.23.0/pom.xml](com.google.api-services-oauth2-1.23.0/pom.xml): Google OAuth2 API
+- [com.google.appengine-2.0.38/pom.xml](com.google.appengine-2.0.38/pom.xml): Google App Engine SDK
+- [com.google.auth-1.36.0/pom.xml](com.google.auth-1.36.0/pom.xml): Google Auth Library for Java
+- [com.google.guava-20.0/pom.xml](com.google.guava-20.0/pom.xml): Guava utilities (legacy version)
+- [com.google.guava-28.0/pom.xml](com.google.guava-28.0/pom.xml): Guava utilities (newer version)
+- [com.google.http-client-1.47.0/pom.xml](com.google.http-client-1.47.0/pom.xml): Google HTTP Client Library
+- [com.google.re2j-1.8/pom.xml](com.google.re2j-1.8/pom.xml): RE2/J regular expression library
+
+## Modules — Apache Libraries
+
+- [org.apache.arrows-17.0.0/pom.xml](org.apache.arrows-17.0.0/pom.xml): Apache Arrow columnar data format
+- [org.apache.directory.api-1.0.0-RC2/pom.xml](org.apache.directory.api-1.0.0-RC2/pom.xml): LDAP directory API
+- [org.apache.lucene-7.0.1/pom.xml](org.apache.lucene-7.0.1/pom.xml): Lucene full-text search engine (legacy)
+- [org.apache.lucene-9.10.0/pom.xml](org.apache.lucene-9.10.0/pom.xml): Lucene full-text search engine (current)
+- [org.apache.poi-3.13.1/pom.xml](org.apache.poi-3.13.1/pom.xml): Apache POI office documents (3.13.1)
+- [org.apache.poi-3.17/pom.xml](org.apache.poi-3.17/pom.xml): Apache POI office documents (3.17)
+- [org.apache.poi-4.0.1/pom.xml](org.apache.poi-4.0.1/pom.xml): Apache POI office documents (4.0.1)
+- [org.apache.poi-4.1.2/pom.xml](org.apache.poi-4.1.2/pom.xml): Apache POI office documents (4.1.2)
+- [org.apache.poi-5.2.3/pom.xml](org.apache.poi-5.2.3/pom.xml): Apache POI office documents (5.2.3)
+- [org.apache.poi-5.4.1/pom.xml](org.apache.poi-5.4.1/pom.xml): Apache POI office documents (5.4.1)
+- [org.apache.solr-7.0.1/pom.xml](org.apache.solr-7.0.1/pom.xml): Apache Solr search platform
+- [org.apache.velocity-2.4.1/pom.xml](org.apache.velocity-2.4.1/pom.xml): Apache Velocity template engine
+- [org.apache.xmlbeans-5.3.0/pom.xml](org.apache.xmlbeans-5.3.0/pom.xml): Apache XMLBeans XML-Java binding
+
+## Modules — Eclipse / Modeling
+
+- [org.eclipse.epsilon-2.4.0/pom.xml](org.eclipse.epsilon-2.4.0/pom.xml): Epsilon model management (2.4.0)
+- [org.eclipse.epsilon-2.5.0/pom.xml](org.eclipse.epsilon-2.5.0/pom.xml): Epsilon model management (2.5.0)
+- [org.eclipse.epsilon-2.8.0/pom.xml](org.eclipse.epsilon-2.8.0/pom.xml): Epsilon model management (2.8.0)
+- [org.eclipse.jdt.ecj-3.21.0/pom.xml](org.eclipse.jdt.ecj-3.21.0/pom.xml): Eclipse Java Compiler
+- [org.eclipse.uml2-5.0.0-v20140602-0749/pom.xml](org.eclipse.uml2-5.0.0-v20140602-0749/pom.xml): UML2 modeling framework
+- [org.eclipse.xbase-2.29.0/pom.xml](org.eclipse.xbase-2.29.0/pom.xml): Xbase expression language (2.29.0)
+- [org.eclipse.xbase-2.39.0/pom.xml](org.eclipse.xbase-2.39.0/pom.xml): Xbase expression language (2.39.0)
+- [org.eclipse.xtext-2.29.0/pom.xml](org.eclipse.xtext-2.29.0/pom.xml): Xtext language framework (2.29.0)
+- [org.eclipse.xtext-2.39.0/pom.xml](org.eclipse.xtext-2.39.0/pom.xml): Xtext language framework (2.39.0)
+
+## Modules — Document Processing
+
+- [com.lowagie.itext-2.1.7/pom.xml](com.lowagie.itext-2.1.7/pom.xml): iText PDF generation
+- [fr.opensagres.xdocreport-1.0.6/pom.xml](fr.opensagres.xdocreport-1.0.6/pom.xml): XDocReport template-based document generation (1.0.6)
+- [fr.opensagres.xdocreport-2.1.0/pom.xml](fr.opensagres.xdocreport-2.1.0/pom.xml): XDocReport template-based document generation (2.1.0)
+- [net.sf.jasperreports-6.20.5/pom.xml](net.sf.jasperreports-6.20.5/pom.xml): JasperReports reporting engine (6.20.5)
+- [net.sf.jasperreports-7.0.3/pom.xml](net.sf.jasperreports-7.0.3/pom.xml): JasperReports reporting engine (7.0.3)
+- [org.docx4j-2.1.5/pom.xml](org.docx4j-2.1.5/pom.xml): DOCX document manipulation (2.1.5)
+- [org.docx4j-8.3.14/pom.xml](org.docx4j-8.3.14/pom.xml): DOCX document manipulation (8.3.14)
+- [org.jxls-2.6.0/pom.xml](org.jxls-2.6.0/pom.xml): JXLS Excel template engine (2.6.0)
+- [org.jxls-2.10.0/pom.xml](org.jxls-2.10.0/pom.xml): JXLS Excel template engine (2.10.0)
+- [org.jxls-3.0.0/pom.xml](org.jxls-3.0.0/pom.xml): JXLS Excel template engine (3.0.0)
+- [org.odftoolkit.odfdom-java-0.8.7/pom.xml](org.odftoolkit.odfdom-java-0.8.7/pom.xml): ODF document processing (0.8.7)
+- [org.odftoolkit.odfdom-java-0.12.0/pom.xml](org.odftoolkit.odfdom-java-0.12.0/pom.xml): ODF document processing (0.12.0)
+
+## Modules — API & Networking
+
+- [io.moquette-0.10/pom.xml](io.moquette-0.10/pom.xml): Moquette MQTT broker (0.10)
+- [io.moquette-0.11/pom.xml](io.moquette-0.11/pom.xml): Moquette MQTT broker (0.11)
+- [io.swagger.swagger-parser-1.0.47/pom.xml](io.swagger.swagger-parser-1.0.47/pom.xml): Swagger/OpenAPI 2.0 parser
+- [io.swagger.v3.swagger-parser-2.0.19/pom.xml](io.swagger.v3.swagger-parser-2.0.19/pom.xml): OpenAPI 3.0 parser
+- [org.openapitools.openapi-generator-4.3.1/pom.xml](org.openapitools.openapi-generator-4.3.1/pom.xml): OpenAPI code generator
+- [org.restlet-2.3.12/pom.xml](org.restlet-2.3.12/pom.xml): Restlet RESTful web framework (multi-module bundle)
+- [org.subethamail.subethasmtp-3.1.7/pom.xml](org.subethamail.subethasmtp-3.1.7/pom.xml): Embeddable SMTP server
+
+## Modules — Data & Utilities
+
+- [com.pivovarit.throwing-function-1.5.1/pom.xml](com.pivovarit.throwing-function-1.5.1/pom.xml): Checked-exception functional interfaces
+- [com.tdunning.t-digest-3.2/pom.xml](com.tdunning.t-digest-3.2/pom.xml): T-Digest quantile estimation
+- [com.vdurmont.semver4j-3.1.0/pom.xml](com.vdurmont.semver4j-3.1.0/pom.xml): Semantic versioning library
+- [io.github.resilience4j-1.7.1/pom.xml](io.github.resilience4j-1.7.1/pom.xml): Resilience4j fault tolerance (1.7.1)
+- [io.github.resilience4j-2.0.2/pom.xml](io.github.resilience4j-2.0.2/pom.xml): Resilience4j fault tolerance (2.0.2)
+- [io.vavr-0.10.4/pom.xml](io.vavr-0.10.4/pom.xml): Vavr functional programming for Java
+- [ma.glasnost.orika-1.5.4/pom.xml](ma.glasnost.orika-1.5.4/pom.xml): Orika Java bean mapping
+- [org.functionaljava-4.8.1/pom.xml](org.functionaljava-4.8.1/pom.xml): Functional programming primitives
+- [org.threeten-1.7.1/pom.xml](org.threeten-1.7.1/pom.xml): ThreeTen-Extra date/time classes
+
+## Modules — Compression & I/O
+
+- [com.aayushatharva.brotli4j-1.18.0/pom.xml](com.aayushatharva.brotli4j-1.18.0/pom.xml): Brotli compression for Java
+- [com.github.jponge-lzma-java-1.3/pom.xml](com.github.jponge-lzma-java-1.3/pom.xml): LZMA compression
+- [com.jcraft.jzlib-1.1.3/pom.xml](com.jcraft.jzlib-1.1.3/pom.xml): JZlib zlib/gzip compression
+- [com.squareup.okio-3.15.0/pom.xml](com.squareup.okio-3.15.0/pom.xml): Okio I/O library
+- [net.sf.jsignature.io-tools.easystream-1.2.15/pom.xml](net.sf.jsignature.io-tools.easystream-1.2.15/pom.xml): Stream utilities
+- [org.lz4.lz-java-1.8.0/pom.xml](org.lz4.lz-java-1.8.0/pom.xml): LZ4 compression
+
+## Modules — Observability
+
+- [io.opencensus-0.31.1/pom.xml](io.opencensus-0.31.1/pom.xml): OpenCensus metrics and tracing
+- [io.opentelemetry-1.51.0/pom.xml](io.opentelemetry-1.51.0/pom.xml): OpenTelemetry observability framework
+- [io.perfmark-0.27.0/pom.xml](io.perfmark-0.27.0/pom.xml): PerfMark low-overhead tracing
+
+## Modules — Security & Auth
+
+- [org.keycloak.adapter-17.0.1/pom.xml](org.keycloak.adapter-17.0.1/pom.xml): Keycloak authentication adapter
+
+## Modules — Other
+
+- [com.diogonunes.jcolor-5.2.0/pom.xml](com.diogonunes.jcolor-5.2.0/pom.xml): ANSI terminal colors
+- [com.github.albfernandez.juniversalchardet-2.3.0/pom.xml](com.github.albfernandez.juniversalchardet-2.3.0/pom.xml): Character encoding detection
+- [org.tinyjee.jgraphx.mxgraph-3.4.1.3/pom.xml](org.tinyjee.jgraphx.mxgraph-3.4.1.3/pom.xml): Graph visualization
+
+## Used by
+
+- [judo-generator-commons](../../runtime/judo-generator-commons): Handlebars template-based code generation framework
+- [judo-tatami](../../runtime/judo-tatami): Model transformation pipeline — ESM/PSM to deployable application artifacts
+- [judo-tatami-base](../../runtime/judo-tatami-base): PSM transformation pipeline — models to schemas, expressions, and configurations
+- [judo-tatami-client](../../runtime/judo-tatami-client): ESM-to-UI model transformation using Eclipse Epsilon ETL
+- [judo-tatami-jsl](../../runtime/judo-tatami-jsl): JSL-to-runtime model transformation engine (PSM, ASM, UI, RDBMS, etc.)
+
+## Optional
+
+- [.github/workflows/build-release.yml](.github/workflows/build-release.yml): Manual release workflow (dispatched per-module)
+- [.github/workflows/jira-description-to-pr.yml](.github/workflows/jira-description-to-pr.yml): Auto-populates PR body from JIRA ticket
+- [pom.xml](pom.xml): Root reactor POM listing all modules
